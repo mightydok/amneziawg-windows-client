@@ -121,15 +121,26 @@ func newEditDialog(owner walk.Form, tunnel *manager.Tunnel) (*EditDialog, error)
 	}
 	layout.SetRange(dlg.syntaxEdit, walk.Rectangle{0, 2, 2, 1})
 
+	// The two option checkboxes get a row each; long localized labels do not fit
+	// next to the buttons.
+	optionsContainer, err := walk.NewComposite(dlg)
+	if err != nil {
+		return nil, err
+	}
+	layout.SetRange(optionsContainer, walk.Rectangle{0, 3, 2, 1})
+	optionsContainer.SetLayout(walk.NewVBoxLayout())
+	optionsContainer.Layout().SetMargins(walk.Margins{})
+	optionsContainer.Layout().SetSpacing(2)
+
 	buttonsContainer, err := walk.NewComposite(dlg)
 	if err != nil {
 		return nil, err
 	}
-	layout.SetRange(buttonsContainer, walk.Rectangle{0, 3, 2, 1})
+	layout.SetRange(buttonsContainer, walk.Rectangle{0, 4, 2, 1})
 	buttonsContainer.SetLayout(walk.NewHBoxLayout())
 	buttonsContainer.Layout().SetMargins(walk.Margins{})
 
-	if dlg.blockUntunneledTrafficCB, err = walk.NewCheckBox(buttonsContainer); err != nil {
+	if dlg.blockUntunneledTrafficCB, err = walk.NewCheckBox(optionsContainer); err != nil {
 		return nil, err
 	}
 	dlg.blockUntunneledTrafficCB.SetText(l18n.Sprintf("&Block untunneled traffic (kill-switch)"))
@@ -137,7 +148,7 @@ func newEditDialog(owner walk.Form, tunnel *manager.Tunnel) (*EditDialog, error)
 	dlg.blockUntunneledTrafficCB.SetVisible(false)
 	dlg.blockUntunneledTrafficCB.CheckedChanged().Attach(dlg.onBlockUntunneledTrafficCBCheckedChanged)
 
-	if dlg.geoSplitCB, err = walk.NewCheckBox(buttonsContainer); err != nil {
+	if dlg.geoSplitCB, err = walk.NewCheckBox(optionsContainer); err != nil {
 		return nil, err
 	}
 	dlg.geoSplitCB.SetText(l18n.Sprintf("&Russian networks directly (geo-split)"))
