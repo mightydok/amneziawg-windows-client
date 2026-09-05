@@ -21,7 +21,7 @@ function Report([bool]$ok, [string]$what) {
 }
 
 # 1. Adapter and default route
-$tun = Get-NetAdapter | Where-Object { $_.InterfaceDescription -like 'Wintun*' -or $_.Name -like "$TunnelPrefix*" } | Select-Object -First 1
+$tun = Get-NetAdapter | Where-Object { $_.InterfaceDescription -match 'Wintun|WireGuard Tunnel' -or $_.Name -like "$TunnelPrefix*" } | Select-Object -First 1
 Report ($null -ne $tun) "tunnel adapter present ($($tun.Name))"
 $default = Get-NetRoute -DestinationPrefix '0.0.0.0/0' | Sort-Object RouteMetric, InterfaceMetric | Select-Object -First 1
 Report ($default.InterfaceIndex -eq $tun.ifIndex) "0.0.0.0/0 points at the tunnel (ifIndex $($default.InterfaceIndex))"
