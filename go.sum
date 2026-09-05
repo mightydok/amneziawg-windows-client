@@ -1,11 +1,11 @@
 github.com/amnezia-vpn/amneziawg-go/v3 v3.1.20260814 h1:l2AhBD+sFycU8Im81n/bZORMxW7fWtlZJEuJ4Hh0+z0=
 github.com/amnezia-vpn/amneziawg-go/v3 v3.1.20260814/go.mod h1:YoPc6qcOZqD7TXZ1xpedD8Sx3aSKsxN05ZqEFmXDNHk=
-github.com/amnezia-vpn/amneziawg-windows/v3 v3.1.20260814 h1:R5J1awr5at7/4kHFPZaN0zeLKW1/zR/E37lhMgnsyD0=
-github.com/amnezia-vpn/amneziawg-windows/v3 v3.1.20260814/go.mod h1:ocoNVSEDXeB043g3sX+pBxG2CB+LN0WZdw9FGrQK5H4=
 github.com/google/btree v1.1.3 h1:CVpQJjYgC4VbzxeGVHfvZrv1ctoYCAI8vbl07Fcxlyg=
 github.com/google/btree v1.1.3/go.mod h1:qOPhT0dTNdNzV6Z/lhRX0YXUafgPLFUh+gZMl761Gm4=
 github.com/google/go-cmp v0.6.0 h1:ofyhxvXcZhMsU5ulbFiLKl/XBFqE1GSq7atu8tAmTRI=
 github.com/google/go-cmp v0.6.0/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
+github.com/mightydok/amneziawg-windows/v3 v3.0.0-20260905101825-1d6db9595484 h1:6qqW5gcnlHCAelWRP0Zq8UpXWHFd+YgT35+gi0MT6pA=
+github.com/mightydok/amneziawg-windows/v3 v3.0.0-20260905101825-1d6db9595484/go.mod h1:ocoNVSEDXeB043g3sX+pBxG2CB+LN0WZdw9FGrQK5H4=
 go.uber.org/atomic v1.11.0 h1:ZvwS0R+56ePWxUNi+Atn9dWONBPp/AUETXlHW0DxSjE=
 go.uber.org/atomic v1.11.0/go.mod h1:LUxbIzbOniOlMKjJjyPfpl4v+PKK2cNJn91OQbhoJI0=
 golang.org/x/crypto v0.42.0 h1:chiH31gIWm57EkTXpwnqf8qeuMUi0yekh6mT2AvFlqI=
