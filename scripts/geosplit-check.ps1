@@ -26,8 +26,11 @@ Report ($null -ne $tun) "tunnel adapter present ($($tun.Name))"
 $default = Get-NetRoute -DestinationPrefix '0.0.0.0/0' | Sort-Object RouteMetric, InterfaceMetric | Select-Object -First 1
 Report ($default.InterfaceIndex -eq $tun.ifIndex) "0.0.0.0/0 points at the tunnel (ifIndex $($default.InterfaceIndex))"
 
-# 2. Exception routes: marker protocol Bbn = 12 in NL_ROUTE_PROTOCOL
-$geoRoutes = Get-NetRoute -AddressFamily IPv4 -ErrorAction SilentlyContinue | Where-Object { $_.Protocol -eq 'Bbn' }
+# 2. Exception routes: marker protocol Bbn = 12 in NL_ROUTE_PROTOCOL, or NetMgmt with
+#    metric 0 on a physical interface when the stack rejected the marker.
+$geoRoutes = @(Get-NetRoute -AddressFamily IPv4 -ErrorAction SilentlyContinue | Where-Object {
+    $_.Protocol -eq 'Bbn' -or ($_.Protocol -eq 'NetMgmt' -and $_.RouteMetric -eq 0 -and $_.DestinationPrefix -ne '0.0.0.0/0' -and $_.InterfaceIndex -ne $tun.ifIndex)
+})
 Report ($geoRoutes.Count -gt 1000) "geo-split IPv4 exception routes installed: $($geoRoutes.Count)"
 if ($geoRoutes.Count -gt 0) {
     $ifaces = $geoRoutes | Group-Object InterfaceIndex | ForEach-Object { $_.Name }
@@ -42,11 +45,12 @@ Report ($ru.InterfaceIndex -ne $tun.ifIndex) "$RussianHost resolves to a physica
 $foreign = Find-NetRoute -RemoteIPAddress $ForeignHost | Select-Object -First 1
 Report ($foreign.InterfaceIndex -eq $tun.ifIndex) "$ForeignHost resolves to the tunnel (ifIndex $($foreign.InterfaceIndex))"
 
-# 4. Connectivity through each path
-$ruOk = Test-NetConnection -ComputerName $RussianHost -Port 53 -InformationLevel Quiet -WarningAction SilentlyContinue
-Report $ruOk "TCP 53 to $RussianHost works (direct path)"
-$foreignOk = Test-NetConnection -ComputerName $ForeignHost -Port 53 -InformationLevel Quiet -WarningAction SilentlyContinue
-Report $foreignOk "TCP 53 to $ForeignHost works (tunnel path)"
+# 4. Connectivity through each path. Port 443 on purpose: the kill-switch blocks
+#    port 53 to every server that is not in the tunnel's DNS list, on any path.
+$ruOk = Test-NetConnection -ComputerName $RussianHost -Port 443 -InformationLevel Quiet -WarningAction SilentlyContinue
+Report $ruOk "TCP 443 to $RussianHost works (direct path)"
+$foreignOk = Test-NetConnection -ComputerName $ForeignHost -Port 443 -InformationLevel Quiet -WarningAction SilentlyContinue
+Report $foreignOk "TCP 443 to $ForeignHost works (tunnel path)"
 
 # 5. WFP filters from the kill-switch, including the geo-split permits
 $wfp = & netsh wfp show filters file=- 2>$null
