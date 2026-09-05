@@ -70,11 +70,11 @@ var messageKeyToIndex = map[string]int{
 	"%.2f\u00a0MiB":                         147,
 	"%.2f\u00a0TiB":                         149,
 	"%d day(s)":                             140,
-	"%d day(s) ago":                         345,
+	"%d day(s) ago":                         347,
 	"%d hour(s)":                            141,
-	"%d hour(s) ago":                        344,
+	"%d hour(s) ago":                        346,
 	"%d minute(s)":                          142,
-	"%d minute(s) ago":                      343,
+	"%d minute(s) ago":                      345,
 	"%d second(s)":                          143,
 	"%d tunnels were unable to be removed.": 123,
 	"%d year(s)":                            139,
@@ -88,10 +88,10 @@ var messageKeyToIndex = map[string]int{
 	"%s - Retrying handshake because we stopped hearing back after %d seconds":    237,
 	"%s You cannot undo this action.":                                             119,
 	"%s ago":                                                                      144,
-	"%s list: %d IPv4 and %d IPv6 prefixes, downloaded %s":                        350,
-	"%s list: built-in snapshot, %d IPv4 and %d IPv6 prefixes (never downloaded)": 349,
-	"%s list: unavailable (%s)":                                                   348,
-	"%s list: updating…":                                                          347,
+	"%s list: %d IPv4 and %d IPv6 prefixes, downloaded %s":                        352,
+	"%s list: built-in snapshot, %d IPv4 and %d IPv6 prefixes (never downloaded)": 351,
+	"%s list: unavailable (%s)":                                                   350,
+	"%s list: updating…":                                                          349,
 	"%s received, %s sent":                                                        36,
 	"%s: %q":                                                                      150,
 	"%v":                                                                          274,
@@ -127,9 +127,9 @@ var messageKeyToIndex = map[string]int{
 	"&Configuration:":                                                             50,
 	"&Copy":                                                                       66,
 	"&Deactivate":                                                                 16,
-	"&Defaults":                                                                   340,
+	"&Defaults":                                                                   342,
 	"&Edit":                                                                       97,
-	"&Geo-split routing…":                                                         359,
+	"&Geo-split routing…":                                                         361,
 	"&Import tunnel(s) from file…":                                                82,
 	"&Manage tunnels…":                                                            81,
 	"&Name:":                                                                      44,
@@ -160,8 +160,8 @@ var messageKeyToIndex = map[string]int{
 	"All IPv6 through the tunnel (no IPv6 routes)": 331,
 	"All peers must have public keys":              170,
 	"Allowed IPs:":                                 25,
-	"Always directly:":                             333,
-	"Always through the tunnel:":                   335,
+	"Always directly:":                             335,
+	"Always through the tunnel:":                   337,
 	"AmneziaWG Activated":                          85,
 	"AmneziaWG Deactivated":                        87,
 	"AmneziaWG Detection Error":                    76,
@@ -174,7 +174,7 @@ var messageKeyToIndex = map[string]int{
 	"AmneziaWG: %s":           90,
 	"AmneziaWG: Deactivated":  78,
 	"An Update is Available!": 93,
-	"An https URL or a local file path. A %s in the URL is replaced with the country code.":       339,
+	"An https URL or a local file path. A %s in the URL is replaced with the country code.":       341,
 	"An interface must have a private key":                                                        168,
 	"An update to AmneziaWG is available. It is highly advisable to update without delay.":        131,
 	"An update to AmneziaWG is now available. You are advised to update as soon as possible.":     95,
@@ -187,8 +187,9 @@ var messageKeyToIndex = map[string]int{
 	"Brackets must contain an IPv6 address": 155,
 	"Cancel":                                49,
 	"Close":                                 14,
-	"Comma separated prefixes that are removed from the direct set, for example a provider's video cache.": 336,
-	"Comma separated prefixes that are routed directly regardless of the list and the threshold.":          334,
+	"Comma separated prefixes that are removed from the direct set, for example a provider's video cache.":                                                                              338,
+	"Comma separated prefixes that are routed directly regardless of the list and the threshold.":                                                                                       336,
+	"Comma separated words; outbound traffic on any adapter whose name or description contains one of them passes the kill-switch, so routes pushed by other VPN clients keep working.": 334,
 	"Command Line Options":                                                 3,
 	"Config key is missing an equals separator":                            164,
 	"Configuration Files (*.zip, *.conf)|*.zip;*.conf|All Files (*.*)|*.*": 124,
@@ -205,14 +206,14 @@ var messageKeyToIndex = map[string]int{
 	"Delete tunnel ‘%s’":                                                   117,
 	"Device closed":                                                        183,
 	"Device closing":                                                       182,
-	"Direct routes: %d IPv4 and %d IPv6. Through the tunnel: %d smaller IPv4 blocks (%d addresses).": 354,
+	"Direct routes: %d IPv4 and %d IPv6. Through the tunnel: %d smaller IPv4 blocks (%d addresses).": 356,
 	"Disable cookies:": 317,
 	"Dropped some packets from multi-segment read: %v": 229,
 	"E&xit":                  83,
 	"Edit &selected tunnel…": 104,
 	"Edit tunnel":            43,
 	"Endpoint:":              26,
-	"Ensure that you obtained the configuration file from a trusted source.": 364,
+	"Ensure that you obtained the configuration file from a trusted source.": 366,
 	"Error":                                                     0,
 	"Error Exiting AmneziaWG":                                   129,
 	"Error in getting configuration":                            171,
@@ -236,16 +237,16 @@ var messageKeyToIndex = map[string]int{
 	"Failed to write packets to TUN device: %v":                 215,
 	"File ‘%s’ already exists.\n\nDo you want to overwrite it?": 59,
 	"Geo-split routing":                                         322,
-	"Geo-split routing settings":                                366,
-	"Geo-split: %s directly, %d routes, built-in list":          362,
-	"Geo-split: %s directly, %d routes, list updated %s":        363,
-	"Geo-split: %s directly, list unavailable":                  361,
-	"Geo-split: %s directly, updating the list…":                360,
-	"Geo-split: Off":                                            358,
+	"Geo-split routing settings":                                368,
+	"Geo-split: %s directly, %d routes, built-in list":          364,
+	"Geo-split: %s directly, %d routes, list updated %s":        365,
+	"Geo-split: %s directly, list unavailable":                  363,
+	"Geo-split: %s directly, updating the list…":                362,
+	"Geo-split: Off":                                            360,
 	"Header protection key:":                                    309,
-	"IPv4 list source:":                                         337,
+	"IPv4 list source:":                                         339,
 	"IPv4 packet with disallowed source address from %v":        212,
-	"IPv6 list source:":                                         338,
+	"IPv6 list source:":                                         340,
 	"IPv6 packet with disallowed source address from %v":        213,
 	"IPv6:":                      329,
 	"Import tunnel(s) from file": 125,
@@ -258,11 +259,11 @@ var messageKeyToIndex = map[string]int{
 	"Interface state was %s, requested %s, now %s":   178,
 	"Interface up requested":                         243,
 	"Interface: %s":                                  40,
-	"Invalid %s":                                     370,
+	"Invalid %s":                                     372,
 	"Invalid IP address":                             151,
 	"Invalid MTU":                                    156,
 	"Invalid endpoint host":                          154,
-	"Invalid geo-split country code":                 369,
+	"Invalid geo-split country code":                 371,
 	"Invalid key for [Interface] section":            166,
 	"Invalid key for [Peer] section":                 167,
 	"Invalid key for interface section":              172,
@@ -272,12 +273,12 @@ var messageKeyToIndex = map[string]int{
 	"Invalid network prefix length":                  152,
 	"Invalid packet ended up in the handshake queue": 201,
 	"Invalid port":                                   157,
-	"Invalid settings":                               356,
-	"Invalid settings: %s":                           352,
+	"Invalid settings":                               358,
+	"Invalid settings: %s":                           354,
 	"Keepalive timeout:":                             314,
 	"Key must have a value":                          165,
 	"Keys must decode to exactly 32 bytes":           159,
-	"Last update attempt failed: %s":                 351,
+	"Last update attempt failed: %s":                 353,
 	"Latest handshake:":                              28,
 	"Line must occur in a section":                   163,
 	"Listen port:":                                   19,
@@ -288,16 +289,17 @@ var messageKeyToIndex = map[string]int{
 	"MTU:":                                           20,
 	"Max handshake attempts:":                        315,
 	"Missing port from endpoint":                     153,
-	"No tunnel has geo-split enabled yet. Enable it in the tunnel editor with the “Russian networks directly” checkbox.": 346,
+	"No tunnel has geo-split enabled yet. Enable it in the tunnel editor with the “Russian networks directly” checkbox.": 348,
 	"Now": 137,
 	"Number must be a number between 0 and 2^64-1: %v":             160,
-	"Official Amnezia services are available only at amnezia.org.": 365,
+	"Official Amnezia services are available only at amnezia.org.": 367,
 	"Packet with invalid IP version from %v":                       214,
 	"Peer":                                                         41,
+	"Permit other VPN adapters:":                                   333,
 	"Persistent keepalive:":                                        27,
-	"Please ask the system administrator to update.":               367,
+	"Please ask the system administrator to update.":               369,
 	"Preshared key:":                                               24,
-	"Preview unavailable: %s":                                      353,
+	"Preview unavailable: %s":                                      355,
 	"Protocol version must be 1":                                   173,
 	"Public key:":                                                  18,
 	"Random trailers:":                                             316,
@@ -333,7 +335,7 @@ var messageKeyToIndex = map[string]int{
 	"Status: %s":                                    91,
 	"Status: Complete!":                             136,
 	"Status: Unknown":                               79,
-	"Status: Waiting for administrator":             368,
+	"Status: Waiting for administrator":             370,
 	"Status: Waiting for updater service":           134,
 	"Status: Waiting for user":                      132,
 	"System clock wound backward!":                  138,
@@ -384,12 +386,12 @@ var messageKeyToIndex = map[string]int{
 	"Unable to import configuration: %v":                                                          110,
 	"Unable to list existing tunnels":                                                             54,
 	"Unable to open current process token: %v":                                                    6,
-	"Unable to save settings":                                                                     357,
+	"Unable to save settings":                                                                     359,
 	"Unable to update bind: %v":                                                                   179,
-	"Unable to update the list":                                                                   355,
+	"Unable to update the list":                                                                   357,
 	"Unable to wait for AmneziaWG window to appear: %v":                                           77,
 	"Unknown state":    64,
-	"Update &now":      341,
+	"Update &now":      343,
 	"Update Now":       133,
 	"Usage: %s [\n%s]": 2,
 	"When a configuration has exactly one peer, and that peer has an allowed IPs containing at least one of 0.0.0.0/0 or ::/0, and the interface does not have table off, then the tunnel service engages a firewall ruleset to block all traffic that is neither to nor from the tunnel interface or is to the wrong DNS server, with special exceptions for DHCP and NDP.": 319,
@@ -418,7 +420,7 @@ var messageKeyToIndex = map[string]int{
 	"last_handshake_time_sec=%d":        268,
 	"listen_port=%d":                    246,
 	"max_handshake_attempts=%s":         265,
-	"never":                             342,
+	"never":                             344,
 	"no configuration files were found": 106,
 	"off":                               318,
 	"persistent_keepalive_interval=%s":  272,
@@ -438,7 +440,7 @@ var messageKeyToIndex = map[string]int{
 	"tx_bytes=%d":                       270,
 }
 
-var caIndex = []uint32{ // 372 elements
+var caIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000006, 0x00000042, 0x00000056,
 	0x00000071, 0x000000b0, 0x000000f5, 0x0000012c,
@@ -544,7 +546,8 @@ var caIndex = []uint32{ // 372 elements
 	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
 	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
 	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
-} // Size: 1512 bytes
+	0x0000151b, 0x0000151b,
+} // Size: 1520 bytes
 
 const caData string = "" + // Size: 5403 bytes
 	"\x02Error\x02(sense argument): eleva i instala el servei d'administrador" +
@@ -633,7 +636,7 @@ const caData string = "" + // Size: 5403 bytes
 	"no és vàlida per la secció d'interfície\x02La versió del protocol ha de " +
 	"ser 1\x02La clau no és vàlida per la secció de parell"
 
-var csIndex = []uint32{ // 372 elements
+var csIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000006, 0x0000004f, 0x00000069,
 	0x0000008a, 0x000000bd, 0x00000106, 0x00000138,
@@ -739,7 +742,8 @@ var csIndex = []uint32{ // 372 elements
 	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
 	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
 	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
-} // Size: 1512 bytes
+	0x000015ee, 0x000015ee,
+} // Size: 1520 bytes
 
 const csData string = "" + // Size: 5614 bytes
 	"\x02Chyba\x02(žádný argument): Zvýšit oprávnění a instalovat službu sprá" +
@@ -831,7 +835,7 @@ const csData string = "" + // Size: 5614 bytes
 	"urace\x02Neplatný klíč pro sekci rozhraní\x02Verze protokolu musí být 1" +
 	"\x02Neplatný klíč v sekci peer\x02&O aplikaci AmneziaWG…"
 
-var deIndex = []uint32{ // 372 elements
+var deIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000007, 0x00000059, 0x00000074,
 	0x0000008b, 0x000000e1, 0x00000137, 0x0000016b,
@@ -937,7 +941,8 @@ var deIndex = []uint32{ // 372 elements
 	0x00001673, 0x00001673, 0x00001673, 0x00001673,
 	0x00001673, 0x00001673, 0x00001673, 0x00001673,
 	0x00001673, 0x00001673, 0x00001673, 0x00001673,
-} // Size: 1512 bytes
+	0x00001673, 0x00001673,
+} // Size: 1520 bytes
 
 const deData string = "" + // Size: 5747 bytes
 	"\x02Fehler\x02(kein Argument): Als Administrator ausführen und den Manag" +
@@ -1032,7 +1037,7 @@ const deData string = "" + // Size: 5747 bytes
 	"rface]\x02Die Protokollversion muss 1 sein\x02Ungültiger Eintrag im Absc" +
 	"hnitt [peer]\x02&Über AmneziaWG…"
 
-var enIndex = []uint32{ // 372 elements
+var enIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000006, 0x00000039, 0x0000004f,
 	0x00000064, 0x000000aa, 0x000000e9, 0x00000115,
@@ -1127,20 +1132,21 @@ var enIndex = []uint32{ // 372 elements
 	0x000025ca, 0x000025f1, 0x0000271f, 0x00002731,
 	0x00002767, 0x0000278e, 0x000027b6, 0x000027d4,
 	0x000027db, 0x00002862, 0x00002868, 0x00002890,
-	0x000028bd, 0x00002916, 0x00002927, 0x00002983,
-	0x0000299e, 0x00002a03, 0x00002a15, 0x00002a27,
-	0x00002a80, 0x00002a8a, 0x00002a96, 0x00002a9c,
-	0x00002ab0, 0x00002ac2, 0x00002ad3, 0x00002b4a,
-	0x00002b62, 0x00002b82, 0x00002bd7, 0x00002c18,
+	0x000028bd, 0x00002916, 0x00002931, 0x000029e3,
+	0x000029f4, 0x00002a50, 0x00002a6b, 0x00002ad0,
+	0x00002ae2, 0x00002af4, 0x00002b4d, 0x00002b57,
+	0x00002b63, 0x00002b69, 0x00002b7d, 0x00002b8f,
+	0x00002ba0, 0x00002c17, 0x00002c2f, 0x00002c4f,
 	// Entry 160 - 17F
-	0x00002c3a, 0x00002c52, 0x00002c6d, 0x00002cd8,
-	0x00002cf2, 0x00002d03, 0x00002d1b, 0x00002d2a,
-	0x00002d40, 0x00002d70, 0x00002d9c, 0x00002dd3,
-	0x00002e0f, 0x00002e56, 0x00002e93, 0x00002eae,
-	0x00002edd, 0x00002eff, 0x00002f1e, 0x00002f2c,
-} // Size: 1512 bytes
+	0x00002ca4, 0x00002ce5, 0x00002d07, 0x00002d1f,
+	0x00002d3a, 0x00002da5, 0x00002dbf, 0x00002dd0,
+	0x00002de8, 0x00002df7, 0x00002e0d, 0x00002e3d,
+	0x00002e69, 0x00002ea0, 0x00002edc, 0x00002f23,
+	0x00002f60, 0x00002f7b, 0x00002faa, 0x00002fcc,
+	0x00002feb, 0x00002ff9,
+} // Size: 1520 bytes
 
-const enData string = "" + // Size: 12076 bytes
+const enData string = "" + // Size: 12281 bytes
 	"\x02Error\x02(no argument): elevate and install manager service\x02Usage" +
 	": %[1]s [\x0a%[2]s]\x02Command Line Options\x02Unable to determine wheth" +
 	"er the process is running under WOW64: %[1]v\x02You must use the native " +
@@ -1305,32 +1311,35 @@ const enData string = "" + // Size: 12076 bytes
 	"lds mean fewer routes but more Russian addresses reached through the tun" +
 	"nel.\x02IPv6:\x02Russian IPv6 networks directly, by list\x02All IPv6 thr" +
 	"ough the tunnel (no IPv6 routes)\x02&Permit private networks through the" +
-	" kill-switch (LAN, other VPN adapters and their DNS)\x02Always directly:" +
-	"\x02Comma separated prefixes that are routed directly regardless of the " +
-	"list and the threshold.\x02Always through the tunnel:\x02Comma separated" +
-	" prefixes that are removed from the direct set, for example a provider's" +
-	" video cache.\x02IPv4 list source:\x02IPv6 list source:\x02An https URL " +
-	"or a local file path. A %[1]s in the URL is replaced with the country co" +
-	"de.\x02&Defaults\x02Update &now\x02never\x02%[1]d minute(s) ago\x02%[1]d" +
-	" hour(s) ago\x02%[1]d day(s) ago\x02No tunnel has geo-split enabled yet." +
-	" Enable it in the tunnel editor with the “Russian networks directly” che" +
-	"ckbox.\x02%[1]s list: updating…\x02%[1]s list: unavailable (%[2]s)\x02%[" +
-	"1]s list: built-in snapshot, %[2]d IPv4 and %[3]d IPv6 prefixes (never d" +
-	"ownloaded)\x02%[1]s list: %[2]d IPv4 and %[3]d IPv6 prefixes, downloaded" +
-	" %[4]s\x02Last update attempt failed: %[1]s\x02Invalid settings: %[1]s" +
-	"\x02Preview unavailable: %[1]s\x02Direct routes: %[1]d IPv4 and %[2]d IP" +
-	"v6. Through the tunnel: %[3]d smaller IPv4 blocks (%[4]d addresses).\x02" +
-	"Unable to update the list\x02Invalid settings\x02Unable to save settings" +
-	"\x02Geo-split: Off\x02&Geo-split routing…\x02Geo-split: %[1]s directly, " +
-	"updating the list…\x02Geo-split: %[1]s directly, list unavailable\x02Geo" +
-	"-split: %[1]s directly, %[2]d routes, built-in list\x02Geo-split: %[1]s " +
-	"directly, %[2]d routes, list updated %[3]s\x02Ensure that you obtained t" +
-	"he configuration file from a trusted source.\x02Official Amnezia service" +
-	"s are available only at amnezia.org.\x02Geo-split routing settings\x02Pl" +
-	"ease ask the system administrator to update.\x02Status: Waiting for admi" +
-	"nistrator\x02Invalid geo-split country code\x02Invalid %[1]s"
+	" kill-switch (LAN, other VPN adapters and their DNS)\x02Permit other VPN" +
+	" adapters:\x02Comma separated words; outbound traffic on any adapter who" +
+	"se name or description contains one of them passes the kill-switch, so r" +
+	"outes pushed by other VPN clients keep working.\x02Always directly:\x02C" +
+	"omma separated prefixes that are routed directly regardless of the list " +
+	"and the threshold.\x02Always through the tunnel:\x02Comma separated pref" +
+	"ixes that are removed from the direct set, for example a provider's vide" +
+	"o cache.\x02IPv4 list source:\x02IPv6 list source:\x02An https URL or a " +
+	"local file path. A %[1]s in the URL is replaced with the country code." +
+	"\x02&Defaults\x02Update &now\x02never\x02%[1]d minute(s) ago\x02%[1]d ho" +
+	"ur(s) ago\x02%[1]d day(s) ago\x02No tunnel has geo-split enabled yet. En" +
+	"able it in the tunnel editor with the “Russian networks directly” checkb" +
+	"ox.\x02%[1]s list: updating…\x02%[1]s list: unavailable (%[2]s)\x02%[1]s" +
+	" list: built-in snapshot, %[2]d IPv4 and %[3]d IPv6 prefixes (never down" +
+	"loaded)\x02%[1]s list: %[2]d IPv4 and %[3]d IPv6 prefixes, downloaded %[" +
+	"4]s\x02Last update attempt failed: %[1]s\x02Invalid settings: %[1]s\x02P" +
+	"review unavailable: %[1]s\x02Direct routes: %[1]d IPv4 and %[2]d IPv6. T" +
+	"hrough the tunnel: %[3]d smaller IPv4 blocks (%[4]d addresses).\x02Unabl" +
+	"e to update the list\x02Invalid settings\x02Unable to save settings\x02G" +
+	"eo-split: Off\x02&Geo-split routing…\x02Geo-split: %[1]s directly, updat" +
+	"ing the list…\x02Geo-split: %[1]s directly, list unavailable\x02Geo-spli" +
+	"t: %[1]s directly, %[2]d routes, built-in list\x02Geo-split: %[1]s direc" +
+	"tly, %[2]d routes, list updated %[3]s\x02Ensure that you obtained the co" +
+	"nfiguration file from a trusted source.\x02Official Amnezia services are" +
+	" available only at amnezia.org.\x02Geo-split routing settings\x02Please " +
+	"ask the system administrator to update.\x02Status: Waiting for administr" +
+	"ator\x02Invalid geo-split country code\x02Invalid %[1]s"
 
-var es_ESIndex = []uint32{ // 372 elements
+var es_ESIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000006, 0x00000044, 0x00000058,
 	0x00000077, 0x000000c5, 0x000000ff, 0x00000137,
@@ -1436,7 +1445,8 @@ var es_ESIndex = []uint32{ // 372 elements
 	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
 	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
 	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
-} // Size: 1512 bytes
+	0x0000161a, 0x0000161a,
+} // Size: 1520 bytes
 
 const es_ESData string = "" + // Size: 5658 bytes
 	"\x02Error\x02(sin argumento): eleve e instale el servicio de administrad" +
@@ -1529,7 +1539,7 @@ const es_ESData string = "" + // Size: 5658 bytes
 	"tocolo debe ser 1\x02La clave no es válida para la sección de par\x02&Ac" +
 	"erca de AmneziaWG…"
 
-var etIndex = []uint32{ // 372 elements
+var etIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000005, 0x0000003c, 0x00000055,
 	0x00000066, 0x000000ae, 0x000000eb, 0x0000011a,
@@ -1635,7 +1645,8 @@ var etIndex = []uint32{ // 372 elements
 	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
 	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
 	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
-} // Size: 1512 bytes
+	0x000013e8, 0x000013e8,
+} // Size: 1520 bytes
 
 const etData string = "" + // Size: 5096 bytes
 	"\x02Viga\x02(tühi muutuja): paigalda haldusteenus ülemõigustega\x02Kasut" +
@@ -1720,7 +1731,7 @@ const etData string = "" + // Size: 5096 bytes
 	" saamisel ilmnes viga\x02Sobimatu võti liidese lõigus\x02Protokolli vers" +
 	"ioon peab olema 1\x02Sobimatu võti partneri lõigus\x02&AmneziaWG'ist…"
 
-var faIndex = []uint32{ // 372 elements
+var faIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000007, 0x0000005b, 0x0000007a,
 	0x0000009e, 0x000000fe, 0x00000171, 0x000001a3,
@@ -1826,7 +1837,8 @@ var faIndex = []uint32{ // 372 elements
 	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
 	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
 	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
-} // Size: 1512 bytes
+	0x000019cf, 0x000019cf,
+} // Size: 1520 bytes
 
 const faData string = "" + // Size: 6607 bytes
 	"\x02خطا\x02(بدون ورودیی): سرویس مدیریت را ارتقا و نصب کنید\x02استفاده: %" +
@@ -1900,7 +1912,7 @@ const faData string = "" + // Size: 6607 bytes
 	"معتبر است\x02نسخه پروتکل باید 1 باشد\x02کلید برای بخش طرفین نامعتبر است" +
 	"\x02&درباره AmneziaWG…"
 
-var fiIndex = []uint32{ // 372 elements
+var fiIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000006, 0x00000056, 0x0000006f,
 	0x00000085, 0x000000ea, 0x00000133, 0x0000016b,
@@ -2006,7 +2018,8 @@ var fiIndex = []uint32{ // 372 elements
 	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
 	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
 	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
-} // Size: 1512 bytes
+	0x0000129d, 0x0000129d,
+} // Size: 1520 bytes
 
 const fiData string = "" + // Size: 4765 bytes
 	"\x02Virhe\x02(ei määrityksiä): suorita järjestelmäoikeuksilla ja asenna " +
@@ -2085,7 +2098,7 @@ const fiData string = "" + // Size: 4765 bytes
 	"n avain liitäntä-osiossa\x02Protokollan version pitää olla 1\x02Virheell" +
 	"inen avain osapuoli-osiossa\x02Tietoja &AmneziaWGista…"
 
-var frIndex = []uint32{ // 372 elements
+var frIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000007, 0x00000046, 0x00000063,
 	0x00000083, 0x000000cb, 0x00000112, 0x0000014b,
@@ -2191,7 +2204,8 @@ var frIndex = []uint32{ // 372 elements
 	0x00001701, 0x00001701, 0x00001701, 0x00001701,
 	0x00001701, 0x00001701, 0x00001701, 0x00001701,
 	0x00001701, 0x00001701, 0x00001701, 0x00001701,
-} // Size: 1512 bytes
+	0x00001701, 0x00001701,
+} // Size: 1520 bytes
 
 const frData string = "" + // Size: 5889 bytes
 	"\x02Erreur\x02(sans argument) : élever et installer service du gestionna" +
@@ -2287,7 +2301,7 @@ const frData string = "" + // Size: 5889 bytes
 	"oit être 1\x02Clé non valide pour la section d'homologue\x02&À propos Am" +
 	"neziaWG…"
 
-var idIndex = []uint32{ // 372 elements
+var idIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x0000000a, 0x00000047, 0x00000062,
 	0x00000074, 0x000000bf, 0x000000fe, 0x0000012f,
@@ -2393,7 +2407,8 @@ var idIndex = []uint32{ // 372 elements
 	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
 	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
 	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
-} // Size: 1512 bytes
+	0x0000096f, 0x0000096f,
+} // Size: 1520 bytes
 
 const idData string = "" + // Size: 2415 bytes
 	"\x02Kesalahan\x02(tidak ada argumen): naikkan akses dan instal servis ma" +
@@ -2437,7 +2452,7 @@ const idData string = "" + // Size: 2415 bytes
 	"Versi protokol harus 1\x02Kunci tidak valid pada bagian [Peer]\x02&Tenta" +
 	"ng AmneziaWG…"
 
-var itIndex = []uint32{ // 372 elements
+var itIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000007, 0x00000044, 0x0000005d,
 	0x00000075, 0x000000bd, 0x00000101, 0x0000013a,
@@ -2543,7 +2558,8 @@ var itIndex = []uint32{ // 372 elements
 	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
 	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
 	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
-} // Size: 1512 bytes
+	0x0000153d, 0x0000153d,
+} // Size: 1520 bytes
 
 const itData string = "" + // Size: 5437 bytes
 	"\x02Errore\x02(nessun argomento): eleva e installa il servizio di gestio" +
@@ -2634,7 +2650,7 @@ const itData string = "" + // Size: 5437 bytes
 	"terfaccia\x02La versione del protocollo deve essere 1\x02Chiave non vali" +
 	"da per la sezione peer\x02Inform&azioni su AmneziaWG…"
 
-var jaIndex = []uint32{ // 372 elements
+var jaIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x0000000a, 0x0000005b, 0x00000075,
 	0x0000009a, 0x000000e6, 0x00000140, 0x0000017e,
@@ -2740,7 +2756,8 @@ var jaIndex = []uint32{ // 372 elements
 	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
 	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
 	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
-} // Size: 1512 bytes
+	0x0000185a, 0x0000185a,
+} // Size: 1520 bytes
 
 const jaData string = "" + // Size: 6234 bytes
 	"\x02エラー\x02(引数なし): 管理者権限でmanagerサービスをインストールする\x02使い方: %[1]s [\x0a%[2]s]" +
@@ -2796,7 +2813,7 @@ const jaData string = "" + // Size: 6234 bytes
 	"\x02プロトコルバージョンは 1 でなければなりません\x02無効な Peer セクションのキー項目\x02AmneziaWGについて…(&A" +
 	")"
 
-var koIndex = []uint32{ // 372 elements
+var koIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000007, 0x0000003e, 0x00000055,
 	0x0000006d, 0x000000b6, 0x00000103, 0x00000137,
@@ -2902,7 +2919,8 @@ var koIndex = []uint32{ // 372 elements
 	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
 	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
 	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
-} // Size: 1512 bytes
+	0x0000153f, 0x0000153f,
+} // Size: 1520 bytes
 
 const koData string = "" + // Size: 5439 bytes
 	"\x02오류\x02(인수 없음): 관리자 서비스 상승 및 설치\x02사용: %[1]s [\x0a%[2]s]\x02커맨드 라인 옵션" +
@@ -2956,7 +2974,7 @@ const koData string = "" + // Size: 5439 bytes
 	"피어에는 공개 키가 있어야 함\x02구성을 가져오는 중 오류가 발생\x02인터페이스 섹션의 키가 잘못됨\x02프로토콜 버전은 " +
 	"1이어야 합니다.\x02피어 섹션의 키가 잘못됨\x02&AmneziaWG에 관하여…"
 
-var nlIndex = []uint32{ // 372 elements
+var nlIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x0000000c, 0x0000004f, 0x0000006d,
 	0x00000084, 0x000000c7, 0x0000010a, 0x00000139,
@@ -3062,7 +3080,8 @@ var nlIndex = []uint32{ // 372 elements
 	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
 	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
 	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
-} // Size: 1512 bytes
+	0x000013ba, 0x000013ba,
+} // Size: 1520 bytes
 
 const nlData string = "" + // Size: 5050 bytes
 	"\x02Foutmelding\x02(geen argumenten): Verhoog rechten en installeer behe" +
@@ -3148,7 +3167,7 @@ const nlData string = "" + // Size: 5050 bytes
 	"rotocol-versie moet 1 zijn\x02Ongeldige sleutel voor peer-gedeelte\x02Ov" +
 	"er &AmneziaWG…"
 
-var pa_INIndex = []uint32{ // 372 elements
+var pa_INIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000010, 0x00000010, 0x00000030,
 	0x0000005d, 0x000000ea, 0x0000017f, 0x000001e6,
@@ -3254,7 +3273,8 @@ var pa_INIndex = []uint32{ // 372 elements
 	0x00002123, 0x00002123, 0x00002123, 0x00002123,
 	0x00002123, 0x00002123, 0x00002123, 0x00002123,
 	0x00002123, 0x00002123, 0x00002123, 0x00002123,
-} // Size: 1512 bytes
+	0x00002123, 0x00002123,
+} // Size: 1520 bytes
 
 const pa_INData string = "" + // Size: 8483 bytes
 	"\x02ਗ਼ਲਤੀ\x02ਵਰਤੋਂ: %[1]s [\x0a%[2]s]\x02ਕਮਾਂਡ ਲਾਈਨ ਚੋਣਾਂ\x02ਪਤਾ ਲਗਾਉਣ ਲ" +
@@ -3322,7 +3342,7 @@ const pa_INData string = "" + // Size: 8483 bytes
 	"ੌਮੇ ਹਨ\x02ਟਨਲ ਦਾ ਨਾਂ ਠੀਕ ਨਹੀਂ ਹੈ\x02ਭਾਗ ਵਿੱਚ ਲਾਈਨ ਹੋਣੀ ਚਾਹੀਦੀ ਹੈ\x02ਵਾ" +
 	"ਇਰਗਾਰਡ ਬਾਰੇ(&A)…"
 
-var plIndex = []uint32{ // 372 elements
+var plIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000007, 0x0000004f, 0x00000067,
 	0x0000007e, 0x000000cc, 0x00000108, 0x0000013f,
@@ -3428,7 +3448,8 @@ var plIndex = []uint32{ // 372 elements
 	0x00001715, 0x00001715, 0x00001715, 0x00001715,
 	0x00001715, 0x00001715, 0x00001715, 0x00001715,
 	0x00001715, 0x00001715, 0x00001715, 0x00001715,
-} // Size: 1512 bytes
+	0x00001715, 0x00001715,
+} // Size: 1520 bytes
 
 const plData string = "" + // Size: 5909 bytes
 	"\x02Błąd\x02(brak argumentu): Podnieś uprawnienia i zainstaluj usługę me" +
@@ -3525,7 +3546,7 @@ const plData string = "" + // Size: 5909 bytes
 	" sekcji interface\x02Wersja protokołu musi być 1\x02Nieprawidłowy klucz " +
 	"dla sekcji peer\x02&Informacje o AmneziaWG…"
 
-var pt_BRIndex = []uint32{ // 372 elements
+var pt_BRIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000005, 0x0000003f, 0x00000053,
 	0x00000070, 0x000000c2, 0x00000102, 0x0000013c,
@@ -3631,7 +3652,8 @@ var pt_BRIndex = []uint32{ // 372 elements
 	0x00001545, 0x00001545, 0x00001545, 0x00001545,
 	0x00001545, 0x00001545, 0x00001545, 0x00001545,
 	0x00001545, 0x00001545, 0x00001545, 0x00001545,
-} // Size: 1512 bytes
+	0x00001545, 0x00001545,
+} // Size: 1520 bytes
 
 const pt_BRData string = "" + // Size: 5445 bytes
 	"\x02Erro\x02(sem argumento): elevar e instalar o serviço gerenciador\x02" +
@@ -3720,7 +3742,7 @@ const pt_BRData string = "" + // Size: 5445 bytes
 	"o protocolo deve ser 1\x02Chave inválida para a seção do par\x02Sobre o " +
 	"&AmneziaWG…"
 
-var roIndex = []uint32{ // 372 elements
+var roIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000007, 0x0000005d, 0x00000077,
 	0x00000092, 0x000000d1, 0x0000011a, 0x0000014e,
@@ -3826,7 +3848,8 @@ var roIndex = []uint32{ // 372 elements
 	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
 	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
 	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
-} // Size: 1512 bytes
+	0x000016f0, 0x000016f0,
+} // Size: 1520 bytes
 
 const roData string = "" + // Size: 5872 bytes
 	"\x02Eroare\x02(fără argument): obținere drept administrativ și instalare" +
@@ -3922,7 +3945,7 @@ const roData string = "" + // Size: 5872 bytes
 	"ecțiunea interfeței\x02Versiunea de protocol trebuie să fie 1\x02Cheie i" +
 	"nvalidă pentru secțiunea perechii\x02&Despre AmneziaWG…"
 
-var ruIndex = []uint32{ // 372 elements
+var ruIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x0000000d, 0x000000a9, 0x000000d4,
 	0x00000107, 0x00000166, 0x000001c9, 0x00000220,
@@ -4017,20 +4040,21 @@ var ruIndex = []uint32{ // 372 elements
 	0x00002418, 0x00002454, 0x00002647, 0x00002669,
 	0x000026cd, 0x00002717, 0x00002753, 0x00002778,
 	0x0000277f, 0x0000286a, 0x00002870, 0x000028b7,
-	0x00002900, 0x00002996, 0x000029b5, 0x00002a42,
-	0x00002a6a, 0x00002b16, 0x00002b3a, 0x00002b5e,
-	0x00002bd8, 0x00002bf1, 0x00002c10, 0x00002c1f,
-	0x00002c38, 0x00002c4d, 0x00002c64, 0x00002d3a,
-	0x00002d68, 0x00002d99, 0x00002e26, 0x00002e7a,
+	0x00002900, 0x00002996, 0x000029ce, 0x00002b20,
+	0x00002b3f, 0x00002bcc, 0x00002bf4, 0x00002ca0,
+	0x00002cc4, 0x00002ce8, 0x00002d62, 0x00002d7b,
+	0x00002d9a, 0x00002da9, 0x00002dc2, 0x00002dd7,
+	0x00002dee, 0x00002ec4, 0x00002ef2, 0x00002f23,
 	// Entry 160 - 17F
-	0x00002ecc, 0x00002eff, 0x00002f34, 0x00002fc7,
-	0x00002ff9, 0x00003025, 0x0000305f, 0x00003080,
-	0x0000309a, 0x000030f0, 0x00003141, 0x000031ad,
-	0x0000321b, 0x00003296, 0x000032ff, 0x0000332a,
-	0x0000332a, 0x0000332a, 0x00003368, 0x00003368,
-} // Size: 1512 bytes
+	0x00002fb0, 0x00003004, 0x00003056, 0x00003089,
+	0x000030be, 0x00003151, 0x00003183, 0x000031af,
+	0x000031e9, 0x0000320a, 0x00003224, 0x0000327a,
+	0x000032cb, 0x00003337, 0x000033a5, 0x00003420,
+	0x00003489, 0x000034b4, 0x000034b4, 0x000034b4,
+	0x000034f2, 0x000034f2,
+} // Size: 1520 bytes
 
-const ruData string = "" + // Size: 13160 bytes
+const ruData string = "" + // Size: 13554 bytes
 	"\x02Ошибка\x02(нет аргумента): получить права администратора и установит" +
 	"ь административную службу\x02Использование: %[1]s [\x0a%[2]s]\x02Параме" +
 	"тры командной строки\x02Ошибка определения или процесс работает как WOW" +
@@ -4133,31 +4157,35 @@ const ruData string = "" + // Size: 13160 bytes
 	" больше российских адресов окажется за туннелем.\x02IPv6:\x02Российские " +
 	"сети IPv6 напрямую, по списку\x02Весь IPv6 через туннель (без маршрутов" +
 	" IPv6)\x02&Пропускать приватные сети через kill-switch (локальная сеть, " +
-	"другие VPN-адаптеры и их DNS)\x02Всегда напрямую:\x02Префиксы через зап" +
-	"ятую, которые идут напрямую независимо от списка и порога.\x02Всегда че" +
-	"рез туннель:\x02Префиксы через запятую, которые исключаются из прямого " +
-	"набора, например видеокэш провайдера.\x02Источник списка IPv4:\x02Источ" +
-	"ник списка IPv6:\x02URL https или путь к локальному файлу. %[1]s в URL " +
-	"заменяется на код страны.\x02По &умолчанию\x02Обновить &сейчас\x02никог" +
-	"да\x02%[1]d мин. назад\x02%[1]d ч. назад\x02%[1]d дн. назад\x02Гео-роут" +
-	"инг пока не включён ни в одном туннеле. Включите его в редакторе туннел" +
-	"я флажком «Российские сети напрямую».\x02Список %[1]s: обновляется…\x02" +
-	"Список %[1]s: недоступен (%[2]s)\x02Список %[1]s: встроенный снимок, %[" +
-	"2]d префиксов IPv4 и %[3]d IPv6 (ни разу не скачивался)\x02Список %[1]s:" +
-	" %[2]d префиксов IPv4 и %[3]d IPv6, скачан %[4]s\x02Последняя попытка об" +
-	"новления не удалась: %[1]s\x02Некорректные настройки: %[1]s\x02Предпрос" +
-	"мотр недоступен: %[1]s\x02Прямых маршрутов: %[1]d IPv4 и %[2]d IPv6. Че" +
-	"рез туннель: %[3]d мелких блоков IPv4 (%[4]d адресов).\x02Не удалось об" +
-	"новить список\x02Некорректные настройки\x02Не удалось сохранить настрой" +
-	"ки\x02Гео-роутинг: выкл.\x02&Гео-роутинг…\x02Гео-роутинг: %[1]s напряму" +
-	"ю, список обновляется…\x02Гео-роутинг: %[1]s напрямую, список недоступе" +
-	"н\x02Гео-роутинг: %[1]s напрямую, маршрутов: %[2]d, встроенный список" +
-	"\x02Гео-роутинг: %[1]s напрямую, маршрутов: %[2]d, список обновлён %[3]s" +
-	"\x02Убедитесь, что вы получили файл конфигурации в надёжном источнике." +
-	"\x02Официальные сервисы Amnezia доступны только на сайте amnezia.org." +
-	"\x02Настройки гео-роутинга\x02Некорректный код страны для geo-split"
+	"другие VPN-адаптеры и их DNS)\x02Пропускать другие VPN-адаптеры:\x02Сло" +
+	"ва через запятую; исходящий трафик с адаптера, в имени или описании кот" +
+	"орого есть одно из них, проходит kill-switch, поэтому маршруты, которые" +
+	" пушат другие VPN-клиенты, продолжают работать.\x02Всегда напрямую:\x02П" +
+	"рефиксы через запятую, которые идут напрямую независимо от списка и пор" +
+	"ога.\x02Всегда через туннель:\x02Префиксы через запятую, которые исключ" +
+	"аются из прямого набора, например видеокэш провайдера.\x02Источник спис" +
+	"ка IPv4:\x02Источник списка IPv6:\x02URL https или путь к локальному фа" +
+	"йлу. %[1]s в URL заменяется на код страны.\x02По &умолчанию\x02Обновить" +
+	" &сейчас\x02никогда\x02%[1]d мин. назад\x02%[1]d ч. назад\x02%[1]d дн. н" +
+	"азад\x02Гео-роутинг пока не включён ни в одном туннеле. Включите его в " +
+	"редакторе туннеля флажком «Российские сети напрямую».\x02Список %[1]s: " +
+	"обновляется…\x02Список %[1]s: недоступен (%[2]s)\x02Список %[1]s: встро" +
+	"енный снимок, %[2]d префиксов IPv4 и %[3]d IPv6 (ни разу не скачивался)" +
+	"\x02Список %[1]s: %[2]d префиксов IPv4 и %[3]d IPv6, скачан %[4]s\x02Пос" +
+	"ледняя попытка обновления не удалась: %[1]s\x02Некорректные настройки: " +
+	"%[1]s\x02Предпросмотр недоступен: %[1]s\x02Прямых маршрутов: %[1]d IPv4 " +
+	"и %[2]d IPv6. Через туннель: %[3]d мелких блоков IPv4 (%[4]d адресов)." +
+	"\x02Не удалось обновить список\x02Некорректные настройки\x02Не удалось с" +
+	"охранить настройки\x02Гео-роутинг: выкл.\x02&Гео-роутинг…\x02Гео-роутин" +
+	"г: %[1]s напрямую, список обновляется…\x02Гео-роутинг: %[1]s напрямую, " +
+	"список недоступен\x02Гео-роутинг: %[1]s напрямую, маршрутов: %[2]d, вст" +
+	"роенный список\x02Гео-роутинг: %[1]s напрямую, маршрутов: %[2]d, список" +
+	" обновлён %[3]s\x02Убедитесь, что вы получили файл конфигурации в надёжн" +
+	"ом источнике.\x02Официальные сервисы Amnezia доступны только на сайте a" +
+	"mnezia.org.\x02Настройки гео-роутинга\x02Некорректный код страны для geo" +
+	"-split"
 
-var si_LKIndex = []uint32{ // 372 elements
+var si_LKIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000013, 0x000000a9, 0x000000cc,
 	0x000000fc, 0x00000197, 0x00000223, 0x00000293,
@@ -4263,7 +4291,8 @@ var si_LKIndex = []uint32{ // 372 elements
 	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
 	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
 	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
-} // Size: 1512 bytes
+	0x00002b21, 0x00002b21,
+} // Size: 1520 bytes
 
 const si_LKData string = "" + // Size: 11041 bytes
 	"\x02දෝෂයකි\x02(තර්කයක් නැත): කළමනාකරු සේවාව ඉහළ නැංවීම සහ ස්ථාපනය කිරීම" +
@@ -4348,7 +4377,7 @@ const si_LKData string = "" + // Size: 11041 bytes
 	"\x02අතුරු මුහුණත කොටස සඳහා වලංගු නොවන යතුර\x02කෙටුම්පතෙහි අනු. 1 විය යුත" +
 	"ුය\x02සම වයසේ කොටස සඳහා වලංගු නොවන යතුරක්\x02&වයර්ගාඩ් ගැන…"
 
-var skIndex = []uint32{ // 372 elements
+var skIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000006, 0x0000005e, 0x00000078,
 	0x00000097, 0x000000d1, 0x0000011e, 0x00000156,
@@ -4454,7 +4483,8 @@ var skIndex = []uint32{ // 372 elements
 	0x00001792, 0x00001792, 0x00001792, 0x00001792,
 	0x00001792, 0x00001792, 0x00001792, 0x00001792,
 	0x00001792, 0x00001792, 0x00001792, 0x00001792,
-} // Size: 1512 bytes
+	0x00001792, 0x00001792,
+} // Size: 1520 bytes
 
 const skData string = "" + // Size: 6034 bytes
 	"\x02Chyba\x02(bez argumentu): získať administrátorské práva a nainštalov" +
@@ -4550,7 +4580,7 @@ const skData string = "" + // Size: 6034 bytes
 	" konfigurácie\x02Neplatný kľúč sekcie rozhrania\x02Verzia protokolu musí" +
 	" byť 1\x02Neplatný kľúč peer sekcie\x02&O AmneziaWG…"
 
-var slIndex = []uint32{ // 372 elements
+var slIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000007, 0x00000058, 0x00000070,
 	0x00000089, 0x000000c1, 0x00000111, 0x00000148,
@@ -4656,7 +4686,8 @@ var slIndex = []uint32{ // 372 elements
 	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
 	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
 	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
-} // Size: 1512 bytes
+	0x000015b3, 0x000015b3,
+} // Size: 1520 bytes
 
 const slData string = "" + // Size: 5555 bytes
 	"\x02Napaka\x02(brez argumenta): povzdigni na skrbniške pravice in namest" +
@@ -4751,7 +4782,7 @@ const slData string = "" + // Size: 5555 bytes
 	"ja protokola mora biti 1\x02Napačen ključ za odsek vrstnika\x02O &Amnezi" +
 	"aWGu\u00a0…"
 
-var sv_SEIndex = []uint32{ // 372 elements
+var sv_SEIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000004, 0x0000003c, 0x00000058,
 	0x0000006f, 0x000000af, 0x000000f7, 0x0000012f,
@@ -4857,7 +4888,8 @@ var sv_SEIndex = []uint32{ // 372 elements
 	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
 	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
 	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
-} // Size: 1512 bytes
+	0x000013bb, 0x000013bb,
+} // Size: 1520 bytes
 
 const sv_SEData string = "" + // Size: 5051 bytes
 	"\x02Fel\x02(inget argument): höj och installera hanterartjänsten\x02Anvä" +
@@ -4941,7 +4973,7 @@ const sv_SEData string = "" + // Size: 5051 bytes
 	"av konfiguration\x02Ogiltig nyckel för gränssnittsavsnitt\x02Protokollve" +
 	"rsion måste vara 1\x02Ogiltig nyckel för peer-avsnitt\x02Om &AmneziaWG…"
 
-var trIndex = []uint32{ // 372 elements
+var trIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000005, 0x00000053, 0x0000006d,
 	0x00000089, 0x000000cd, 0x00000112, 0x0000013d,
@@ -5047,7 +5079,8 @@ var trIndex = []uint32{ // 372 elements
 	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
 	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
 	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
-} // Size: 1512 bytes
+	0x0000149a, 0x0000149a,
+} // Size: 1520 bytes
 
 const trData string = "" + // Size: 5274 bytes
 	"\x02Hata\x02(parametre belirtilmediyse): gerekli izinleri al ve yönetim " +
@@ -5131,7 +5164,7 @@ const trData string = "" + // Size: 5274 bytes
 	"\x02Protokol sürümü 1 olmalıdır\x02Eş bölümünde geçersiz anahtar\x02&Amn" +
 	"eziaWG hakkında…"
 
-var ukIndex = []uint32{ // 372 elements
+var ukIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x0000000f, 0x0000008e, 0x000000b7,
 	0x000000ea, 0x00000144, 0x000001c2, 0x0000021b,
@@ -5237,7 +5270,8 @@ var ukIndex = []uint32{ // 372 elements
 	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
 	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
 	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
-} // Size: 1512 bytes
+	0x000022ff, 0x000022ff,
+} // Size: 1520 bytes
 
 const ukData string = "" + // Size: 8959 bytes
 	"\x02Помилка\x02(немає аргумента): отримати права аднімістратора і встано" +
@@ -5330,7 +5364,7 @@ const ukData string = "" + // Size: 8959 bytes
 	"онфігурації\x02Недійсний ключ для розділу інтерфейсу\x02Версія протокол" +
 	"у повинна бути 1\x02Хибний ключ для [Peer] розділу\x02Про &AmneziaWG…"
 
-var viIndex = []uint32{ // 372 elements
+var viIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000006, 0x00000006, 0x00000022,
 	0x0000003b, 0x0000003b, 0x0000003b, 0x0000003b,
@@ -5436,7 +5470,8 @@ var viIndex = []uint32{ // 372 elements
 	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
 	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
 	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
-} // Size: 1512 bytes
+	0x000003aa, 0x000003aa,
+} // Size: 1520 bytes
 
 const viData string = "" + // Size: 938 bytes
 	"\x02Lỗi\x02Sử dụng: %[1]s [\x0a%[2]s]\x02Tùy chọn dòng lệnh\x02,\x02," +
@@ -5455,7 +5490,7 @@ const viData string = "" + // Size: 938 bytes
 	"ệ: %[1]v\x02Tên VPN không hợp lệ\x02Ko có Chỉ định\x02Lỗi khi lưu cấu " +
 	"hình"
 
-var zh_CNIndex = []uint32{ // 372 elements
+var zh_CNIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000007, 0x00000030, 0x00000047,
 	0x00000057, 0x0000008b, 0x000000c9, 0x000000ef,
@@ -5561,7 +5596,8 @@ var zh_CNIndex = []uint32{ // 372 elements
 	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
 	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
 	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
-} // Size: 1512 bytes
+	0x0000101a, 0x0000101a,
+} // Size: 1520 bytes
 
 const zh_CNData string = "" + // Size: 4122 bytes
 	"\x02错误\x02(无参数): 提升并安装管理服务\x02用法: %[1]s [\x0a%[2]s]\x02命令行选项\x02无法确定该进程是" +
@@ -5606,7 +5642,7 @@ const zh_CNData string = "" + // Size: 4122 bytes
 	"该键无效\x02[Peer] 段落中的该键无效\x02接口必须有一个私钥\x02[未指定]\x02每个节点都必须指定公钥\x02获取配置时出" +
 	"错\x02接口段落的键无效\x02协议版本必须为 1\x02节点段落的键无效\x02关于 AmneziaWG… (&A)"
 
-var zh_TWIndex = []uint32{ // 372 elements
+var zh_TWIndex = []uint32{ // 374 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000007, 0x00000037, 0x00000056,
 	0x00000066, 0x000000a4, 0x000000df, 0x00000110,
@@ -5712,7 +5748,8 @@ var zh_TWIndex = []uint32{ // 372 elements
 	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
 	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
 	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
-} // Size: 1512 bytes
+	0x000010b7, 0x000010b7,
+} // Size: 1520 bytes
 
 const zh_TWData string = "" + // Size: 4279 bytes
 	"\x02錯誤\x02(無參數)：提升權限並安裝管理服務\x02使用方法： %[1]s [\x0a%[2]s]\x02命令列選項\x02無法確定該" +
@@ -5759,4 +5796,4 @@ const zh_TWData string = "" + // Size: 4279 bytes
 	"Peer 都必須要有公鑰\x02讀取設定時發生錯誤\x02Interface 中的金鑰無效\x02協定版本必須為 1\x02Peer 中的金鑰無" +
 	"效\x02關於 AmneziaWG (&A)"
 
-	// Total table size 213888 bytes (208KiB); checksum: 6E2B667A
+	// Total table size 214711 bytes (209KiB); checksum: B94DDCD3

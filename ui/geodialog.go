@@ -22,22 +22,23 @@ var minPrefixChoices = []int{24, 23, 22, 21, 20, 19, 18}
 
 type GeoDialog struct {
 	*walk.Dialog
-	status        manager.GeoStatus
-	statusLabel   *walk.TextLabel
-	previewLabel  *walk.TextLabel
-	updateOnStart *walk.CheckBox
-	staleHours    *walk.NumberEdit
-	minPrefix     *walk.ComboBox
-	ipv6Mode      *walk.ComboBox
-	permitPrivate *walk.CheckBox
-	alwaysDirect  *walk.LineEdit
-	alwaysTunnel  *walk.LineEdit
-	sourceV4      *walk.LineEdit
-	sourceV6      *walk.LineEdit
-	refreshButton *walk.PushButton
-	saveButton    *walk.PushButton
-	previewSeq    uint32
-	changeCB      *manager.GeoChangeCallback
+	status         manager.GeoStatus
+	statusLabel    *walk.TextLabel
+	previewLabel   *walk.TextLabel
+	updateOnStart  *walk.CheckBox
+	staleHours     *walk.NumberEdit
+	minPrefix      *walk.ComboBox
+	ipv6Mode       *walk.ComboBox
+	permitPrivate  *walk.CheckBox
+	permitAdapters *walk.LineEdit
+	alwaysDirect   *walk.LineEdit
+	alwaysTunnel   *walk.LineEdit
+	sourceV4       *walk.LineEdit
+	sourceV6       *walk.LineEdit
+	refreshButton  *walk.PushButton
+	saveButton     *walk.PushButton
+	previewSeq     uint32
+	changeCB       *manager.GeoChangeCallback
 }
 
 func runGeoDialog(owner walk.Form) {
@@ -157,6 +158,15 @@ func newGeoDialog(owner walk.Form) (*GeoDialog, error) {
 	dlg.permitPrivate.SetText(l18n.Sprintf("&Permit private networks through the kill-switch (LAN, other VPN adapters and their DNS)"))
 	place(dlg.permitPrivate, 2)
 
+	if err = addLabel(l18n.Sprintf("Permit other VPN adapters:")); err != nil {
+		return nil, err
+	}
+	if dlg.permitAdapters, err = walk.NewLineEdit(dlg); err != nil {
+		return nil, err
+	}
+	dlg.permitAdapters.SetToolTipText(l18n.Sprintf("Comma separated words; outbound traffic on any adapter whose name or description contains one of them passes the kill-switch, so routes pushed by other VPN clients keep working."))
+	place(dlg.permitAdapters, 1)
+
 	if err = addLabel(l18n.Sprintf("Always directly:")); err != nil {
 		return nil, err
 	}
@@ -266,10 +276,22 @@ func (dlg *GeoDialog) fillForm(s geolist.Settings) {
 		dlg.ipv6Mode.SetCurrentIndex(0)
 	}
 	dlg.permitPrivate.SetChecked(s.PermitPrivate)
+	dlg.permitAdapters.SetText(strings.Join(s.PermitAdapters, ", "))
 	dlg.alwaysDirect.SetText(strings.Join(s.AlwaysDirect, ", "))
 	dlg.alwaysTunnel.SetText(strings.Join(s.AlwaysTunnel, ", "))
 	dlg.sourceV4.SetText(s.SourceV4)
 	dlg.sourceV6.SetText(s.SourceV6)
+}
+
+// splitWords splits a comma or semicolon separated list, keeping inner spaces.
+func splitWords(text string) []string {
+	var out []string
+	for _, part := range strings.FieldsFunc(text, func(r rune) bool { return r == ',' || r == ';' || r == '\n' || r == '\r' }) {
+		if part = strings.TrimSpace(part); part != "" {
+			out = append(out, part)
+		}
+	}
+	return out
 }
 
 func splitPrefixList(text string) []string {
@@ -295,6 +317,7 @@ func (dlg *GeoDialog) settingsFromForm() (geolist.Settings, error) {
 		s.IPv6Mode = geolist.IPv6Direct
 	}
 	s.PermitPrivate = dlg.permitPrivate.Checked()
+	s.PermitAdapters = splitWords(dlg.permitAdapters.Text())
 	s.AlwaysDirect = splitPrefixList(dlg.alwaysDirect.Text())
 	s.AlwaysTunnel = splitPrefixList(dlg.alwaysTunnel.Text())
 	s.SourceV4 = strings.TrimSpace(dlg.sourceV4.Text())

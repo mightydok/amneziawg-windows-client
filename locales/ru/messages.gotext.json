@@ -2408,6 +2408,16 @@
             "id": "Invalid geo-split country code",
             "message": "Invalid geo-split country code",
             "translation": "Некорректный код страны для geo-split"
+        },
+        {
+            "id": "Permit other VPN adapters:",
+            "message": "Permit other VPN adapters:",
+            "translation": "Пропускать другие VPN-адаптеры:"
+        },
+        {
+            "id": "Comma separated words; outbound traffic on any adapter whose name or description contains one of them passes the kill-switch, so routes pushed by other VPN clients keep working.",
+            "message": "Comma separated words; outbound traffic on any adapter whose name or description contains one of them passes the kill-switch, so routes pushed by other VPN clients keep working.",
+            "translation": "Слова через запятую; исходящий трафик с адаптера, в имени или описании которого есть одно из них, проходит kill-switch, поэтому маршруты, которые пушат другие VPN-клиенты, продолжают работать."
         }
     ]
 }
