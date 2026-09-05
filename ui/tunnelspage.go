@@ -243,6 +243,14 @@ func (tp *TunnelsPage) CreateToolbar() error {
 	exportAction.SetToolTip(l18n.Sprintf("Export all tunnels to zip"))
 	exportAction.Triggered().Attach(tp.onExportTunnels)
 	tp.listToolbar.Actions().Add(exportAction)
+	tp.listToolbar.Actions().Add(walk.NewSeparatorAction())
+
+	geoAction := walk.NewAction()
+	geoActionIcon, _ := loadSystemIcon("shell32", -14, 16)
+	geoAction.SetImage(geoActionIcon)
+	geoAction.SetToolTip(l18n.Sprintf("Geo-split routing settings"))
+	geoAction.Triggered().Attach(tp.onGeoSettings)
+	tp.listToolbar.Actions().Add(geoAction)
 
 	fixContainerWidthToToolbarWidth := func() {
 		toolbarWidth := tp.listToolbar.SizeHint().Width
@@ -281,6 +289,11 @@ func (tp *TunnelsPage) CreateToolbar() error {
 	exportAction2.Triggered().Attach(tp.onExportTunnels)
 	exportAction2.SetVisible(IsAdmin)
 	contextMenu.Actions().Add(exportAction2)
+	geoAction2 := walk.NewAction()
+	geoAction2.SetText(l18n.Sprintf("&Geo-split routing…"))
+	geoAction2.Triggered().Attach(tp.onGeoSettings)
+	geoAction2.SetVisible(IsAdmin)
+	contextMenu.Actions().Add(geoAction2)
 	contextMenu.Actions().Add(walk.NewSeparatorAction())
 	editAction := walk.NewAction()
 	editAction.SetText(l18n.Sprintf("Edit &selected tunnel…"))
@@ -502,6 +515,10 @@ func (tp *TunnelsPage) onTunnelsViewItemActivated() {
 			return
 		}
 	}()
+}
+
+func (tp *TunnelsPage) onGeoSettings() {
+	runGeoDialog(tp.Form())
 }
 
 func (tp *TunnelsPage) onEditTunnel() {

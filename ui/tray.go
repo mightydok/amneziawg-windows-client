@@ -13,12 +13,16 @@ import (
 	"github.com/amnezia-vpn/amneziawg-windows-client/l18n"
 	"github.com/amnezia-vpn/amneziawg-windows-client/manager"
 	"github.com/amnezia-vpn/amneziawg-windows/v3/conf"
+	"github.com/amnezia-vpn/amneziawg-windows/v3/geolist"
 
 	"github.com/lxn/walk"
 )
 
-// Status + active CIDRs + separator
-const trayTunnelActionsOffset = 3
+// Status + active CIDRs + geo-split + separator
+const trayTunnelActionsOffset = 4
+
+// Index of the geo-split status line in the context menu.
+const trayGeoSplitActionIndex = 2
 
 type Tray struct {
 	*walk.NotifyIcon
@@ -31,6 +35,7 @@ type Tray struct {
 
 	tunnelChangedCB  *manager.TunnelChangeCallback
 	tunnelsChangedCB *manager.TunnelsChangeCallback
+	geoChangedCB     *manager.GeoChangeCallback
 
 	clicked func()
 }
@@ -79,10 +84,12 @@ func (tray *Tray) setup() error {
 	}{
 		{label: l18n.Sprintf("Status: Unknown")},
 		{label: l18n.Sprintf("Addresses: None"), hidden: true},
+		{label: l18n.Sprintf("Geo-split: Off"), hidden: true},
 		{separator: true},
 		{separator: true},
 		{label: l18n.Sprintf("&Manage tunnels…"), handler: tray.onManageTunnels, enabled: true, defawlt: true},
 		{label: l18n.Sprintf("&Import tunnel(s) from file…"), handler: tray.onImport, enabled: true, hidden: !IsAdmin},
+		{label: l18n.Sprintf("&Geo-split routing…"), handler: tray.onGeoSettings, enabled: true, hidden: !IsAdmin},
 		{separator: true},
 		{label: l18n.Sprintf("&About AmneziaWG…"), handler: tray.onAbout, enabled: true},
 		{label: l18n.Sprintf("E&xit"), handler: onQuit, enabled: true, hidden: !IsAdmin},
@@ -105,6 +112,7 @@ func (tray *Tray) setup() error {
 	}
 	tray.tunnelChangedCB = manager.IPCClientRegisterTunnelChange(tray.onTunnelChange)
 	tray.tunnelsChangedCB = manager.IPCClientRegisterTunnelsChange(tray.onTunnelsChange)
+	tray.geoChangedCB = manager.IPCClientRegisterGeoChange(tray.updateGeoLine)
 	tray.onTunnelsChange()
 	globalState, _ := manager.IPCClientGlobalState()
 	tray.updateGlobalState(globalState)
@@ -121,7 +129,43 @@ func (tray *Tray) Dispose() error {
 		tray.tunnelsChangedCB.Unregister()
 		tray.tunnelsChangedCB = nil
 	}
+	if tray.geoChangedCB != nil {
+		tray.geoChangedCB.Unregister()
+		tray.geoChangedCB = nil
+	}
 	return tray.NotifyIcon.Dispose()
+}
+
+func (tray *Tray) onGeoSettings() {
+	runGeoDialog(tray.mtw)
+}
+
+// updateGeoLine refreshes the geo-split status line of the context menu.
+func (tray *Tray) updateGeoLine() {
+	go func() {
+		status, err := manager.IPCClientGeoStatus()
+		tray.mtw.Synchronize(func() {
+			action := tray.ContextMenu().Actions().At(trayGeoSplitActionIndex)
+			if err != nil || !status.Enabled {
+				action.SetVisible(false)
+				return
+			}
+			country := strings.ToUpper(status.Country)
+			var text string
+			switch {
+			case status.Refreshing:
+				text = l18n.Sprintf("Geo-split: %s directly, updating the list…", country)
+			case status.Error != "":
+				text = l18n.Sprintf("Geo-split: %s directly, list unavailable", country)
+			case status.SourceKind == string(geolist.SourceEmbedded):
+				text = l18n.Sprintf("Geo-split: %s directly, %d routes, built-in list", country, status.Stats.RoutesV4+status.Stats.RoutesV6)
+			default:
+				text = l18n.Sprintf("Geo-split: %s directly, %d routes, list updated %s", country, status.Stats.RoutesV4+status.Stats.RoutesV6, ageString(status.Meta.FetchedAt))
+			}
+			action.SetText(text)
+			action.SetVisible(true)
+		})
+	}()
 }
 
 func (tray *Tray) onTunnelsChange() {
@@ -143,6 +187,7 @@ func (tray *Tray) onTunnelsChange() {
 			}
 		}
 	})
+	tray.updateGeoLine()
 }
 
 func (tray *Tray) sortedTunnels() []string {

@@ -21,6 +21,7 @@ import (
 
 	"github.com/amnezia-vpn/amneziawg-windows-client/updater"
 	"github.com/amnezia-vpn/amneziawg-windows/v3/conf"
+	"github.com/amnezia-vpn/amneziawg-windows/v3/geolist"
 	"github.com/amnezia-vpn/amneziawg-windows/v3/services"
 )
 
@@ -127,6 +128,11 @@ func (s *ManagerService) Start(tunnelName string) error {
 			}
 		}
 	}()
+	// Geo-split tunnels get a fresh country list first, within a bounded wait.
+	if c.Interface.GeoSplit != "" {
+		geoRefreshIfStale(c.Interface.GeoSplit, geoRefreshTimeoutOnStart)
+	}
+
 	// After the stop process has begun, but before it's finished, we install the new one.
 	path, err := c.Path()
 	if err != nil {
@@ -451,6 +457,48 @@ func (s *ManagerService) ServeConn(reader io.Reader, writer io.Writer) {
 			}
 		case UpdateMethodType:
 			s.Update()
+		case GeoStatusMethodType:
+			status, retErr := s.GeoStatus()
+			err = encoder.Encode(status)
+			if err != nil {
+				return
+			}
+			err = encoder.Encode(errToString(retErr))
+			if err != nil {
+				return
+			}
+		case GeoSetSettingsMethodType:
+			var settings geolist.Settings
+			err := decoder.Decode(&settings)
+			if err != nil {
+				return
+			}
+			retErr := s.GeoSetSettings(settings)
+			err = encoder.Encode(errToString(retErr))
+			if err != nil {
+				return
+			}
+		case GeoRefreshMethodType:
+			retErr := s.GeoRefresh()
+			err = encoder.Encode(errToString(retErr))
+			if err != nil {
+				return
+			}
+		case GeoPreviewMethodType:
+			var settings geolist.Settings
+			err := decoder.Decode(&settings)
+			if err != nil {
+				return
+			}
+			preview, retErr := s.GeoPreview(settings)
+			err = encoder.Encode(preview)
+			if err != nil {
+				return
+			}
+			err = encoder.Encode(errToString(retErr))
+			if err != nil {
+				return
+			}
 		default:
 			return
 		}

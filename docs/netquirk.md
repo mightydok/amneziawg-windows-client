@@ -2,6 +2,18 @@
 
 As part of setting up a AmneziaWG tunnel, the tunnel service also sets up various network configuration parameters that are in one way or another related to the original configuration.
 
+### Geo-split Routing (`GeoSplit = ru`)
+
+When the `[Interface]` section contains `GeoSplit = <country code>`, the tunnel service routes that country's networks outside the tunnel while everything else keeps going through it. The `AllowedIPs` of the configuration are not changed, so `0.0.0.0/0` and `::/0` stay on the tunnel interface and the kill-switch semantics described below still apply. On top of that:
+
+- The country's prefix list is loaded from `C:\Program Files\AmneziaWG\Data\geo\<cc>-v4.list` and `<cc>-v6.list`, or from the snapshot compiled into the binary when no downloaded list exists. The manager service refreshes the list from the configured sources (ipverse by default) before starting such a tunnel if the cached copy is older than the configured number of hours, waiting at most 15 seconds, and again in the background every few hours.
+- A policy is applied to the list: IPv4 blocks smaller than the configured threshold (default `/22`) are sent through the tunnel instead, IPv6 can be routed by list or entirely through the tunnel, and the "always directly" and "always through the tunnel" prefixes are added or subtracted. Adjacent blocks are merged.
+- For every remaining prefix a route is created on the interface that currently owns the physical default route, using that route's next hop and the marker protocol `RouteProtocolBbn` so leftovers of a crashed instance can be removed. Whenever the default route moves to another interface or next hop, for example when roaming between Wi-Fi and LTE, the routes are deleted and re-created. Until they are, traffic to those prefixes goes through the tunnel, never outside of it. Routes are removed when the tunnel stops.
+- The kill-switch gets permit filters for the same prefixes (outbound connections only, batches of 256 prefixes per filter) at the weight of the tunnel interface, and, if enabled in the settings, a permit for private, link-local, CGNAT and multicast destinations placed above the DNS restriction so that LAN devices and other VPN adapters (including DNS servers they push) keep working.
+- DNS is not split by domain. Queries go to the servers of the `DNS =` line; whether they leave through the tunnel depends solely on whether the server's address is in the direct set.
+
+Other VPN clients such as OpenVPN keep working alongside a geo-split tunnel because their routes are more specific than `/0`; a corporate profile that pushes `redirect-gateway` must filter it (`pull-filter ignore "redirect-gateway"`), otherwise its `/1` routes take over.
+
 ### Routing
 
 The tunnel service takes all the allowed IPs from each peer, deduplicates them, and adds them to the routes for the AmneziaWG interface. The service then monitors which interface on the system has a default route (a route with a `/0` CIDR) that is not the AmneziaWG interface itself, and, if no MTU has been specified in the configuration, it sets the MTU of the AmneziaWG interface to be 80 less than the MTU of that default route interface. AmneziaWG also monitors the routing table and determines the outgoing route that does not loopback to itself, and then sends each packet using `IP_PKTINFO`/`IPV6_PKTINFO`. It keeps track of the incoming interface and source address for received packets, and always replies to the sender in that way.

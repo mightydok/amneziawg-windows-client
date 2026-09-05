@@ -1912,6 +1912,502 @@
                     "expr": "hf"
                 }
             ]
+        },
+        {
+            "id": "\u0026Russian networks directly (geo-split)",
+            "message": "\u0026Russian networks directly (geo-split)",
+            "translation": "\u0026Российские сети напрямую (geo-split)"
+        },
+        {
+            "id": "Adds GeoSplit = ru to the interface: Russian network prefixes are routed outside the tunnel and permitted through the kill-switch, everything else goes through the tunnel. Requires the kill-switch. The block size threshold, list updates and exceptions are configured in the geo-split routing settings.",
+            "message": "Adds GeoSplit = ru to the interface: Russian network prefixes are routed outside the tunnel and permitted through the kill-switch, everything else goes through the tunnel. Requires the kill-switch. The block size threshold, list updates and exceptions are configured in the geo-split routing settings.",
+            "translation": "Добавляет GeoSplit = ru в интерфейс: префиксы российских сетей маршрутизируются мимо туннеля и пропускаются через kill-switch, всё остальное идёт через туннель. Требует включённого kill-switch. Порог размера блока, обновление списка и исключения настраиваются в параметрах гео-роутинга."
+        },
+        {
+            "id": "Geo-split routing",
+            "message": "Geo-split routing",
+            "translation": "Гео-роутинг (geo-split)"
+        },
+        {
+            "id": "\u0026Update the list when a tunnel starts, if it is stale",
+            "message": "\u0026Update the list when a tunnel starts, if it is stale",
+            "translation": "\u0026Обновлять список при запуске туннеля, если он устарел"
+        },
+        {
+            "id": "Consider the list stale after (hours):",
+            "message": "Consider the list stale after (hours):",
+            "translation": "Считать список устаревшим через (часов):"
+        },
+        {
+            "id": "Route directly only blocks of at least:",
+            "message": "Route directly only blocks of at least:",
+            "translation": "Напрямую только блоки не меньше:"
+        },
+        {
+            "id": "/24 (every block in the list)",
+            "message": "/24 (every block in the list)",
+            "translation": "/24 (все блоки списка)"
+        },
+        {
+            "id": "/{Bits}",
+            "message": "/{Bits}",
+            "translation": "/{Bits}",
+            "placeholders": [
+                {
+                    "id": "Bits",
+                    "string": "%[1]d",
+                    "type": "int",
+                    "underlyingType": "int",
+                    "argNum": 1,
+                    "expr": "bits"
+                }
+            ]
+        },
+        {
+            "id": "Smaller blocks are sent through the tunnel. Larger thresholds mean fewer routes but more Russian addresses reached through the tunnel.",
+            "message": "Smaller blocks are sent through the tunnel. Larger thresholds mean fewer routes but more Russian addresses reached through the tunnel.",
+            "translation": "Блоки меньше порога идут через туннель. Чем выше порог, тем меньше маршрутов, но больше российских адресов окажется за туннелем."
+        },
+        {
+            "id": "IPv6:",
+            "message": "IPv6:",
+            "translation": "IPv6:"
+        },
+        {
+            "id": "Russian IPv6 networks directly, by list",
+            "message": "Russian IPv6 networks directly, by list",
+            "translation": "Российские сети IPv6 напрямую, по списку"
+        },
+        {
+            "id": "All IPv6 through the tunnel (no IPv6 routes)",
+            "message": "All IPv6 through the tunnel (no IPv6 routes)",
+            "translation": "Весь IPv6 через туннель (без маршрутов IPv6)"
+        },
+        {
+            "id": "\u0026Permit private networks through the kill-switch (LAN, other VPN adapters and their DNS)",
+            "message": "\u0026Permit private networks through the kill-switch (LAN, other VPN adapters and their DNS)",
+            "translation": "\u0026Пропускать приватные сети через kill-switch (локальная сеть, другие VPN-адаптеры и их DNS)"
+        },
+        {
+            "id": "Always directly:",
+            "message": "Always directly:",
+            "translation": "Всегда напрямую:"
+        },
+        {
+            "id": "Comma separated prefixes that are routed directly regardless of the list and the threshold.",
+            "message": "Comma separated prefixes that are routed directly regardless of the list and the threshold.",
+            "translation": "Префиксы через запятую, которые идут напрямую независимо от списка и порога."
+        },
+        {
+            "id": "Always through the tunnel:",
+            "message": "Always through the tunnel:",
+            "translation": "Всегда через туннель:"
+        },
+        {
+            "id": "Comma separated prefixes that are removed from the direct set, for example a provider's video cache.",
+            "message": "Comma separated prefixes that are removed from the direct set, for example a provider's video cache.",
+            "translation": "Префиксы через запятую, которые исключаются из прямого набора, например видеокэш провайдера."
+        },
+        {
+            "id": "IPv4 list source:",
+            "message": "IPv4 list source:",
+            "translation": "Источник списка IPv4:"
+        },
+        {
+            "id": "IPv6 list source:",
+            "message": "IPv6 list source:",
+            "translation": "Источник списка IPv6:"
+        },
+        {
+            "id": "An https URL or a local file path. A {S} in the URL is replaced with the country code.",
+            "message": "An https URL or a local file path. A {S} in the URL is replaced with the country code.",
+            "translation": "URL https или путь к локальному файлу. {S} в URL заменяется на код страны.",
+            "placeholders": [
+                {
+                    "id": "S",
+                    "string": "%[1]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 1,
+                    "expr": "\"%s\""
+                }
+            ]
+        },
+        {
+            "id": "\u0026Defaults",
+            "message": "\u0026Defaults",
+            "translation": "По \u0026умолчанию"
+        },
+        {
+            "id": "Update \u0026now",
+            "message": "Update \u0026now",
+            "translation": "Обновить \u0026сейчас"
+        },
+        {
+            "id": "never",
+            "message": "never",
+            "translation": "никогда"
+        },
+        {
+            "id": "{Minutes} minute(s) ago",
+            "message": "{Minutes} minute(s) ago",
+            "translation": "{Minutes} мин. назад",
+            "placeholders": [
+                {
+                    "id": "Minutes",
+                    "string": "%[1]d",
+                    "type": "int",
+                    "underlyingType": "int",
+                    "argNum": 1,
+                    "expr": "int(d.Minutes())"
+                }
+            ]
+        },
+        {
+            "id": "{Hours} hour(s) ago",
+            "message": "{Hours} hour(s) ago",
+            "translation": "{Hours} ч. назад",
+            "placeholders": [
+                {
+                    "id": "Hours",
+                    "string": "%[1]d",
+                    "type": "int",
+                    "underlyingType": "int",
+                    "argNum": 1,
+                    "expr": "int(d.Hours())"
+                }
+            ]
+        },
+        {
+            "id": "{Hours__24} day(s) ago",
+            "message": "{Hours__24} day(s) ago",
+            "translation": "{Hours__24} дн. назад",
+            "placeholders": [
+                {
+                    "id": "Hours__24",
+                    "string": "%[1]d",
+                    "type": "int",
+                    "underlyingType": "int",
+                    "argNum": 1,
+                    "expr": "int(d.Hours() / 24)"
+                }
+            ]
+        },
+        {
+            "id": "No tunnel has geo-split enabled yet. Enable it in the tunnel editor with the “Russian networks directly” checkbox.",
+            "message": "No tunnel has geo-split enabled yet. Enable it in the tunnel editor with the “Russian networks directly” checkbox.",
+            "translation": "Гео-роутинг пока не включён ни в одном туннеле. Включите его в редакторе туннеля флажком «Российские сети напрямую»."
+        },
+        {
+            "id": "{Country} list: updating…",
+            "message": "{Country} list: updating…",
+            "translation": "Список {Country}: обновляется…",
+            "placeholders": [
+                {
+                    "id": "Country",
+                    "string": "%[1]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 1,
+                    "expr": "country"
+                }
+            ]
+        },
+        {
+            "id": "{Country} list: unavailable ({Error})",
+            "message": "{Country} list: unavailable ({Error})",
+            "translation": "Список {Country}: недоступен ({Error})",
+            "placeholders": [
+                {
+                    "id": "Country",
+                    "string": "%[1]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 1,
+                    "expr": "country"
+                },
+                {
+                    "id": "Error",
+                    "string": "%[2]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 2,
+                    "expr": "st.Error"
+                }
+            ]
+        },
+        {
+            "id": "{Country} list: built-in snapshot, {SourceV4} IPv4 and {SourceV6} IPv6 prefixes (never downloaded)",
+            "message": "{Country} list: built-in snapshot, {SourceV4} IPv4 and {SourceV6} IPv6 prefixes (never downloaded)",
+            "translation": "Список {Country}: встроенный снимок, {SourceV4} префиксов IPv4 и {SourceV6} IPv6 (ни разу не скачивался)",
+            "placeholders": [
+                {
+                    "id": "Country",
+                    "string": "%[1]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 1,
+                    "expr": "country"
+                },
+                {
+                    "id": "SourceV4",
+                    "string": "%[2]d",
+                    "type": "int",
+                    "underlyingType": "int",
+                    "argNum": 2,
+                    "expr": "st.Stats.SourceV4"
+                },
+                {
+                    "id": "SourceV6",
+                    "string": "%[3]d",
+                    "type": "int",
+                    "underlyingType": "int",
+                    "argNum": 3,
+                    "expr": "st.Stats.SourceV6"
+                }
+            ]
+        },
+        {
+            "id": "{Country} list: {SourceV4} IPv4 and {SourceV6} IPv6 prefixes, downloaded {FetchedAt}",
+            "message": "{Country} list: {SourceV4} IPv4 and {SourceV6} IPv6 prefixes, downloaded {FetchedAt}",
+            "translation": "Список {Country}: {SourceV4} префиксов IPv4 и {SourceV6} IPv6, скачан {FetchedAt}",
+            "placeholders": [
+                {
+                    "id": "Country",
+                    "string": "%[1]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 1,
+                    "expr": "country"
+                },
+                {
+                    "id": "SourceV4",
+                    "string": "%[2]d",
+                    "type": "int",
+                    "underlyingType": "int",
+                    "argNum": 2,
+                    "expr": "st.Stats.SourceV4"
+                },
+                {
+                    "id": "SourceV6",
+                    "string": "%[3]d",
+                    "type": "int",
+                    "underlyingType": "int",
+                    "argNum": 3,
+                    "expr": "st.Stats.SourceV6"
+                },
+                {
+                    "id": "FetchedAt",
+                    "string": "%[4]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 4,
+                    "expr": "ageString(st.Meta.FetchedAt)"
+                }
+            ]
+        },
+        {
+            "id": "Last update attempt failed: {LastError}",
+            "message": "Last update attempt failed: {LastError}",
+            "translation": "Последняя попытка обновления не удалась: {LastError}",
+            "placeholders": [
+                {
+                    "id": "LastError",
+                    "string": "%[1]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 1,
+                    "expr": "st.Meta.LastError"
+                }
+            ]
+        },
+        {
+            "id": "Invalid settings: {Error}",
+            "message": "Invalid settings: {Error}",
+            "translation": "Некорректные настройки: {Error}",
+            "placeholders": [
+                {
+                    "id": "Error",
+                    "string": "%[1]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 1,
+                    "expr": "err.Error()"
+                }
+            ]
+        },
+        {
+            "id": "Preview unavailable: {Error}",
+            "message": "Preview unavailable: {Error}",
+            "translation": "Предпросмотр недоступен: {Error}",
+            "placeholders": [
+                {
+                    "id": "Error",
+                    "string": "%[1]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 1,
+                    "expr": "err.Error()"
+                }
+            ]
+        },
+        {
+            "id": "Direct routes: {RoutesV4} IPv4 and {RoutesV6} IPv6. Through the tunnel: {DroppedBlocksV4} smaller IPv4 blocks ({DroppedAddrsV4} addresses).",
+            "message": "Direct routes: {RoutesV4} IPv4 and {RoutesV6} IPv6. Through the tunnel: {DroppedBlocksV4} smaller IPv4 blocks ({DroppedAddrsV4} addresses).",
+            "translation": "Прямых маршрутов: {RoutesV4} IPv4 и {RoutesV6} IPv6. Через туннель: {DroppedBlocksV4} мелких блоков IPv4 ({DroppedAddrsV4} адресов).",
+            "placeholders": [
+                {
+                    "id": "RoutesV4",
+                    "string": "%[1]d",
+                    "type": "int",
+                    "underlyingType": "int",
+                    "argNum": 1,
+                    "expr": "s.RoutesV4"
+                },
+                {
+                    "id": "RoutesV6",
+                    "string": "%[2]d",
+                    "type": "int",
+                    "underlyingType": "int",
+                    "argNum": 2,
+                    "expr": "s.RoutesV6"
+                },
+                {
+                    "id": "DroppedBlocksV4",
+                    "string": "%[3]d",
+                    "type": "int",
+                    "underlyingType": "int",
+                    "argNum": 3,
+                    "expr": "s.DroppedBlocksV4"
+                },
+                {
+                    "id": "DroppedAddrsV4",
+                    "string": "%[4]d",
+                    "type": "uint64",
+                    "underlyingType": "uint64",
+                    "argNum": 4,
+                    "expr": "s.DroppedAddrsV4"
+                }
+            ]
+        },
+        {
+            "id": "Unable to update the list",
+            "message": "Unable to update the list",
+            "translation": "Не удалось обновить список"
+        },
+        {
+            "id": "Invalid settings",
+            "message": "Invalid settings",
+            "translation": "Некорректные настройки"
+        },
+        {
+            "id": "Unable to save settings",
+            "message": "Unable to save settings",
+            "translation": "Не удалось сохранить настройки"
+        },
+        {
+            "id": "Geo-split: Off",
+            "message": "Geo-split: Off",
+            "translation": "Гео-роутинг: выкл."
+        },
+        {
+            "id": "\u0026Geo-split routing…",
+            "message": "\u0026Geo-split routing…",
+            "translation": "\u0026Гео-роутинг…"
+        },
+        {
+            "id": "Geo-split: {Country} directly, updating the list…",
+            "message": "Geo-split: {Country} directly, updating the list…",
+            "translation": "Гео-роутинг: {Country} напрямую, список обновляется…",
+            "placeholders": [
+                {
+                    "id": "Country",
+                    "string": "%[1]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 1,
+                    "expr": "country"
+                }
+            ]
+        },
+        {
+            "id": "Geo-split: {Country} directly, list unavailable",
+            "message": "Geo-split: {Country} directly, list unavailable",
+            "translation": "Гео-роутинг: {Country} напрямую, список недоступен",
+            "placeholders": [
+                {
+                    "id": "Country",
+                    "string": "%[1]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 1,
+                    "expr": "country"
+                }
+            ]
+        },
+        {
+            "id": "Geo-split: {Country} directly, {RoutesV6} routes, built-in list",
+            "message": "Geo-split: {Country} directly, {RoutesV6} routes, built-in list",
+            "translation": "Гео-роутинг: {Country} напрямую, маршрутов: {RoutesV6}, встроенный список",
+            "placeholders": [
+                {
+                    "id": "Country",
+                    "string": "%[1]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 1,
+                    "expr": "country"
+                },
+                {
+                    "id": "RoutesV6",
+                    "string": "%[2]d",
+                    "type": "int",
+                    "underlyingType": "int",
+                    "argNum": 2,
+                    "expr": "status.Stats.RoutesV4 + status.Stats.RoutesV6"
+                }
+            ]
+        },
+        {
+            "id": "Geo-split: {Country} directly, {RoutesV6} routes, list updated {FetchedAt}",
+            "message": "Geo-split: {Country} directly, {RoutesV6} routes, list updated {FetchedAt}",
+            "translation": "Гео-роутинг: {Country} напрямую, маршрутов: {RoutesV6}, список обновлён {FetchedAt}",
+            "placeholders": [
+                {
+                    "id": "Country",
+                    "string": "%[1]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 1,
+                    "expr": "country"
+                },
+                {
+                    "id": "RoutesV6",
+                    "string": "%[2]d",
+                    "type": "int",
+                    "underlyingType": "int",
+                    "argNum": 2,
+                    "expr": "status.Stats.RoutesV4 + status.Stats.RoutesV6"
+                },
+                {
+                    "id": "FetchedAt",
+                    "string": "%[3]s",
+                    "type": "string",
+                    "underlyingType": "string",
+                    "argNum": 3,
+                    "expr": "ageString(status.Meta.FetchedAt)"
+                }
+            ]
+        },
+        {
+            "id": "Geo-split routing settings",
+            "message": "Geo-split routing settings",
+            "translation": "Настройки гео-роутинга"
+        },
+        {
+            "id": "Invalid geo-split country code",
+            "message": "Invalid geo-split country code",
+            "translation": "Некорректный код страны для geo-split"
         }
     ]
 }

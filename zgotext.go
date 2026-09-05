@@ -70,8 +70,11 @@ var messageKeyToIndex = map[string]int{
 	"%.2f\u00a0MiB":                         147,
 	"%.2f\u00a0TiB":                         149,
 	"%d day(s)":                             140,
+	"%d day(s) ago":                         345,
 	"%d hour(s)":                            141,
+	"%d hour(s) ago":                        344,
 	"%d minute(s)":                          142,
+	"%d minute(s) ago":                      343,
 	"%d second(s)":                          143,
 	"%d tunnels were unable to be removed.": 123,
 	"%d year(s)":                            139,
@@ -79,104 +82,120 @@ var messageKeyToIndex = map[string]int{
 	"%s\n\nPlease consult the log for more information.": 74,
 	"%s (out of date)":                75,
 	"%s (unsigned build, no updates)": 128,
-	"%s - Handshake did not complete after %d attempts, giving up":              246,
-	"%s - Handshake did not complete after %d seconds, retrying (try %d)":       247,
-	"%s - Removing all keys, since we haven't received a new one in %d seconds": 249,
-	"%s - Retrying handshake because we stopped hearing back after %d seconds":  248,
-	"%s You cannot undo this action.":                                           119,
-	"%s ago":                                                                    144,
-	"%s received, %s sent":                                                      36,
-	"%s: %q":                                                                    150,
-	"%v":                                                                        276,
-	"%v - %v":                                                                   229,
-	"%v - ConsumeMessageInitiation: handshake flood":                            195,
-	"%v - ConsumeMessageInitiation: handshake replay @ %v":                      194,
-	"%v - Failed to create initiation message: %v":                              228,
-	"%v - Failed to create junk packet: %v":                                     242,
-	"%v - Failed to create response message: %v":                                233,
-	"%v - Failed to derive keypair: %v":                                         218,
-	"%v - Failed to send data packets: %v":                                      245,
-	"%v - Failed to send handshake initiation: %v":                              231,
-	"%v - Failed to send handshake response: %v":                                234,
-	"%v - Failed to send junk packets: %v":                                      230,
-	"%v - Received handshake initiation":                                        214,
-	"%v - Received handshake response":                                          217,
-	"%v - Receiving keepalive packet":                                           221,
-	"%v - Routine: sequential receiver - started":                               220,
-	"%v - Routine: sequential receiver - stopped":                               219,
-	"%v - Routine: sequential sender - started":                                 244,
-	"%v - Sending handshake initiation":                                         227,
-	"%v - Sending handshake response":                                           232,
-	"%v - Sending keepalive packet":                                             226,
-	"%v - Starting":                                                             196,
-	"%v - Stopping":                                                             197,
-	"%v - UAPI: Adding allowedip":                                               292,
-	"%v - UAPI: Created":                                                        286,
-	"%v - UAPI: Removing":                                                       287,
-	"%v - UAPI: Removing all allowedips":                                        291,
-	"%v - UAPI: Updating endpoint":                                              289,
-	"%v - UAPI: Updating persistent keepalive interval":                         290,
-	"%v - UAPI: Updating preshared key":                                         288,
-	"&About AmneziaWG…":                                                         176,
-	"&Activate":                                                                 17,
-	"&Block untunneled traffic (kill-switch)":                                   47,
-	"&Configuration:":                                                           50,
-	"&Copy":                                                                     66,
-	"&Deactivate":                                                               16,
-	"&Edit":                                                                     97,
-	"&Import tunnel(s) from file…":                                              82,
-	"&Manage tunnels…":                                                          81,
-	"&Name:":                                                                    44,
-	"&Public key:":                                                              45,
-	"&Remove selected tunnel(s)":                                                105,
-	"&Save":                                                                     48,
-	"&Save to file…":                                                            68,
-	"&Toggle":                                                                   102,
-	"&Tunnels":                                                                  84,
-	"(no argument): elevate and install manager service":                        1,
-	"(unknown)":                                                                 46,
-	"A name is required.":                                                       52,
-	"A tunnel was unable to be removed: %s":                                     121,
-	"ASec: Received message with unknown type":                                  202,
-	"About AmneziaWG":                                                           12,
-	"Activating":                                                                61,
-	"Active":                                                                    60,
-	"Add &empty tunnel…":                                                        98,
-	"Add Tunnel":                                                                99,
-	"Addresses:":                                                                21,
-	"Addresses: %s":                                                             92,
-	"Addresses: None":                                                           80,
-	"All peers must have public keys":                                           171,
-	"Allowed IPs:":                                                              25,
-	"AmneziaWG Activated":                                                       85,
-	"AmneziaWG Deactivated":                                                     87,
-	"AmneziaWG Detection Error":                                                 76,
-	"AmneziaWG Tunnel Error":                                                    89,
-	"AmneziaWG Update Available":                                                94,
+	"%s - Handshake did not complete after %d attempts, giving up":                235,
+	"%s - Handshake did not complete after %d seconds, retrying (try %d)":         236,
+	"%s - Removing all keys, since we haven't received a new one in %d seconds":   238,
+	"%s - Retrying handshake because we stopped hearing back after %d seconds":    237,
+	"%s You cannot undo this action.":                                             119,
+	"%s ago":                                                                      144,
+	"%s list: %d IPv4 and %d IPv6 prefixes, downloaded %s":                        350,
+	"%s list: built-in snapshot, %d IPv4 and %d IPv6 prefixes (never downloaded)": 349,
+	"%s list: unavailable (%s)":                                                   348,
+	"%s list: updating…":                                                          347,
+	"%s received, %s sent":                                                        36,
+	"%s: %q":                                                                      150,
+	"%v":                                                                          274,
+	"%v - ConsumeMessageInitiation: handshake flood":                              186,
+	"%v - ConsumeMessageInitiation: handshake replay @ %v":                        185,
+	"%v - Failed to create initiation message: %v":                                218,
+	"%v - Failed to create response message: %v":                                  221,
+	"%v - Failed to derive keypair: %v":                                           208,
+	"%v - Failed to send data packets: %v":                                        234,
+	"%v - Failed to send handshake initiation: %v":                                219,
+	"%v - Failed to send handshake response: %v":                                  222,
+	"%v - Received handshake initiation":                                          204,
+	"%v - Received handshake response":                                            207,
+	"%v - Receiving keepalive packet":                                             211,
+	"%v - Routine: sequential receiver - started":                                 210,
+	"%v - Routine: sequential receiver - stopped":                                 209,
+	"%v - Routine: sequential sender - started":                                   233,
+	"%v - Sending handshake initiation":                                           217,
+	"%v - Sending handshake response":                                             220,
+	"%v - Sending keepalive packet":                                               216,
+	"%v - Starting":                                                               187,
+	"%v - Stopping":                                                               188,
+	"%v - UAPI: %s allowedip":                                                     296,
+	"%v - UAPI: Created":                                                          290,
+	"%v - UAPI: Removing":                                                         291,
+	"%v - UAPI: Removing all allowedips":                                          295,
+	"%v - UAPI: Updating endpoint":                                                293,
+	"%v - UAPI: Updating persistent keepalive interval":                           294,
+	"%v - UAPI: Updating preshared key":                                           292,
+	"&About AmneziaWG…":                                                           175,
+	"&Activate":                                                                   17,
+	"&Block untunneled traffic (kill-switch)":                                     47,
+	"&Configuration:":                                                             50,
+	"&Copy":                                                                       66,
+	"&Deactivate":                                                                 16,
+	"&Defaults":                                                                   340,
+	"&Edit":                                                                       97,
+	"&Geo-split routing…":                                                         359,
+	"&Import tunnel(s) from file…":                                                82,
+	"&Manage tunnels…":                                                            81,
+	"&Name:":                                                                      44,
+	"&Permit private networks through the kill-switch (LAN, other VPN adapters and their DNS)": 332,
+	"&Public key:":                           45,
+	"&Remove selected tunnel(s)":             105,
+	"&Russian networks directly (geo-split)": 320,
+	"&Save":                                  48,
+	"&Save to file…":                         68,
+	"&Toggle":                                102,
+	"&Tunnels":                               84,
+	"&Update the list when a tunnel starts, if it is stale": 323,
+	"(no argument): elevate and install manager service":    1,
+	"(unknown)":                             46,
+	"/%d":                                   327,
+	"/24 (every block in the list)":         326,
+	"A name is required.":                   52,
+	"A tunnel was unable to be removed: %s": 121,
+	"About AmneziaWG":                       12,
+	"Activating":                            61,
+	"Active":                                60,
+	"Add &empty tunnel…":                    98,
+	"Add Tunnel":                            99,
+	"Addresses:":                            21,
+	"Addresses: %s":                         92,
+	"Addresses: None":                       80,
+	"Adds GeoSplit = ru to the interface: Russian network prefixes are routed outside the tunnel and permitted through the kill-switch, everything else goes through the tunnel. Requires the kill-switch. The block size threshold, list updates and exceptions are configured in the geo-split routing settings.": 321,
+	"All IPv6 through the tunnel (no IPv6 routes)": 331,
+	"All peers must have public keys":              170,
+	"Allowed IPs:":                                 25,
+	"Always directly:":                             333,
+	"Always through the tunnel:":                   335,
+	"AmneziaWG Activated":                          85,
+	"AmneziaWG Deactivated":                        87,
+	"AmneziaWG Detection Error":                    76,
+	"AmneziaWG Tunnel Error":                       89,
+	"AmneziaWG Update Available":                   94,
 	"AmneziaWG is running, but the UI is only accessible from desktops of the Builtin %s group.": 8,
 	"AmneziaWG logo image": 13,
 	"AmneziaWG may only be used by users who are a member of the Builtin %s group.": 7,
 	"AmneziaWG system tray icon did not appear after 30 seconds.":                   9,
-	"AmneziaWG: %s":                        90,
-	"AmneziaWG: Deactivated":               78,
-	"An Update is Available!":              93,
-	"An interface must have a private key": 169,
+	"AmneziaWG: %s":           90,
+	"AmneziaWG: Deactivated":  78,
+	"An Update is Available!": 93,
+	"An https URL or a local file path. A %s in the URL is replaced with the country code.":       339,
+	"An interface must have a private key":                                                        168,
 	"An update to AmneziaWG is available. It is highly advisable to update without delay.":        131,
 	"An update to AmneziaWG is now available. You are advised to update as soon as possible.":     95,
 	"Another tunnel already exists with the name ‘%s’":                                            109,
 	"Another tunnel already exists with the name ‘%s’.":                                           56,
-	"App version: %s\nWintun version: %s\nGo version: %s\nOperating system: %s\nArchitecture: %s": 294,
+	"App version: %s\nWintun version: %s\nGo version: %s\nOperating system: %s\nArchitecture: %s": 307,
 	"Are you sure you would like to delete %d tunnels?":                                           116,
 	"Are you sure you would like to delete tunnel ‘%s’?":                                          118,
-	"Bind close failed: %v":                 181,
+	"Bind close failed: %v":                 180,
 	"Brackets must contain an IPv6 address": 155,
 	"Cancel":                                49,
 	"Close":                                 14,
-	"Command Line Options":                  3,
-	"Config key is missing an equals separator":                            165,
+	"Comma separated prefixes that are removed from the direct set, for example a provider's video cache.": 336,
+	"Comma separated prefixes that are routed directly regardless of the list and the threshold.":          334,
+	"Command Line Options":                                                 3,
+	"Config key is missing an equals separator":                            164,
 	"Configuration Files (*.zip, *.conf)|*.zip;*.conf|All Files (*.*)|*.*": 124,
 	"Configuration ZIP Files (*.zip)|*.zip":                                126,
-	"Could not decrypt invalid cookie response":                            209,
+	"Consider the list stale after (hours):":                               324,
+	"Content padding addition:":                                            310,
+	"Could not decrypt invalid cookie response":                            199,
 	"Could not enumerate existing tunnels: %v":                             108,
 	"Could not import selected configuration: %v":                          107,
 	"Create new tunnel":                                                    42,
@@ -184,193 +203,242 @@ var messageKeyToIndex = map[string]int{
 	"Deactivating":                                                         63,
 	"Delete %d tunnels":                                                    115,
 	"Delete tunnel ‘%s’":                                                   117,
-	"Device closed":                                                        184,
-	"Device closing":                                                       183,
-	"Dropped some packets from multi-segment read: %v":                     240,
+	"Device closed":                                                        183,
+	"Device closing":                                                       182,
+	"Direct routes: %d IPv4 and %d IPv6. Through the tunnel: %d smaller IPv4 blocks (%d addresses).": 354,
+	"Disable cookies:": 317,
+	"Dropped some packets from multi-segment read: %v": 229,
 	"E&xit":                  83,
 	"Edit &selected tunnel…": 104,
 	"Edit tunnel":            43,
 	"Endpoint:":              26,
-	"Ensure that you obtained the configuration file from a trusted source.": 298,
+	"Ensure that you obtained the configuration file from a trusted source.": 364,
 	"Error":                                                     0,
 	"Error Exiting AmneziaWG":                                   129,
-	"Error in getting configuration":                            172,
-	"Error: ":                                                   177,
+	"Error in getting configuration":                            171,
+	"Error: ":                                                   176,
 	"Error: %v. Please try again.":                              135,
 	"Export all tunnels to &zip…":                               103,
 	"Export all tunnels to zip":                                 101,
 	"Export log to file":                                        72,
 	"Export tunnels to zip":                                     127,
 	"Failed to activate tunnel":                                 38,
-	"Failed to create cookie reply: %v":                         236,
+	"Failed to create cookie reply: %v":                         225,
 	"Failed to deactivate tunnel":                               39,
-	"Failed to decode cookie reply":                             207,
-	"Failed to decode initiation message":                       212,
-	"Failed to decode response message":                         215,
+	"Failed to decode cookie reply":                             197,
+	"Failed to decode initiation message":                       202,
+	"Failed to decode response message":                         205,
 	"Failed to determine tunnel state":                          37,
-	"Failed to load updated MTU of device: %v":                  251,
-	"Failed to read packet from TUN device: %v":                 241,
-	"Failed to receive %s packet: %v":                           200,
-	"Failed to write packets to TUN device: %v":                 225,
+	"Failed to initialize header cipher":                        192,
+	"Failed to load updated MTU of device: %v":                  240,
+	"Failed to read packet from TUN device: %v":                 230,
+	"Failed to receive %s packet: %v":                           191,
+	"Failed to write packets to TUN device: %v":                 215,
 	"File ‘%s’ already exists.\n\nDo you want to overwrite it?": 59,
-	"IPv4 packet with disallowed source address from %v":        222,
-	"IPv6 packet with disallowed source address from %v":        223,
-	"Import tunnel(s) from file":                                125,
-	"Imported %d of %d tunnels":                                 113,
-	"Imported %d tunnels":                                       112,
-	"Imported tunnels":                                          111,
-	"Inactive":                                                  62,
-	"Interface closed, ignored requested state %s":              178,
-	"Interface down requested":                                  255,
-	"Interface state was %s, requested %s, now %s":              179,
-	"Interface up requested":                                    254,
-	"Interface: %s":                                             40,
-	"Invalid %s":                                                302,
-	"Invalid IP address":                                        151,
-	"Invalid MTU":                                               156,
-	"Invalid endpoint host":                                     154,
-	"Invalid key for [Interface] section":                       167,
-	"Invalid key for [Peer] section":                            168,
-	"Invalid key for interface section":                         173,
-	"Invalid key for peer section":                              175,
-	"Invalid key: %v":                                           159,
-	"Invalid name":                                              51,
-	"Invalid network prefix length":                             152,
-	"Invalid packet ended up in the handshake queue":            211,
-	"Invalid persistent keepalive":                              158,
-	"Invalid port":                                              157,
-	"Key must have a value":                                     166,
-	"Keys must decode to exactly 32 bytes":                      160,
-	"Latest handshake:":                                         28,
-	"Line must occur in a section":                              164,
-	"Listen port:":                                              19,
-	"Log":                                                       65,
-	"Log message":                                               70,
-	"MTU not updated to negative value: %v":                     252,
-	"MTU updated: %v%s":                                         253,
-	"MTU:":                                                      20,
-	"Missing port from endpoint":                                153,
-	"Now":                                                       137,
-	"Number must be a number between 0 and 2^64-1: %v":          161,
-	"Official Amnezia services are available only at amnezia.org.": 299,
-	"Packet with invalid IP version from %v":                       224,
+	"Geo-split routing":                                         322,
+	"Geo-split routing settings":                                366,
+	"Geo-split: %s directly, %d routes, built-in list":          362,
+	"Geo-split: %s directly, %d routes, list updated %s":        363,
+	"Geo-split: %s directly, list unavailable":                  361,
+	"Geo-split: %s directly, updating the list…":                360,
+	"Geo-split: Off":                                            358,
+	"Header protection key:":                                    309,
+	"IPv4 list source:":                                         337,
+	"IPv4 packet with disallowed source address from %v":        212,
+	"IPv6 list source:":                                         338,
+	"IPv6 packet with disallowed source address from %v":        213,
+	"IPv6:":                      329,
+	"Import tunnel(s) from file": 125,
+	"Imported %d of %d tunnels":  113,
+	"Imported %d tunnels":        112,
+	"Imported tunnels":           111,
+	"Inactive":                   62,
+	"Interface closed, ignored requested state %s":   177,
+	"Interface down requested":                       244,
+	"Interface state was %s, requested %s, now %s":   178,
+	"Interface up requested":                         243,
+	"Interface: %s":                                  40,
+	"Invalid %s":                                     370,
+	"Invalid IP address":                             151,
+	"Invalid MTU":                                    156,
+	"Invalid endpoint host":                          154,
+	"Invalid geo-split country code":                 369,
+	"Invalid key for [Interface] section":            166,
+	"Invalid key for [Peer] section":                 167,
+	"Invalid key for interface section":              172,
+	"Invalid key for peer section":                   174,
+	"Invalid key: %v":                                158,
+	"Invalid name":                                   51,
+	"Invalid network prefix length":                  152,
+	"Invalid packet ended up in the handshake queue": 201,
+	"Invalid port":                                   157,
+	"Invalid settings":                               356,
+	"Invalid settings: %s":                           352,
+	"Keepalive timeout:":                             314,
+	"Key must have a value":                          165,
+	"Keys must decode to exactly 32 bytes":           159,
+	"Last update attempt failed: %s":                 351,
+	"Latest handshake:":                              28,
+	"Line must occur in a section":                   163,
+	"Listen port:":                                   19,
+	"Log":                                            65,
+	"Log message":                                    70,
+	"MTU not updated to negative value: %v":          241,
+	"MTU updated: %v%s":                              242,
+	"MTU:":                                           20,
+	"Max handshake attempts:":                        315,
+	"Missing port from endpoint":                     153,
+	"No tunnel has geo-split enabled yet. Enable it in the tunnel editor with the “Russian networks directly” checkbox.": 346,
+	"Now": 137,
+	"Number must be a number between 0 and 2^64-1: %v":             160,
+	"Official Amnezia services are available only at amnezia.org.": 365,
+	"Packet with invalid IP version from %v":                       214,
 	"Peer":                                                         41,
 	"Persistent keepalive:":                                        27,
-	"Please ask the system administrator to update.":               300,
+	"Please ask the system administrator to update.":               367,
 	"Preshared key:":                                               24,
-	"Protocol version must be 1":                                   174,
+	"Preview unavailable: %s":                                      353,
+	"Protocol version must be 1":                                   173,
 	"Public key:":                                                  18,
-	"Received invalid initiation message from %s":                  213,
-	"Received invalid response message from %s":                    216,
-	"Received message with unknown type":                           203,
-	"Received packet with invalid mac1":                            210,
-	"Received packet with unknown IP version":                      239,
-	"Receiving cookie response from %s":                            208,
+	"Random trailers:":                                             316,
+	"Received invalid initiation message from %s":                  203,
+	"Received invalid response message from %s":                    206,
+	"Received message with unknown type":                           193,
+	"Received packet with invalid mac1":                            200,
+	"Received packet with unknown IP version":                      228,
+	"Receiving cookie response from %s":                            198,
+	"Reject after time:":                                           313,
+	"Rekey after time:":                                            311,
+	"Rekey timeout:":                                               312,
 	"Remove selected tunnel(s)":                                    100,
-	"Routine: TUN reader - started":                                238,
-	"Routine: TUN reader - stopped":                                237,
-	"Routine: decryption worker %d - started":                      204,
-	"Routine: encryption worker %d - started":                      243,
-	"Routine: event worker - started":                              250,
-	"Routine: event worker - stopped":                              256,
-	"Routine: handshake worker %d - started":                       206,
-	"Routine: handshake worker %d - stopped":                       205,
-	"Routine: receive incoming %s - started":                       199,
-	"Routine: receive incoming %s - stopped":                       198,
-	"Scripts:":                                                     23,
-	"Select &all":                                                  67,
-	"Sending cookie response for denied handshake message for %v":  235,
-	"Status:":                                      15,
-	"Status: %s":                                   91,
-	"Status: Complete!":                            136,
-	"Status: Unknown":                              79,
-	"Status: Waiting for administrator":            301,
-	"Status: Waiting for updater service":          134,
-	"Status: Waiting for user":                     132,
-	"System clock wound backward!":                 138,
-	"Table:":                                       295,
-	"Text Files (*.txt)|*.txt|All Files (*.*)|*.*": 71,
-	"The %s tunnel has been activated.":            86,
-	"The %s tunnel has been deactivated.":          88,
-	"Time":                                         69,
-	"Transfer:":                                    29,
-	"Transport packet lined up with another msg type": 201,
-	"Trouble determining MTU, assuming default: %v":   182,
-	"Tunnel Error":                                                       73,
-	"Tunnel already exists":                                              55,
-	"Tunnel name is not valid":                                           163,
-	"Tunnel name ‘%s’ is invalid.":                                       53,
-	"Tunnels":                                                            96,
-	"Two commas in a row":                                                162,
-	"UAPI: Removing all peers":                                           280,
-	"UAPI: Updating fwmark":                                              279,
-	"UAPI: Updating init_packet_junk_size":                               284,
-	"UAPI: Updating init_packet_magic_header":                            186,
-	"UAPI: Updating junk_packet_count":                                   281,
-	"UAPI: Updating junk_packet_max_size":                                283,
-	"UAPI: Updating junk_packet_min_size":                                282,
-	"UAPI: Updating listen port":                                         278,
-	"UAPI: Updating private key":                                         277,
-	"UAPI: Updating response_packet_junk_size":                           285,
-	"UAPI: Updating response_packet_magic_header":                        188,
-	"UAPI: Updating transport_packet_magic_header":                       192,
-	"UAPI: Updating underload_packet_magic_header":                       190,
-	"UAPI: Using default init type":                                      187,
-	"UAPI: Using default response type":                                  189,
-	"UAPI: Using default transport type":                                 193,
-	"UAPI: Using default underload type":                                 191,
-	"UDP bind has been updated":                                          185,
-	"Unable to create new configuration":                                 57,
-	"Unable to create tunnel":                                            114,
-	"Unable to delete tunnel":                                            120,
-	"Unable to delete tunnels":                                           122,
-	"Unable to determine whether the process is running under WOW64: %v": 4,
+	"Route directly only blocks of at least:":                      325,
+	"Routine: TUN reader - started":                                227,
+	"Routine: TUN reader - stopped":                                226,
+	"Routine: decryption worker %d - started":                      194,
+	"Routine: encryption worker %d - started":                      231,
+	"Routine: event worker - started":                              239,
+	"Routine: event worker - stopped":                              245,
+	"Routine: handshake worker %d - started":                       196,
+	"Routine: handshake worker %d - stopped":                       195,
+	"Routine: receive incoming %s - started":                       190,
+	"Routine: receive incoming %s - stopped":                       189,
+	"Routing: header obfuscation failed - packet dropped":          232,
+	"Russian IPv6 networks directly, by list":                      330,
+	"Scripts:":    23,
+	"Select &all": 67,
+	"Sending cookie response blocked for %v due to disabled cookies":                                                                         223,
+	"Sending cookie response for denied handshake message for %v":                                                                            224,
+	"Smaller blocks are sent through the tunnel. Larger thresholds mean fewer routes but more Russian addresses reached through the tunnel.": 328,
+	"Status:":                                       15,
+	"Status: %s":                                    91,
+	"Status: Complete!":                             136,
+	"Status: Unknown":                               79,
+	"Status: Waiting for administrator":             368,
+	"Status: Waiting for updater service":           134,
+	"Status: Waiting for user":                      132,
+	"System clock wound backward!":                  138,
+	"Table:":                                        308,
+	"Text Files (*.txt)|*.txt|All Files (*.*)|*.*":  71,
+	"The %s tunnel has been activated.":             86,
+	"The %s tunnel has been deactivated.":           88,
+	"Time":                                          69,
+	"Transfer:":                                     29,
+	"Trouble determining MTU, assuming default: %v": 181,
+	"Tunnel Error":                                  73,
+	"Tunnel already exists":                         55,
+	"Tunnel name is not valid":                      162,
+	"Tunnel name ‘%s’ is invalid.":                  53,
+	"Tunnels":                                       96,
+	"Two commas in a row":                           161,
+	"UAPI: Removing all peers":                      278,
+	"UAPI: Updating content padding addition":       282,
+	"UAPI: Updating disable cookies":                289,
+	"UAPI: Updating fwmark":                         277,
+	"UAPI: Updating h1 padding":                     298,
+	"UAPI: Updating h2 padding":                     299,
+	"UAPI: Updating h3 padding":                     300,
+	"UAPI: Updating h4 padding":                     301,
+	"UAPI: Updating header protection key":          306,
+	"UAPI: Updating junk count":                     279,
+	"UAPI: Updating junk max":                       281,
+	"UAPI: Updating junk min":                       280,
+	"UAPI: Updating keepalive timeout":              286,
+	"UAPI: Updating listen port":                    276,
+	"UAPI: Updating max handshake attempts":         287,
+	"UAPI: Updating private key":                    275,
+	"UAPI: Updating random trailers":                288,
+	"UAPI: Updating reject after time":              285,
+	"UAPI: Updating rekey after time":               283,
+	"UAPI: Updating rekey timeout":                  284,
+	"UAPI: Updating s1 padding":                     302,
+	"UAPI: Updating s2 padding":                     303,
+	"UAPI: Updating s3 padding":                     304,
+	"UAPI: Updating s4 padding":                     305,
+	"UDP bind has been updated":                     184,
+	"Unable to create new configuration":            57,
+	"Unable to create tunnel":                       114,
+	"Unable to delete tunnel":                       120,
+	"Unable to delete tunnels":                      122,
+	"Unable to determine whether the process is running under WOW64: %v":                          4,
 	"Unable to exit service due to: %v. You may want to stop AmneziaWG from the service manager.": 130,
-	"Unable to import configuration: %v":                110,
-	"Unable to list existing tunnels":                   54,
-	"Unable to open current process token: %v":          6,
-	"Unable to update bind: %v":                         180,
-	"Unable to wait for AmneziaWG window to appear: %v": 77,
-	"Unknown state":                                     64,
-	"Update Now":                                        133,
-	"Usage: %s [\n%s]":                                  2,
-	"When a configuration has exactly one peer, and that peer has an allowed IPs containing at least one of 0.0.0.0/0 or ::/0, and the interface does not have table off, then the tunnel service engages a firewall ruleset to block all traffic that is neither to nor from the tunnel interface or is to the wrong DNS server, with special exceptions for DHCP and NDP.": 297,
+	"Unable to import configuration: %v":                                                          110,
+	"Unable to list existing tunnels":                                                             54,
+	"Unable to open current process token: %v":                                                    6,
+	"Unable to save settings":                                                                     357,
+	"Unable to update bind: %v":                                                                   179,
+	"Unable to update the list":                                                                   355,
+	"Unable to wait for AmneziaWG window to appear: %v":                                           77,
+	"Unknown state":    64,
+	"Update &now":      341,
+	"Update Now":       133,
+	"Usage: %s [\n%s]": 2,
+	"When a configuration has exactly one peer, and that peer has an allowed IPs containing at least one of 0.0.0.0/0 or ::/0, and the interface does not have table off, then the tunnel service engages a firewall ruleset to block all traffic that is neither to nor from the tunnel interface or is to the wrong DNS server, with special exceptions for DHCP and NDP.": 319,
 	"Writing file failed": 58,
 	"You must use the native version of AmneziaWG on this computer.": 5,
 	"[EnumerationSeparator]":            10,
 	"[UnitSeparator]":                   11,
-	"[none specified]":                  170,
-	"allowed_ip=%s":                     275,
+	"[none specified]":                  169,
+	"allowed_ip=%s":                     273,
+	"content_padding_addition=%s":       260,
 	"disabled, per policy":              34,
 	"enabled":                           35,
-	"endpoint=%s":                       269,
-	"fwmark=%d":                         258,
-	"h1=%d":                             264,
-	"h2=%d":                             265,
-	"h3=%d":                             266,
-	"h4=%d":                             267,
-	"invalid UAPI operation: %v":        293,
-	"jc=%d":                             259,
-	"jmax=%d":                           261,
-	"jmin=%d":                           260,
-	"last_handshake_time_nsec=%d":       271,
-	"last_handshake_time_sec=%d":        270,
-	"listen_port=%d":                    257,
+	"endpoint=%s":                       267,
+	"fwmark=%d":                         247,
+	"h1=%s":                             255,
+	"h2=%s":                             256,
+	"h3=%s":                             257,
+	"h4=%s":                             258,
+	"i%d=%s":                            259,
+	"invalid UAPI operation: %v":        297,
+	"jc=%d":                             248,
+	"jmax=%d":                           250,
+	"jmin=%d":                           249,
+	"keepalive_timeout=%s":              264,
+	"last_handshake_time_nsec=%d":       269,
+	"last_handshake_time_sec=%d":        268,
+	"listen_port=%d":                    246,
+	"max_handshake_attempts=%s":         265,
+	"never":                             342,
 	"no configuration files were found": 106,
-	"off":                               296,
-	"persistent_keepalive_interval=%d":  274,
+	"off":                               318,
+	"persistent_keepalive_interval=%s":  272,
 	"post-down":                         33,
 	"post-up":                           31,
 	"pre-down":                          32,
 	"pre-up":                            30,
-	"protocol_version=1":                268,
-	"rx_bytes=%d":                       273,
-	"s1=%d":                             262,
-	"s2=%d":                             263,
-	"tx_bytes=%d":                       272,
+	"protocol_version=1":                266,
+	"reject_after_time=%s":              263,
+	"rekey_after_time=%s":               261,
+	"rekey_timeout=%s":                  262,
+	"rx_bytes=%d":                       271,
+	"s1=%d":                             251,
+	"s2=%d":                             252,
+	"s3=%d":                             253,
+	"s4=%d":                             254,
+	"tx_bytes=%d":                       270,
 }
 
-var caIndex = []uint32{ // 304 elements
+var caIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000006, 0x00000042, 0x00000056,
 	0x00000071, 0x000000b0, 0x000000f5, 0x0000012c,
@@ -415,51 +483,70 @@ var caIndex = []uint32{ // 304 elements
 	0x0000116b, 0x00001174, 0x0000117d, 0x0000118a,
 	0x00001197, 0x000011a4, 0x000011b1, 0x000011be,
 	0x000011d3, 0x000011f7, 0x00001211, 0x00001234,
-	0x00001265, 0x00001273, 0x00001281, 0x000012ad,
+	0x00001265, 0x00001273, 0x00001281, 0x00001297,
 	// Entry A0 - BF
-	0x000012c3, 0x000012f7, 0x00001325, 0x00001338,
-	0x00001358, 0x00001381, 0x000013b9, 0x000013d6,
-	0x00001408, 0x00001435, 0x00001462, 0x00001473,
-	0x000014a2, 0x000014bf, 0x000014f3, 0x00001517,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
+	0x000012cb, 0x000012f9, 0x0000130c, 0x0000132c,
+	0x00001355, 0x0000138d, 0x000013aa, 0x000013dc,
+	0x00001409, 0x00001436, 0x00001447, 0x00001476,
+	0x00001493, 0x000014c7, 0x000014eb, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
 	// Entry C0 - DF
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
 	// Entry E0 - FF
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
 	// Entry 100 - 11F
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
 	// Entry 120 - 13F
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-	0x00001547, 0x00001547, 0x00001547, 0x00001547,
-} // Size: 1240 bytes
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	// Entry 140 - 15F
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	// Entry 160 - 17F
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+	0x0000151b, 0x0000151b, 0x0000151b, 0x0000151b,
+} // Size: 1512 bytes
 
-const caData string = "" + // Size: 5447 bytes
+const caData string = "" + // Size: 5403 bytes
 	"\x02Error\x02(sense argument): eleva i instala el servei d'administrador" +
 	"\x02Ús: %[1]s [\x0a%[2]s]\x02Opcions de línia d'ordres\x02No s'ha pogut " +
 	"determinar si el procés corre sota WOW64: %[1]v\x02Heu de fer servir la " +
@@ -535,19 +622,18 @@ const caData string = "" + // Size: 5447 bytes
 	"\x02%[1]s: %[2]q\x02Adreça IP invàlida\x02Tamany del prefix de xarxa inv" +
 	"àlid\x02Falta el port de l'extrem\x02El format de l'extrem no és valid" +
 	"\x02Els claudàtors han de contenir una adreça IPv6\x02MTU invàlida\x02Po" +
-	"rt invàlid\x02Temps de missatge de persistència invàlid\x02Clau invàlida" +
-	": %[1]v\x02Les claus han de descodificar a exactament 32 bytes\x02El nom" +
-	"bre ha de estar entre 0 i 2^64-1: %[1]v\x02Dos comes seguides\x02El nom " +
-	"del túnel no és vàlid\x02La línia ha d'aparèixer en una secció\x02La cla" +
-	"u de configuració no té un separador d'igualtat\x02La clau ha de tenir u" +
-	"n valor\x02La clau no és vàlida per la secció [Interface]\x02La clau no " +
-	"és vàlida per la secció [Peer]\x02Una interfície ha de tenir una clau p" +
-	"rivada\x02[no especificat]\x02Tots els parells han de tenir claus públiq" +
-	"ues\x02Error obtenint configuració\x02La clau no és vàlida per la secció" +
-	" d'interfície\x02La versió del protocol ha de ser 1\x02La clau no és vàl" +
-	"ida per la secció de parell"
+	"rt invàlid\x02Clau invàlida: %[1]v\x02Les claus han de descodificar a ex" +
+	"actament 32 bytes\x02El nombre ha de estar entre 0 i 2^64-1: %[1]v\x02Do" +
+	"s comes seguides\x02El nom del túnel no és vàlid\x02La línia ha d'aparèi" +
+	"xer en una secció\x02La clau de configuració no té un separador d'igualt" +
+	"at\x02La clau ha de tenir un valor\x02La clau no és vàlida per la secció" +
+	" [Interface]\x02La clau no és vàlida per la secció [Peer]\x02Una interfí" +
+	"cie ha de tenir una clau privada\x02[no especificat]\x02Tots els parells" +
+	" han de tenir claus públiques\x02Error obtenint configuració\x02La clau " +
+	"no és vàlida per la secció d'interfície\x02La versió del protocol ha de " +
+	"ser 1\x02La clau no és vàlida per la secció de parell"
 
-var csIndex = []uint32{ // 304 elements
+var csIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000006, 0x0000004f, 0x00000069,
 	0x0000008a, 0x000000bd, 0x00000106, 0x00000138,
@@ -592,51 +678,70 @@ var csIndex = []uint32{ // 304 elements
 	0x0000126f, 0x0000127b, 0x00001284, 0x00001291,
 	0x0000129e, 0x000012ab, 0x000012b8, 0x000012c5,
 	0x000012d9, 0x000012fe, 0x00001314, 0x00001327,
-	0x0000134c, 0x0000135a, 0x00001369, 0x0000138b,
+	0x0000134c, 0x0000135a, 0x00001369, 0x00001381,
 	// Entry A0 - BF
-	0x000013a3, 0x000013d9, 0x0000140b, 0x00001421,
-	0x0000143c, 0x00001461, 0x000014a1, 0x000014bb,
-	0x000014e2, 0x00001504, 0x0000152f, 0x00001546,
-	0x00001573, 0x00001597, 0x000015bc, 0x000015d9,
-	0x000015f7, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
+	0x000013b7, 0x000013e9, 0x000013ff, 0x0000141a,
+	0x0000143f, 0x0000147f, 0x00001499, 0x000014c0,
+	0x000014e2, 0x0000150d, 0x00001524, 0x00001551,
+	0x00001575, 0x0000159a, 0x000015b7, 0x000015d5,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
 	// Entry C0 - DF
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
 	// Entry E0 - FF
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
 	// Entry 100 - 11F
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
 	// Entry 120 - 13F
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-	0x00001610, 0x00001610, 0x00001610, 0x00001610,
-} // Size: 1240 bytes
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	// Entry 140 - 15F
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	// Entry 160 - 17F
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+	0x000015ee, 0x000015ee, 0x000015ee, 0x000015ee,
+} // Size: 1512 bytes
 
-const csData string = "" + // Size: 5648 bytes
+const csData string = "" + // Size: 5614 bytes
 	"\x02Chyba\x02(žádný argument): Zvýšit oprávnění a instalovat službu sprá" +
 	"vce\x02Použití: %[1]s [\x0a%[2]s]\x02Možnosti příkazového řádku\x02Nelze" +
 	" zjistit, zda proces běží pod WOW64: %[1]v\x02Musíte použít nativní verz" +
@@ -716,18 +821,17 @@ const csData string = "" + // Size: 5648 bytes
 	"]f\u00a0GiB\x02%.2[1]f\u00a0TiB\x02%[1]s: %[2]q\x02Neplatná IP adresa" +
 	"\x02Neplatná délka síťového prefixu\x02Endpointu chybí port\x02Neplatný " +
 	"endpoint\x02Závorky musí obsahovat IPv6 adresu\x02Neplatné MTU\x02Neplat" +
-	"ný port\x02Neplatný persistentní keepalive\x02Neplatný klíč: %[1]v\x02Kl" +
-	"íče musí být dekódovány přesně na 32 bajtů\x02Číslo musí mít hodnotu me" +
-	"zi 0 a 2^64-1: %[1]v\x02Dvě čárky za sebou\x02Název tunelu je neplatný" +
-	"\x02Řádek musí být v některé sekci\x02Konfigurační klíč neobsahuje odděl" +
-	"ovač (znak 'rovná se')\x02Klíč musí mít hodnotu\x02Neplatný klíč pro sek" +
-	"ci [Interface]\x02Neplatný klíč pro sekci [Peer]\x02Rozhraní musí obsaho" +
-	"vat soukromý klíč\x02[není specifikováno]\x02Všichni peeři musí mít veře" +
-	"jné klíče\x02Chyba při načítání konfigurace\x02Neplatný klíč pro sekci r" +
-	"ozhraní\x02Verze protokolu musí být 1\x02Neplatný klíč v sekci peer\x02&" +
-	"O aplikaci AmneziaWG…"
+	"ný port\x02Neplatný klíč: %[1]v\x02Klíče musí být dekódovány přesně na 3" +
+	"2 bajtů\x02Číslo musí mít hodnotu mezi 0 a 2^64-1: %[1]v\x02Dvě čárky za" +
+	" sebou\x02Název tunelu je neplatný\x02Řádek musí být v některé sekci\x02" +
+	"Konfigurační klíč neobsahuje oddělovač (znak 'rovná se')\x02Klíč musí mí" +
+	"t hodnotu\x02Neplatný klíč pro sekci [Interface]\x02Neplatný klíč pro se" +
+	"kci [Peer]\x02Rozhraní musí obsahovat soukromý klíč\x02[není specifiková" +
+	"no]\x02Všichni peeři musí mít veřejné klíče\x02Chyba při načítání konfig" +
+	"urace\x02Neplatný klíč pro sekci rozhraní\x02Verze protokolu musí být 1" +
+	"\x02Neplatný klíč v sekci peer\x02&O aplikaci AmneziaWG…"
 
-var deIndex = []uint32{ // 304 elements
+var deIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000007, 0x00000059, 0x00000074,
 	0x0000008b, 0x000000e1, 0x00000137, 0x0000016b,
@@ -772,51 +876,70 @@ var deIndex = []uint32{ // 304 elements
 	0x0000127e, 0x00001288, 0x00001291, 0x0000129e,
 	0x000012ab, 0x000012b8, 0x000012c5, 0x000012d2,
 	0x000012e8, 0x00001310, 0x0000132e, 0x00001348,
-	0x0000137c, 0x0000138b, 0x0000139c, 0x000013bc,
+	0x0000137c, 0x0000138b, 0x0000139c, 0x000013ba,
 	// Entry A0 - BF
-	0x000013da, 0x00001411, 0x0000143d, 0x00001459,
-	0x00001476, 0x000014a7, 0x000014e2, 0x00001500,
-	0x0000152e, 0x00001556, 0x00001590, 0x000015a5,
-	0x000015e3, 0x00001609, 0x00001636, 0x00001657,
-	0x0000167f, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
+	0x000013f1, 0x0000141d, 0x00001439, 0x00001456,
+	0x00001487, 0x000014c2, 0x000014e0, 0x0000150e,
+	0x00001536, 0x00001570, 0x00001585, 0x000015c3,
+	0x000015e9, 0x00001616, 0x00001637, 0x0000165f,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
 	// Entry C0 - DF
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
 	// Entry E0 - FF
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
 	// Entry 100 - 11F
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
 	// Entry 120 - 13F
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-	0x00001693, 0x00001693, 0x00001693, 0x00001693,
-} // Size: 1240 bytes
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	// Entry 140 - 15F
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	// Entry 160 - 17F
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+	0x00001673, 0x00001673, 0x00001673, 0x00001673,
+} // Size: 1512 bytes
 
-const deData string = "" + // Size: 5779 bytes
+const deData string = "" + // Size: 5747 bytes
 	"\x02Fehler\x02(kein Argument): Als Administrator ausführen und den Manag" +
 	"er-Dienst installieren\x02Verwendung: %[1]s [\x0a%[2]s]\x02Kommandozeile" +
 	"noptionen\x02Es kann nicht festgestellt werden, ob der Prozess unter WOW" +
@@ -896,20 +1019,20 @@ const deData string = "" + // Size: 5779 bytes
 	"\x02%.2[1]f\u00a0GiB\x02%.2[1]f\u00a0TiB\x02%[1]s: %[2]q\x02Ungültige IP" +
 	"-Adresse\x02Ungültige Länge des Netzwerkpräfixes\x02Fehlender Port des E" +
 	"ndpunktes\x02Ungültiger Endpunkt-Host\x02Eckige Klammern müssen eine IPv" +
-	"6 Adresse enthalten\x02Ungültige MTU\x02Ungültiger Port\x02Ungültiges Er" +
-	"haltungsintervall\x02Ungültiger Schlüssel: %[1]v\x02Schlüssel müssen auf" +
-	" exakt 32 Bytes dekodiert werden\x02Zahl muss zwischen 0 und 2^64-1 sein" +
-	": %[1]v\x02Zwei Kommata in einer Zeile\x02Der Tunnelname ist ungültig" +
-	"\x02Die Zeile muss innerhalb eines Abschnitts stehen\x02Konfigurationssc" +
-	"hlüssel fehlt ein Gleichheitstrennzeichen\x02Eintrag muss einen Wert hab" +
-	"en\x02Ungültiger Eintrage im [Interface] Abschnitt\x02Ungültiger Eintrag" +
-	" im [Peer] Abschnitt\x02Eine Schnittstelle muss einen privaten Schlssel " +
-	"enthalten\x02[nicht spezifiziert]\x02Alle Teilnehmer (peers) müssen öffe" +
-	"ntliche Schlüssel haben\x02Fehler beim Abrufen der Konfiguration\x02Ungü" +
-	"ltiger Eintrag im Abschnitt [interface]\x02Die Protokollversion muss 1 s" +
-	"ein\x02Ungültiger Eintrag im Abschnitt [peer]\x02&Über AmneziaWG…"
+	"6 Adresse enthalten\x02Ungültige MTU\x02Ungültiger Port\x02Ungültiger Sc" +
+	"hlüssel: %[1]v\x02Schlüssel müssen auf exakt 32 Bytes dekodiert werden" +
+	"\x02Zahl muss zwischen 0 und 2^64-1 sein: %[1]v\x02Zwei Kommata in einer" +
+	" Zeile\x02Der Tunnelname ist ungültig\x02Die Zeile muss innerhalb eines " +
+	"Abschnitts stehen\x02Konfigurationsschlüssel fehlt ein Gleichheitstrennz" +
+	"eichen\x02Eintrag muss einen Wert haben\x02Ungültiger Eintrage im [Inter" +
+	"face] Abschnitt\x02Ungültiger Eintrag im [Peer] Abschnitt\x02Eine Schnit" +
+	"tstelle muss einen privaten Schlssel enthalten\x02[nicht spezifiziert]" +
+	"\x02Alle Teilnehmer (peers) müssen öffentliche Schlüssel haben\x02Fehler" +
+	" beim Abrufen der Konfiguration\x02Ungültiger Eintrag im Abschnitt [inte" +
+	"rface]\x02Die Protokollversion muss 1 sein\x02Ungültiger Eintrag im Absc" +
+	"hnitt [peer]\x02&Über AmneziaWG…"
 
-var enIndex = []uint32{ // 304 elements
+var enIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000006, 0x00000039, 0x0000004f,
 	0x00000064, 0x000000aa, 0x000000e9, 0x00000115,
@@ -954,51 +1077,70 @@ var enIndex = []uint32{ // 304 elements
 	0x00000f41, 0x00000f4b, 0x00000f54, 0x00000f61,
 	0x00000f6e, 0x00000f7b, 0x00000f88, 0x00000f95,
 	0x00000fa8, 0x00000fc6, 0x00000fe1, 0x00000ff7,
-	0x0000101d, 0x00001029, 0x00001036, 0x00001053,
+	0x0000101d, 0x00001029, 0x00001036, 0x00001049,
 	// Entry A0 - BF
-	0x00001066, 0x0000108b, 0x000010bf, 0x000010d3,
-	0x000010ec, 0x00001109, 0x00001133, 0x00001149,
-	0x0000116d, 0x0000118c, 0x000011b1, 0x000011c2,
-	0x000011e2, 0x00001201, 0x00001223, 0x0000123e,
-	0x0000125b, 0x0000126f, 0x0000127b, 0x000012ab,
-	0x000012e1, 0x000012fe, 0x00001317, 0x00001348,
-	0x00001357, 0x00001365, 0x0000137f, 0x000013a7,
-	0x000013c5, 0x000013f1, 0x00001413, 0x00001440,
+	0x0000106e, 0x000010a2, 0x000010b6, 0x000010cf,
+	0x000010ec, 0x00001116, 0x0000112c, 0x00001150,
+	0x0000116f, 0x00001194, 0x000011a5, 0x000011c5,
+	0x000011e4, 0x00001206, 0x00001221, 0x0000123e,
+	0x00001252, 0x0000125e, 0x0000128e, 0x000012c4,
+	0x000012e1, 0x000012fa, 0x0000132b, 0x0000133a,
+	0x00001348, 0x00001362, 0x0000139d, 0x000013cf,
+	0x000013e0, 0x000013f1, 0x0000141b, 0x00001445,
 	// Entry C0 - DF
-	0x00001463, 0x00001490, 0x000014b3, 0x000014ee,
-	0x00001520, 0x00001531, 0x00001542, 0x0000156c,
-	0x00001596, 0x000015bc, 0x000015ec, 0x00001615,
-	0x00001638, 0x00001663, 0x0000168d, 0x000016b7,
-	0x000016d5, 0x000016fa, 0x00001724, 0x00001746,
-	0x00001775, 0x00001799, 0x000017c8, 0x000017ee,
-	0x00001810, 0x0000183d, 0x00001861, 0x00001889,
-	0x000018b8, 0x000018e7, 0x0000190a, 0x00001940,
+	0x0000146b, 0x0000148e, 0x000014b1, 0x000014dc,
+	0x00001506, 0x00001530, 0x0000154e, 0x00001573,
+	0x0000159d, 0x000015bf, 0x000015ee, 0x00001612,
+	0x00001641, 0x00001667, 0x00001689, 0x000016b6,
+	0x000016da, 0x00001702, 0x00001731, 0x00001760,
+	0x00001783, 0x000017b9, 0x000017ef, 0x00001819,
+	0x00001846, 0x00001867, 0x0000188c, 0x000018bf,
+	0x000018f2, 0x00001915, 0x00001946, 0x00001977,
 	// Entry E0 - FF
-	0x00001976, 0x000019a0, 0x000019cd, 0x000019ee,
-	0x00001a13, 0x00001a46, 0x00001a54, 0x00001a7f,
-	0x00001ab2, 0x00001ad5, 0x00001b06, 0x00001b37,
-	0x00001b76, 0x00001b9b, 0x00001bb9, 0x00001bd7,
-	0x00001bff, 0x00001c33, 0x00001c60, 0x00001c8c,
-	0x00001cb7, 0x00001ce4, 0x00001d0f, 0x00001d52,
-	0x00001d9f, 0x00001dee, 0x00001e3e, 0x00001e5e,
-	0x00001e8a, 0x00001eb3, 0x00001ecb, 0x00001ee2,
+	0x000019b9, 0x000019f8, 0x00001a1d, 0x00001a3b,
+	0x00001a59, 0x00001a81, 0x00001ab5, 0x00001ae2,
+	0x00001b0d, 0x00001b41, 0x00001b6e, 0x00001b99,
+	0x00001bdc, 0x00001c29, 0x00001c78, 0x00001cc8,
+	0x00001ce8, 0x00001d14, 0x00001d3d, 0x00001d55,
+	0x00001d6c, 0x00001d85, 0x00001da5, 0x00001db7,
+	0x00001dc4, 0x00001dcd, 0x00001dd8, 0x00001de3,
+	0x00001dec, 0x00001df5, 0x00001dfe, 0x00001e07,
 	// Entry 100 - 11F
-	0x00001efb, 0x00001f1b, 0x00001f2d, 0x00001f3a,
-	0x00001f43, 0x00001f4e, 0x00001f59, 0x00001f62,
-	0x00001f6b, 0x00001f74, 0x00001f7d, 0x00001f86,
-	0x00001f8f, 0x00001fa2, 0x00001fb1, 0x00001fcf,
-	0x00001fee, 0x00001ffd, 0x0000200c, 0x00002030,
-	0x00002041, 0x00002047, 0x00002062, 0x0000207d,
-	0x00002093, 0x000020ac, 0x000020cd, 0x000020f1,
-	0x00002115, 0x0000213a, 0x00002163, 0x00002179,
+	0x00001e10, 0x00001e19, 0x00001e22, 0x00001e2b,
+	0x00001e38, 0x00001e57, 0x00001e6e, 0x00001e82,
+	0x00001e9a, 0x00001eb2, 0x00001ecf, 0x00001ee2,
+	0x00001ef1, 0x00001f0f, 0x00001f2e, 0x00001f3d,
+	0x00001f4c, 0x00001f70, 0x00001f81, 0x00001f87,
+	0x00001fa2, 0x00001fbd, 0x00001fd3, 0x00001fec,
+	0x00002006, 0x0000201e, 0x00002036, 0x0000205e,
+	0x0000207e, 0x0000209b, 0x000020bc, 0x000020dd,
 	// Entry 120 - 13F
-	0x00002190, 0x000021b5, 0x000021d5, 0x0000220a,
-	0x00002230, 0x0000224f, 0x0000226d, 0x000022d4,
-	0x000022db, 0x000022df, 0x00002446, 0x0000248d,
-	0x000024ca, 0x000024f9, 0x0000251b, 0x00002529,
-} // Size: 1240 bytes
+	0x00002103, 0x00002122, 0x00002141, 0x00002157,
+	0x0000216e, 0x00002193, 0x000021b3, 0x000021e8,
+	0x0000220e, 0x0000222c, 0x0000224a, 0x00002264,
+	0x0000227e, 0x00002298, 0x000022b2, 0x000022cc,
+	0x000022e6, 0x00002300, 0x0000231a, 0x0000233f,
+	0x000023a6, 0x000023ad, 0x000023c4, 0x000023de,
+	0x000023f0, 0x000023ff, 0x00002412, 0x00002425,
+	0x0000243d, 0x0000244e, 0x0000245f, 0x00002463,
+	// Entry 140 - 15F
+	0x000025ca, 0x000025f1, 0x0000271f, 0x00002731,
+	0x00002767, 0x0000278e, 0x000027b6, 0x000027d4,
+	0x000027db, 0x00002862, 0x00002868, 0x00002890,
+	0x000028bd, 0x00002916, 0x00002927, 0x00002983,
+	0x0000299e, 0x00002a03, 0x00002a15, 0x00002a27,
+	0x00002a80, 0x00002a8a, 0x00002a96, 0x00002a9c,
+	0x00002ab0, 0x00002ac2, 0x00002ad3, 0x00002b4a,
+	0x00002b62, 0x00002b82, 0x00002bd7, 0x00002c18,
+	// Entry 160 - 17F
+	0x00002c3a, 0x00002c52, 0x00002c6d, 0x00002cd8,
+	0x00002cf2, 0x00002d03, 0x00002d1b, 0x00002d2a,
+	0x00002d40, 0x00002d70, 0x00002d9c, 0x00002dd3,
+	0x00002e0f, 0x00002e56, 0x00002e93, 0x00002eae,
+	0x00002edd, 0x00002eff, 0x00002f1e, 0x00002f2c,
+} // Size: 1512 bytes
 
-const enData string = "" + // Size: 9513 bytes
+const enData string = "" + // Size: 12076 bytes
 	"\x02Error\x02(no argument): elevate and install manager service\x02Usage" +
 	": %[1]s [\x0a%[2]s]\x02Command Line Options\x02Unable to determine wheth" +
 	"er the process is running under WOW64: %[1]v\x02You must use the native " +
@@ -1067,90 +1209,128 @@ const enData string = "" + // Size: 9513 bytes
 	"\x02%.2[1]f\u00a0GiB\x02%.2[1]f\u00a0TiB\x02%[1]s: %[2]q\x02Invalid IP a" +
 	"ddress\x02Invalid network prefix length\x02Missing port from endpoint" +
 	"\x02Invalid endpoint host\x02Brackets must contain an IPv6 address\x02In" +
-	"valid MTU\x02Invalid port\x02Invalid persistent keepalive\x02Invalid key" +
-	": %[1]v\x02Keys must decode to exactly 32 bytes\x02Number must be a numb" +
-	"er between 0 and 2^64-1: %[1]v\x02Two commas in a row\x02Tunnel name is " +
-	"not valid\x02Line must occur in a section\x02Config key is missing an eq" +
-	"uals separator\x02Key must have a value\x02Invalid key for [Interface] s" +
-	"ection\x02Invalid key for [Peer] section\x02An interface must have a pri" +
-	"vate key\x02[none specified]\x02All peers must have public keys\x02Error" +
-	" in getting configuration\x02Invalid key for interface section\x02Protoc" +
-	"ol version must be 1\x02Invalid key for peer section\x02&About AmneziaWG" +
-	"…\x04\x00\x01 \x07\x02Error:\x02Interface closed, ignored requested st" +
-	"ate %[1]s\x02Interface state was %[1]s, requested %[2]s, now %[3]s\x02Un" +
-	"able to update bind: %[1]v\x02Bind close failed: %[1]v\x02Trouble determ" +
-	"ining MTU, assuming default: %[1]v\x02Device closing\x02Device closed" +
-	"\x02UDP bind has been updated\x02UAPI: Updating init_packet_magic_header" +
-	"\x02UAPI: Using default init type\x02UAPI: Updating response_packet_magi" +
-	"c_header\x02UAPI: Using default response type\x02UAPI: Updating underloa" +
-	"d_packet_magic_header\x02UAPI: Using default underload type\x02UAPI: Upd" +
-	"ating transport_packet_magic_header\x02UAPI: Using default transport typ" +
-	"e\x02%[1]v - ConsumeMessageInitiation: handshake replay @ %[2]v\x02%[1]v" +
-	" - ConsumeMessageInitiation: handshake flood\x02%[1]v - Starting\x02%[1]" +
-	"v - Stopping\x02Routine: receive incoming %[1]s - stopped\x02Routine: re" +
-	"ceive incoming %[1]s - started\x02Failed to receive %[1]s packet: %[2]v" +
-	"\x02Transport packet lined up with another msg type\x02ASec: Received me" +
-	"ssage with unknown type\x02Received message with unknown type\x02Routine" +
-	": decryption worker %[1]d - started\x02Routine: handshake worker %[1]d -" +
-	" stopped\x02Routine: handshake worker %[1]d - started\x02Failed to decod" +
-	"e cookie reply\x02Receiving cookie response from %[1]s\x02Could not decr" +
-	"ypt invalid cookie response\x02Received packet with invalid mac1\x02Inva" +
-	"lid packet ended up in the handshake queue\x02Failed to decode initiatio" +
-	"n message\x02Received invalid initiation message from %[1]s\x02%[1]v - R" +
-	"eceived handshake initiation\x02Failed to decode response message\x02Rec" +
-	"eived invalid response message from %[1]s\x02%[1]v - Received handshake " +
-	"response\x02%[1]v - Failed to derive keypair: %[2]v\x02%[1]v - Routine: " +
-	"sequential receiver - stopped\x02%[1]v - Routine: sequential receiver - " +
-	"started\x02%[1]v - Receiving keepalive packet\x02IPv4 packet with disall" +
-	"owed source address from %[1]v\x02IPv6 packet with disallowed source add" +
-	"ress from %[1]v\x02Packet with invalid IP version from %[1]v\x02Failed t" +
-	"o write packets to TUN device: %[1]v\x02%[1]v - Sending keepalive packet" +
-	"\x02%[1]v - Sending handshake initiation\x02%[1]v - Failed to create ini" +
-	"tiation message: %[2]v\x02%[1]v - %[2]v\x02%[1]v - Failed to send junk p" +
-	"ackets: %[2]v\x02%[1]v - Failed to send handshake initiation: %[2]v\x02%" +
-	"[1]v - Sending handshake response\x02%[1]v - Failed to create response m" +
-	"essage: %[2]v\x02%[1]v - Failed to send handshake response: %[2]v\x02Sen" +
-	"ding cookie response for denied handshake message for %[1]v\x02Failed to" +
-	" create cookie reply: %[1]v\x02Routine: TUN reader - stopped\x02Routine:" +
-	" TUN reader - started\x02Received packet with unknown IP version\x02Drop" +
-	"ped some packets from multi-segment read: %[1]v\x02Failed to read packet" +
-	" from TUN device: %[1]v\x02%[1]v - Failed to create junk packet: %[2]v" +
-	"\x02Routine: encryption worker %[1]d - started\x02%[1]v - Routine: seque" +
-	"ntial sender - started\x02%[1]v - Failed to send data packets: %[2]v\x02" +
-	"%[1]s - Handshake did not complete after %[2]d attempts, giving up\x02%[" +
-	"1]s - Handshake did not complete after %[2]d seconds, retrying (try %[3]" +
-	"d)\x02%[1]s - Retrying handshake because we stopped hearing back after %" +
-	"[2]d seconds\x02%[1]s - Removing all keys, since we haven't received a n" +
-	"ew one in %[2]d seconds\x02Routine: event worker - started\x02Failed to " +
-	"load updated MTU of device: %[1]v\x02MTU not updated to negative value: " +
-	"%[1]v\x02MTU updated: %[1]v%[2]s\x02Interface up requested\x02Interface " +
-	"down requested\x02Routine: event worker - stopped\x02listen_port=%[1]d" +
-	"\x02fwmark=%[1]d\x02jc=%[1]d\x02jmin=%[1]d\x02jmax=%[1]d\x02s1=%[1]d\x02" +
-	"s2=%[1]d\x02h1=%[1]d\x02h2=%[1]d\x02h3=%[1]d\x02h4=%[1]d\x02protocol_ver" +
-	"sion=1\x02endpoint=%[1]s\x02last_handshake_time_sec=%[1]d\x02last_handsh" +
-	"ake_time_nsec=%[1]d\x02tx_bytes=%[1]d\x02rx_bytes=%[1]d\x02persistent_ke" +
-	"epalive_interval=%[1]d\x02allowed_ip=%[1]s\x02%[1]v\x02UAPI: Updating pr" +
-	"ivate key\x02UAPI: Updating listen port\x02UAPI: Updating fwmark\x02UAPI" +
-	": Removing all peers\x02UAPI: Updating junk_packet_count\x02UAPI: Updati" +
-	"ng junk_packet_min_size\x02UAPI: Updating junk_packet_max_size\x02UAPI: " +
-	"Updating init_packet_junk_size\x02UAPI: Updating response_packet_junk_si" +
-	"ze\x02%[1]v - UAPI: Created\x02%[1]v - UAPI: Removing\x02%[1]v - UAPI: U" +
-	"pdating preshared key\x02%[1]v - UAPI: Updating endpoint\x02%[1]v - UAPI" +
-	": Updating persistent keepalive interval\x02%[1]v - UAPI: Removing all a" +
-	"llowedips\x02%[1]v - UAPI: Adding allowedip\x02invalid UAPI operation: %" +
-	"[1]v\x02App version: %[1]s\x0aWintun version: %[2]s\x0aGo version: %[3]s" +
-	"\x0aOperating system: %[4]s\x0aArchitecture: %[5]s\x02Table:\x02off\x02W" +
-	"hen a configuration has exactly one peer, and that peer has an allowed I" +
-	"Ps containing at least one of 0.0.0.0/0 or ::/0, and the interface does " +
-	"not have table off, then the tunnel service engages a firewall ruleset t" +
-	"o block all traffic that is neither to nor from the tunnel interface or " +
-	"is to the wrong DNS server, with special exceptions for DHCP and NDP." +
-	"\x02Ensure that you obtained the configuration file from a trusted sourc" +
-	"e.\x02Official Amnezia services are available only at amnezia.org.\x02Pl" +
+	"valid MTU\x02Invalid port\x02Invalid key: %[1]v\x02Keys must decode to e" +
+	"xactly 32 bytes\x02Number must be a number between 0 and 2^64-1: %[1]v" +
+	"\x02Two commas in a row\x02Tunnel name is not valid\x02Line must occur i" +
+	"n a section\x02Config key is missing an equals separator\x02Key must hav" +
+	"e a value\x02Invalid key for [Interface] section\x02Invalid key for [Pee" +
+	"r] section\x02An interface must have a private key\x02[none specified]" +
+	"\x02All peers must have public keys\x02Error in getting configuration" +
+	"\x02Invalid key for interface section\x02Protocol version must be 1\x02I" +
+	"nvalid key for peer section\x02&About AmneziaWG…\x04\x00\x01 \x07\x02Err" +
+	"or:\x02Interface closed, ignored requested state %[1]s\x02Interface stat" +
+	"e was %[1]s, requested %[2]s, now %[3]s\x02Unable to update bind: %[1]v" +
+	"\x02Bind close failed: %[1]v\x02Trouble determining MTU, assuming defaul" +
+	"t: %[1]v\x02Device closing\x02Device closed\x02UDP bind has been updated" +
+	"\x02%[1]v - ConsumeMessageInitiation: handshake replay @ %[2]v\x02%[1]v " +
+	"- ConsumeMessageInitiation: handshake flood\x02%[1]v - Starting\x02%[1]v" +
+	" - Stopping\x02Routine: receive incoming %[1]s - stopped\x02Routine: rec" +
+	"eive incoming %[1]s - started\x02Failed to receive %[1]s packet: %[2]v" +
+	"\x02Failed to initialize header cipher\x02Received message with unknown " +
+	"type\x02Routine: decryption worker %[1]d - started\x02Routine: handshake" +
+	" worker %[1]d - stopped\x02Routine: handshake worker %[1]d - started\x02" +
+	"Failed to decode cookie reply\x02Receiving cookie response from %[1]s" +
+	"\x02Could not decrypt invalid cookie response\x02Received packet with in" +
+	"valid mac1\x02Invalid packet ended up in the handshake queue\x02Failed t" +
+	"o decode initiation message\x02Received invalid initiation message from " +
+	"%[1]s\x02%[1]v - Received handshake initiation\x02Failed to decode respo" +
+	"nse message\x02Received invalid response message from %[1]s\x02%[1]v - R" +
+	"eceived handshake response\x02%[1]v - Failed to derive keypair: %[2]v" +
+	"\x02%[1]v - Routine: sequential receiver - stopped\x02%[1]v - Routine: s" +
+	"equential receiver - started\x02%[1]v - Receiving keepalive packet\x02IP" +
+	"v4 packet with disallowed source address from %[1]v\x02IPv6 packet with " +
+	"disallowed source address from %[1]v\x02Packet with invalid IP version f" +
+	"rom %[1]v\x02Failed to write packets to TUN device: %[1]v\x02%[1]v - Sen" +
+	"ding keepalive packet\x02%[1]v - Sending handshake initiation\x02%[1]v -" +
+	" Failed to create initiation message: %[2]v\x02%[1]v - Failed to send ha" +
+	"ndshake initiation: %[2]v\x02%[1]v - Sending handshake response\x02%[1]v" +
+	" - Failed to create response message: %[2]v\x02%[1]v - Failed to send ha" +
+	"ndshake response: %[2]v\x02Sending cookie response blocked for %[1]v due" +
+	" to disabled cookies\x02Sending cookie response for denied handshake mes" +
+	"sage for %[1]v\x02Failed to create cookie reply: %[1]v\x02Routine: TUN r" +
+	"eader - stopped\x02Routine: TUN reader - started\x02Received packet with" +
+	" unknown IP version\x02Dropped some packets from multi-segment read: %[1" +
+	"]v\x02Failed to read packet from TUN device: %[1]v\x02Routine: encryptio" +
+	"n worker %[1]d - started\x02Routing: header obfuscation failed - packet " +
+	"dropped\x02%[1]v - Routine: sequential sender - started\x02%[1]v - Faile" +
+	"d to send data packets: %[2]v\x02%[1]s - Handshake did not complete afte" +
+	"r %[2]d attempts, giving up\x02%[1]s - Handshake did not complete after " +
+	"%[2]d seconds, retrying (try %[3]d)\x02%[1]s - Retrying handshake becaus" +
+	"e we stopped hearing back after %[2]d seconds\x02%[1]s - Removing all ke" +
+	"ys, since we haven't received a new one in %[2]d seconds\x02Routine: eve" +
+	"nt worker - started\x02Failed to load updated MTU of device: %[1]v\x02MT" +
+	"U not updated to negative value: %[1]v\x02MTU updated: %[1]v%[2]s\x02Int" +
+	"erface up requested\x02Interface down requested\x02Routine: event worker" +
+	" - stopped\x02listen_port=%[1]d\x02fwmark=%[1]d\x02jc=%[1]d\x02jmin=%[1]" +
+	"d\x02jmax=%[1]d\x02s1=%[1]d\x02s2=%[1]d\x02s3=%[1]d\x02s4=%[1]d\x02h1=%[" +
+	"1]s\x02h2=%[1]s\x02h3=%[1]s\x02h4=%[1]s\x02i%[1]d=%[2]s\x02content_paddi" +
+	"ng_addition=%[1]s\x02rekey_after_time=%[1]s\x02rekey_timeout=%[1]s\x02re" +
+	"ject_after_time=%[1]s\x02keepalive_timeout=%[1]s\x02max_handshake_attemp" +
+	"ts=%[1]s\x02protocol_version=1\x02endpoint=%[1]s\x02last_handshake_time_" +
+	"sec=%[1]d\x02last_handshake_time_nsec=%[1]d\x02tx_bytes=%[1]d\x02rx_byte" +
+	"s=%[1]d\x02persistent_keepalive_interval=%[1]s\x02allowed_ip=%[1]s\x02%[" +
+	"1]v\x02UAPI: Updating private key\x02UAPI: Updating listen port\x02UAPI:" +
+	" Updating fwmark\x02UAPI: Removing all peers\x02UAPI: Updating junk coun" +
+	"t\x02UAPI: Updating junk min\x02UAPI: Updating junk max\x02UAPI: Updatin" +
+	"g content padding addition\x02UAPI: Updating rekey after time\x02UAPI: U" +
+	"pdating rekey timeout\x02UAPI: Updating reject after time\x02UAPI: Updat" +
+	"ing keepalive timeout\x02UAPI: Updating max handshake attempts\x02UAPI: " +
+	"Updating random trailers\x02UAPI: Updating disable cookies\x02%[1]v - UA" +
+	"PI: Created\x02%[1]v - UAPI: Removing\x02%[1]v - UAPI: Updating preshare" +
+	"d key\x02%[1]v - UAPI: Updating endpoint\x02%[1]v - UAPI: Updating persi" +
+	"stent keepalive interval\x02%[1]v - UAPI: Removing all allowedips\x02%[1" +
+	"]v - UAPI: %[2]s allowedip\x02invalid UAPI operation: %[1]v\x02UAPI: Upd" +
+	"ating h1 padding\x02UAPI: Updating h2 padding\x02UAPI: Updating h3 paddi" +
+	"ng\x02UAPI: Updating h4 padding\x02UAPI: Updating s1 padding\x02UAPI: Up" +
+	"dating s2 padding\x02UAPI: Updating s3 padding\x02UAPI: Updating s4 padd" +
+	"ing\x02UAPI: Updating header protection key\x02App version: %[1]s\x0aWin" +
+	"tun version: %[2]s\x0aGo version: %[3]s\x0aOperating system: %[4]s\x0aAr" +
+	"chitecture: %[5]s\x02Table:\x02Header protection key:\x02Content padding" +
+	" addition:\x02Rekey after time:\x02Rekey timeout:\x02Reject after time:" +
+	"\x02Keepalive timeout:\x02Max handshake attempts:\x02Random trailers:" +
+	"\x02Disable cookies:\x02off\x02When a configuration has exactly one peer" +
+	", and that peer has an allowed IPs containing at least one of 0.0.0.0/0 " +
+	"or ::/0, and the interface does not have table off, then the tunnel serv" +
+	"ice engages a firewall ruleset to block all traffic that is neither to n" +
+	"or from the tunnel interface or is to the wrong DNS server, with special" +
+	" exceptions for DHCP and NDP.\x02&Russian networks directly (geo-split)" +
+	"\x02Adds GeoSplit = ru to the interface: Russian network prefixes are ro" +
+	"uted outside the tunnel and permitted through the kill-switch, everythin" +
+	"g else goes through the tunnel. Requires the kill-switch. The block size" +
+	" threshold, list updates and exceptions are configured in the geo-split " +
+	"routing settings.\x02Geo-split routing\x02&Update the list when a tunnel" +
+	" starts, if it is stale\x02Consider the list stale after (hours):\x02Rou" +
+	"te directly only blocks of at least:\x02/24 (every block in the list)" +
+	"\x02/%[1]d\x02Smaller blocks are sent through the tunnel. Larger thresho" +
+	"lds mean fewer routes but more Russian addresses reached through the tun" +
+	"nel.\x02IPv6:\x02Russian IPv6 networks directly, by list\x02All IPv6 thr" +
+	"ough the tunnel (no IPv6 routes)\x02&Permit private networks through the" +
+	" kill-switch (LAN, other VPN adapters and their DNS)\x02Always directly:" +
+	"\x02Comma separated prefixes that are routed directly regardless of the " +
+	"list and the threshold.\x02Always through the tunnel:\x02Comma separated" +
+	" prefixes that are removed from the direct set, for example a provider's" +
+	" video cache.\x02IPv4 list source:\x02IPv6 list source:\x02An https URL " +
+	"or a local file path. A %[1]s in the URL is replaced with the country co" +
+	"de.\x02&Defaults\x02Update &now\x02never\x02%[1]d minute(s) ago\x02%[1]d" +
+	" hour(s) ago\x02%[1]d day(s) ago\x02No tunnel has geo-split enabled yet." +
+	" Enable it in the tunnel editor with the “Russian networks directly” che" +
+	"ckbox.\x02%[1]s list: updating…\x02%[1]s list: unavailable (%[2]s)\x02%[" +
+	"1]s list: built-in snapshot, %[2]d IPv4 and %[3]d IPv6 prefixes (never d" +
+	"ownloaded)\x02%[1]s list: %[2]d IPv4 and %[3]d IPv6 prefixes, downloaded" +
+	" %[4]s\x02Last update attempt failed: %[1]s\x02Invalid settings: %[1]s" +
+	"\x02Preview unavailable: %[1]s\x02Direct routes: %[1]d IPv4 and %[2]d IP" +
+	"v6. Through the tunnel: %[3]d smaller IPv4 blocks (%[4]d addresses).\x02" +
+	"Unable to update the list\x02Invalid settings\x02Unable to save settings" +
+	"\x02Geo-split: Off\x02&Geo-split routing…\x02Geo-split: %[1]s directly, " +
+	"updating the list…\x02Geo-split: %[1]s directly, list unavailable\x02Geo" +
+	"-split: %[1]s directly, %[2]d routes, built-in list\x02Geo-split: %[1]s " +
+	"directly, %[2]d routes, list updated %[3]s\x02Ensure that you obtained t" +
+	"he configuration file from a trusted source.\x02Official Amnezia service" +
+	"s are available only at amnezia.org.\x02Geo-split routing settings\x02Pl" +
 	"ease ask the system administrator to update.\x02Status: Waiting for admi" +
-	"nistrator\x02Invalid %[1]s"
+	"nistrator\x02Invalid geo-split country code\x02Invalid %[1]s"
 
-var es_ESIndex = []uint32{ // 304 elements
+var es_ESIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000006, 0x00000044, 0x00000058,
 	0x00000077, 0x000000c5, 0x000000ff, 0x00000137,
@@ -1195,51 +1375,70 @@ var es_ESIndex = []uint32{ // 304 elements
 	0x00001213, 0x0000121e, 0x00001226, 0x00001232,
 	0x0000123e, 0x0000124a, 0x00001256, 0x00001263,
 	0x00001282, 0x000012af, 0x000012cc, 0x000012ef,
-	0x00001320, 0x00001335, 0x0000134d, 0x00001374,
+	0x00001320, 0x00001335, 0x0000134d, 0x0000136b,
 	// Entry A0 - BF
-	0x00001392, 0x000013c6, 0x000013f4, 0x0000140b,
-	0x0000142e, 0x00001456, 0x00001493, 0x000014b0,
-	0x000014e4, 0x00001513, 0x0000153d, 0x00001554,
-	0x00001581, 0x000015a4, 0x000015d5, 0x000015fa,
-	0x00001629, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
+	0x0000139f, 0x000013cd, 0x000013e4, 0x00001407,
+	0x0000142f, 0x0000146c, 0x00001489, 0x000014bd,
+	0x000014ec, 0x00001516, 0x0000152d, 0x0000155a,
+	0x0000157d, 0x000015ae, 0x000015d3, 0x00001602,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
 	// Entry C0 - DF
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
 	// Entry E0 - FF
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
 	// Entry 100 - 11F
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
 	// Entry 120 - 13F
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-	0x00001641, 0x00001641, 0x00001641, 0x00001641,
-} // Size: 1240 bytes
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	// Entry 140 - 15F
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	// Entry 160 - 17F
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+	0x0000161a, 0x0000161a, 0x0000161a, 0x0000161a,
+} // Size: 1512 bytes
 
-const es_ESData string = "" + // Size: 5697 bytes
+const es_ESData string = "" + // Size: 5658 bytes
 	"\x02Error\x02(sin argumento): eleve e instale el servicio de administrad" +
 	"or\x02Uso: %[1]s [\x0a%[2]s]\x02Opciones de línea de comandos\x02No fue " +
 	"posible determinar si el proceso se está ejecutando bajo WOW64: %[1]v" +
@@ -1317,20 +1516,20 @@ const es_ESData string = "" + // Size: 5697 bytes
 	"[1]f TiB\x02%[1]s: %[2]q\x02La dirección IP no es válida\x02La longitud " +
 	"del prefijo de red no es válida\x02Falta el puerto del Endpoint\x02El ho" +
 	"st del Endpoint no es válido\x02Los corchetes deben contener una direcci" +
-	"ón IPv6\x02La MTU no es válida\x02El puerto no es válido\x02El Keepaliv" +
-	"e persistente no es válido\x02La clave no es válida: %[1]v\x02Las claves" +
-	" deben decodificar exactamente a 32 bytes\x02El número debe estar entre " +
-	"0 y 2^64-1: %[1]v\x02Dos comas consecutivas\x02El nombre del túnel no es" +
-	" válido\x02La línea debe aparecer en una sección\x02La clave de configur" +
-	"ación no tiene un separador de igualdad\x02La clave debe tener un valor" +
-	"\x02La clave no es válida para la sección [Interface]\x02La clave no es " +
-	"válida para la sección [Peer]\x02Una interfaz debe tener una clave priva" +
-	"da\x02[ninguno especificado]\x02Todos los pares deben tener claves públi" +
-	"cas\x02Error al obtener la configuración\x02La clave no es válida para s" +
-	"ección de interfaz\x02La versión del protocolo debe ser 1\x02La clave no" +
-	" es válida para la sección de par\x02&Acerca de AmneziaWG…"
+	"ón IPv6\x02La MTU no es válida\x02El puerto no es válido\x02La clave no" +
+	" es válida: %[1]v\x02Las claves deben decodificar exactamente a 32 bytes" +
+	"\x02El número debe estar entre 0 y 2^64-1: %[1]v\x02Dos comas consecutiv" +
+	"as\x02El nombre del túnel no es válido\x02La línea debe aparecer en una " +
+	"sección\x02La clave de configuración no tiene un separador de igualdad" +
+	"\x02La clave debe tener un valor\x02La clave no es válida para la secció" +
+	"n [Interface]\x02La clave no es válida para la sección [Peer]\x02Una int" +
+	"erfaz debe tener una clave privada\x02[ninguno especificado]\x02Todos lo" +
+	"s pares deben tener claves públicas\x02Error al obtener la configuración" +
+	"\x02La clave no es válida para sección de interfaz\x02La versión del pro" +
+	"tocolo debe ser 1\x02La clave no es válida para la sección de par\x02&Ac" +
+	"erca de AmneziaWG…"
 
-var etIndex = []uint32{ // 304 elements
+var etIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000005, 0x0000003c, 0x00000055,
 	0x00000066, 0x000000ae, 0x000000eb, 0x0000011a,
@@ -1375,51 +1574,70 @@ var etIndex = []uint32{ // 304 elements
 	0x00001083, 0x00001090, 0x00001099, 0x000010a6,
 	0x000010b3, 0x000010c0, 0x000010cd, 0x000010da,
 	0x000010ee, 0x0000110f, 0x00001131, 0x0000114f,
-	0x00001178, 0x00001185, 0x00001193, 0x000011bd,
+	0x00001178, 0x00001185, 0x00001193, 0x000011a9,
 	// Entry A0 - BF
-	0x000011d3, 0x0000120a, 0x0000123f, 0x00001252,
-	0x0000126c, 0x0000128f, 0x000012c1, 0x000012dd,
-	0x00001300, 0x0000131e, 0x0000133e, 0x00001350,
-	0x0000137f, 0x000013a0, 0x000013bf, 0x000013e0,
-	0x00001400, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
+	0x000011e0, 0x00001215, 0x00001228, 0x00001242,
+	0x00001265, 0x00001297, 0x000012b3, 0x000012d6,
+	0x000012f4, 0x00001314, 0x00001326, 0x00001355,
+	0x00001376, 0x00001395, 0x000013b6, 0x000013d6,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
 	// Entry C0 - DF
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
 	// Entry E0 - FF
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
 	// Entry 100 - 11F
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
 	// Entry 120 - 13F
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-	0x00001412, 0x00001412, 0x00001412, 0x00001412,
-} // Size: 1240 bytes
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	// Entry 140 - 15F
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	// Entry 160 - 17F
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+	0x000013e8, 0x000013e8, 0x000013e8, 0x000013e8,
+} // Size: 1512 bytes
 
-const etData string = "" + // Size: 5138 bytes
+const etData string = "" + // Size: 5096 bytes
 	"\x02Viga\x02(tühi muutuja): paigalda haldusteenus ülemõigustega\x02Kasut" +
 	"us: %[1]s [ \x0a%[2]s]\x02Käsurea valikud\x02Pole võimalik tuvastada, ka" +
 	"s protsess töötab WOW64 kontekstis: %[1]v\x02Peate kasutama antud arvuti" +
@@ -1492,18 +1710,17 @@ const etData string = "" + // Size: 5138 bytes
 	"\x02%.2[1]f\u00a0TiB\x02%[1]s: %[2]q\x02Sobimatu IP-aadress\x02Sobimatu " +
 	"alamvõrgu maski pikkus\x02Lõpp-punktis on port määramata\x02Sobimatu lõp" +
 	"p-punkti aadress\x02Looksulud peavad sisaldama IPv6-aadressi\x02Sobimatu" +
-	" MTU\x02Sobimatu port\x02Sobimatu kestva ühendushoidiku väärtus\x02Sobim" +
-	"atu võti: %[1]v\x02Võtmed peavad dekodeerima täpselt 32 baidi suuruseks" +
-	"\x02Number peab olema väärtus 0 ja 2^64-1 vahel: %[1]v\x02Kaks koma järj" +
-	"est\x02Tunneli nimi pole sobilik\x02Rida peab olemas olema lõigu sees" +
-	"\x02Seadistusvõtmel on võrdusmärk eraldajana puudu\x02Võti peab omama vä" +
-	"ärtust\x02Sobimatu võti [Interface] lõigus\x02Sobimatu võti [Peer] lõig" +
-	"us\x02Liides peab omama privaatvõtit\x02[pole määratud]\x02Kõik partneri" +
-	"d peavad omama avalikke võtmeid\x02Seadistuste saamisel ilmnes viga\x02S" +
-	"obimatu võti liidese lõigus\x02Protokolli versioon peab olema 1\x02Sobim" +
-	"atu võti partneri lõigus\x02&AmneziaWG'ist…"
+	" MTU\x02Sobimatu port\x02Sobimatu võti: %[1]v\x02Võtmed peavad dekodeeri" +
+	"ma täpselt 32 baidi suuruseks\x02Number peab olema väärtus 0 ja 2^64-1 v" +
+	"ahel: %[1]v\x02Kaks koma järjest\x02Tunneli nimi pole sobilik\x02Rida pe" +
+	"ab olemas olema lõigu sees\x02Seadistusvõtmel on võrdusmärk eraldajana p" +
+	"uudu\x02Võti peab omama väärtust\x02Sobimatu võti [Interface] lõigus\x02" +
+	"Sobimatu võti [Peer] lõigus\x02Liides peab omama privaatvõtit\x02[pole m" +
+	"ääratud]\x02Kõik partnerid peavad omama avalikke võtmeid\x02Seadistuste" +
+	" saamisel ilmnes viga\x02Sobimatu võti liidese lõigus\x02Protokolli vers" +
+	"ioon peab olema 1\x02Sobimatu võti partneri lõigus\x02&AmneziaWG'ist…"
 
-var faIndex = []uint32{ // 304 elements
+var faIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000007, 0x0000005b, 0x0000007a,
 	0x0000009e, 0x000000fe, 0x00000171, 0x000001a3,
@@ -1548,51 +1765,70 @@ var faIndex = []uint32{ // 304 elements
 	0x0000148f, 0x0000149c, 0x000014ac, 0x000014b9,
 	0x000014c6, 0x000014d3, 0x000014e0, 0x000014ed,
 	0x0000151a, 0x0000154d, 0x00001585, 0x000015be,
-	0x000015fb, 0x00001615, 0x0000162d, 0x00001667,
+	0x000015fb, 0x00001615, 0x0000162d, 0x0000164c,
 	// Entry A0 - BF
-	0x00001686, 0x000016d4, 0x00001710, 0x0000172f,
-	0x00001753, 0x0000177e, 0x000017c4, 0x000017fa,
-	0x0000183e, 0x0000187d, 0x000018c1, 0x000018d5,
-	0x00001925, 0x0000194f, 0x0000198a, 0x000019b4,
-	0x000019ee, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
+	0x0000169a, 0x000016d6, 0x000016f5, 0x00001719,
+	0x00001744, 0x0000178a, 0x000017c0, 0x00001804,
+	0x00001843, 0x00001887, 0x0000189b, 0x000018eb,
+	0x00001915, 0x00001950, 0x0000197a, 0x000019b4,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
 	// Entry C0 - DF
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
 	// Entry E0 - FF
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
 	// Entry 100 - 11F
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
 	// Entry 120 - 13F
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-	0x00001a09, 0x00001a09, 0x00001a09, 0x00001a09,
-} // Size: 1240 bytes
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	// Entry 140 - 15F
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	// Entry 160 - 17F
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+	0x000019cf, 0x000019cf, 0x000019cf, 0x000019cf,
+} // Size: 1512 bytes
 
-const faData string = "" + // Size: 6665 bytes
+const faData string = "" + // Size: 6607 bytes
 	"\x02خطا\x02(بدون ورودیی): سرویس مدیریت را ارتقا و نصب کنید\x02استفاده: %" +
 	"[1]s [\x0a%[2]s]\x02گزینه\u200cهای خط فرمان\x02ناتوان در ارزیابی اینکه ف" +
 	"رآیند تحت WOW64 کار می کند: %[1]v\x02شما باید از نگارش بومی وایرگارد بر" +
@@ -1653,18 +1889,18 @@ const faData string = "" + // Size: 6665 bytes
 	"MiB\x02%.2[1]f\u00a0GiB\x02%.2[1]f\u00a0TiB\x02%[1]s: %[2]q\x02نشانی آی" +
 	"\u200cپی نامعتبر است\x02طول پیشوند شبکه نامعتبر است\x02پورت از نقطه پایا" +
 	"نی وجود ندارد\x02میزبان نقطه پایانی نامعتبر است\x02براکت\u200cها باید ح" +
-	"اوی آدرس IPv6 باشند\x02MTU نامعتبر است\x02پورت نامعتبر\x02مقدار کنترلر " +
-	"وصل بودن مجاز نیست\x02کلید نامعتبر: %[1]v\x02کلیدها باید دقیقا به ۳۲ با" +
-	"یت رمزگشایی شوند\x02عدد باید عددی بین 0 و 2^64-1 باشد: %[1]v\x02دو کاما" +
-	" پشت سر هم\x02نام تونل معتبر نیست\x02خط باید در یک بخش رخ دهد\x02کلید پی" +
-	"کربندی یک جداکننده برابر ندارد\x02کلید باید یک مقدار داشته باشد\x02کلید" +
-	" برای رابط بخش [Interface] نامعتبر است\x02کلید برای رابط بخش [Peer] نامع" +
-	"تبر است\x02یک رابط باید یک کلید خصوصی داشته باشد\x02[مشخص نشده]\x02همه " +
-	"همتاها باید کلید\u200cهای عمومی داشته باشند\x02خطا در دریافت پیکربندی" +
-	"\x02کلید برای بخش [Interface] نامعتبر است\x02نسخه پروتکل باید 1 باشد\x02" +
-	"کلید برای بخش طرفین نامعتبر است\x02&درباره AmneziaWG…"
+	"اوی آدرس IPv6 باشند\x02MTU نامعتبر است\x02پورت نامعتبر\x02کلید نامعتبر:" +
+	" %[1]v\x02کلیدها باید دقیقا به ۳۲ بایت رمزگشایی شوند\x02عدد باید عددی بی" +
+	"ن 0 و 2^64-1 باشد: %[1]v\x02دو کاما پشت سر هم\x02نام تونل معتبر نیست" +
+	"\x02خط باید در یک بخش رخ دهد\x02کلید پیکربندی یک جداکننده برابر ندارد" +
+	"\x02کلید باید یک مقدار داشته باشد\x02کلید برای رابط بخش [Interface] نامع" +
+	"تبر است\x02کلید برای رابط بخش [Peer] نامعتبر است\x02یک رابط باید یک کلی" +
+	"د خصوصی داشته باشد\x02[مشخص نشده]\x02همه همتاها باید کلید\u200cهای عموم" +
+	"ی داشته باشند\x02خطا در دریافت پیکربندی\x02کلید برای بخش [Interface] نا" +
+	"معتبر است\x02نسخه پروتکل باید 1 باشد\x02کلید برای بخش طرفین نامعتبر است" +
+	"\x02&درباره AmneziaWG…"
 
-var fiIndex = []uint32{ // 304 elements
+var fiIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000006, 0x00000056, 0x0000006f,
 	0x00000085, 0x000000ea, 0x00000133, 0x0000016b,
@@ -1709,51 +1945,70 @@ var fiIndex = []uint32{ // 304 elements
 	0x00000ee8, 0x00000ef5, 0x00000efd, 0x00000f0a,
 	0x00000f17, 0x00000f24, 0x00000f31, 0x00000f3e,
 	0x00000f55, 0x00000f7c, 0x00000fa3, 0x00000fce,
-	0x00001002, 0x00001013, 0x00001027, 0x00001046,
+	0x00001002, 0x00001013, 0x00001027, 0x00001041,
 	// Entry A0 - BF
-	0x00001060, 0x0000108b, 0x000010b9, 0x000010d3,
-	0x000010eb, 0x0000110b, 0x0000113c, 0x00001158,
-	0x00001180, 0x000011a3, 0x000011d0, 0x000011e5,
-	0x00001216, 0x00001235, 0x0000125b, 0x0000127e,
-	0x000012a2, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
+	0x0000106c, 0x0000109a, 0x000010b4, 0x000010cc,
+	0x000010ec, 0x0000111d, 0x00001139, 0x00001161,
+	0x00001184, 0x000011b1, 0x000011c6, 0x000011f7,
+	0x00001216, 0x0000123c, 0x0000125f, 0x00001283,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
 	// Entry C0 - DF
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
 	// Entry E0 - FF
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
 	// Entry 100 - 11F
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
 	// Entry 120 - 13F
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-	0x000012bc, 0x000012bc, 0x000012bc, 0x000012bc,
-} // Size: 1240 bytes
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	// Entry 140 - 15F
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	// Entry 160 - 17F
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+	0x0000129d, 0x0000129d, 0x0000129d, 0x0000129d,
+} // Size: 1512 bytes
 
-const fiData string = "" + // Size: 4796 bytes
+const fiData string = "" + // Size: 4765 bytes
 	"\x02Virhe\x02(ei määrityksiä): suorita järjestelmäoikeuksilla ja asenna " +
 	"hallintapalvelu\x02Käyttö: %[1]s [\x0a%[2]s]\x02Komentorivin valinnat" +
 	"\x02Ei pystytä määrittämään mikäli prosessia suoritetaan WOW64-järjestel" +
@@ -1819,19 +2074,18 @@ const fiData string = "" + // Size: 4796 bytes
 	"f\u00a0TiB\x02%[1]s: %[2]q\x02Virheellinen IP-osoite\x02Virheellinen ver" +
 	"kon etuliitteen pituus\x02Päätepisteestä puuttuu porttinumero\x02Virheel" +
 	"linen päätepisteen isäntäosoite\x02Sulkujen sisään pitää määritellä IPv6" +
-	"-osoite\x02Virheellinen MTU\x02Virheellinen portti\x02Virheellinen jatku" +
-	"va keepalive\x02Virheellinen avain: %[1]v\x02Avainten tulee olla tasan 3" +
-	"2 tavua pitkiä\x02Luvun tulee olla väliltä 0 ja 2^64-1: %[1]v\x02Kaksi p" +
-	"ilkkua peräkkäin\x02Tunnelin nimi ei kelpaa\x02Rivin pitää esiintyä osio" +
-	"ssa\x02Määrittelyavaimesta puuttuu yhtäsuuruuserotin\x02Avaimella pitää " +
-	"olla arvo\x02Virheellinen avain [Interface] -osiossa\x02Virheellinen ava" +
-	"in [Peer] -osiossa\x02Liitännällä pitää olla yksityinen avain\x02[ei mää" +
-	"riteltynä]\x02Kaikilla osapuolilla pitää olla julkinen avain\x02Virhe lu" +
-	"ettaessa määritystä\x02Virheellinen avain liitäntä-osiossa\x02Protokolla" +
-	"n version pitää olla 1\x02Virheellinen avain osapuoli-osiossa\x02Tietoja" +
-	" &AmneziaWGista…"
+	"-osoite\x02Virheellinen MTU\x02Virheellinen portti\x02Virheellinen avain" +
+	": %[1]v\x02Avainten tulee olla tasan 32 tavua pitkiä\x02Luvun tulee olla" +
+	" väliltä 0 ja 2^64-1: %[1]v\x02Kaksi pilkkua peräkkäin\x02Tunnelin nimi " +
+	"ei kelpaa\x02Rivin pitää esiintyä osiossa\x02Määrittelyavaimesta puuttuu" +
+	" yhtäsuuruuserotin\x02Avaimella pitää olla arvo\x02Virheellinen avain [I" +
+	"nterface] -osiossa\x02Virheellinen avain [Peer] -osiossa\x02Liitännällä " +
+	"pitää olla yksityinen avain\x02[ei määriteltynä]\x02Kaikilla osapuolilla" +
+	" pitää olla julkinen avain\x02Virhe luettaessa määritystä\x02Virheelline" +
+	"n avain liitäntä-osiossa\x02Protokollan version pitää olla 1\x02Virheell" +
+	"inen avain osapuoli-osiossa\x02Tietoja &AmneziaWGista…"
 
-var frIndex = []uint32{ // 304 elements
+var frIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000007, 0x00000046, 0x00000063,
 	0x00000083, 0x000000cb, 0x00000112, 0x0000014b,
@@ -1876,51 +2130,70 @@ var frIndex = []uint32{ // 304 elements
 	0x00001311, 0x0000131e, 0x00001327, 0x00001334,
 	0x00001341, 0x0000134e, 0x0000135b, 0x00001369,
 	0x0000137f, 0x000013a7, 0x000013cd, 0x000013f6,
-	0x0000142e, 0x0000143d, 0x0000144d, 0x00001462,
+	0x0000142e, 0x0000143d, 0x0000144d, 0x00001465,
 	// Entry A0 - BF
-	0x0000147a, 0x000014a7, 0x000014df, 0x000014fb,
-	0x00001514, 0x00001540, 0x0000157b, 0x00001596,
-	0x000015c2, 0x000015e9, 0x00001611, 0x00001629,
-	0x0000165d, 0x00001684, 0x000016b0, 0x000016d2,
-	0x000016fe, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
+	0x00001492, 0x000014ca, 0x000014e6, 0x000014ff,
+	0x0000152b, 0x00001566, 0x00001581, 0x000015ad,
+	0x000015d4, 0x000015fc, 0x00001614, 0x00001648,
+	0x0000166f, 0x0000169b, 0x000016bd, 0x000016e9,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
 	// Entry C0 - DF
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
 	// Entry E0 - FF
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
 	// Entry 100 - 11F
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
 	// Entry 120 - 13F
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-	0x00001716, 0x00001716, 0x00001716, 0x00001716,
-} // Size: 1240 bytes
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	// Entry 140 - 15F
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	// Entry 160 - 17F
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+	0x00001701, 0x00001701, 0x00001701, 0x00001701,
+} // Size: 1512 bytes
 
-const frData string = "" + // Size: 5910 bytes
+const frData string = "" + // Size: 5889 bytes
 	"\x02Erreur\x02(sans argument) : élever et installer service du gestionna" +
 	"ire\x02Utilisation : %[1]s [\x0a%[2]s]\x02Options de la ligne de command" +
 	"e\x02Impossible de détecter si le processus s’exécute sous WOW64 : %[1]v" +
@@ -2002,19 +2275,19 @@ const frData string = "" + // Size: 5910 bytes
 	"alide\x02Longueur du préfixe réseau non valide\x02Port manquant au point" +
 	" de terminaison\x02Hôte du point de terminaison non valide\x02L’adresse " +
 	"IPv6 doit être contenue entre des crochets\x02MTU non valide\x02Port non" +
-	" valide\x02Keepalive non valide\x02Clé non valide : %[1]v\x02Clés doiven" +
-	"t être décodées sur 32 octets\x02Le numéro doit être compris entre 0 et " +
-	"2^64-1 : %[1]v\x02Deux virgules consécutives\x02Nom du tunnel non valide" +
-	"\x02Une ligne doit apparaître dans une section\x02Il manque le séparateu" +
-	"r égal à la clé de configuration\x02Clé doit avoir une valeur\x02Clé non" +
-	" valide pour la section [Interface]\x02Clé non valide pour la section [P" +
-	"eer]\x02L'interface doit avoir une clé privée\x02[aucune spécification]" +
-	"\x02Toutes les pairs doivent contenir une clé publique\x02Erreur d'obten" +
-	"tion de la configuration\x02Clé non valide pour la section d'interface" +
-	"\x02Version du protocole doit être 1\x02Clé non valide pour la section d" +
-	"'homologue\x02&À propos AmneziaWG…"
+	" valide\x02Clé non valide : %[1]v\x02Clés doivent être décodées sur 32 o" +
+	"ctets\x02Le numéro doit être compris entre 0 et 2^64-1 : %[1]v\x02Deux v" +
+	"irgules consécutives\x02Nom du tunnel non valide\x02Une ligne doit appar" +
+	"aître dans une section\x02Il manque le séparateur égal à la clé de confi" +
+	"guration\x02Clé doit avoir une valeur\x02Clé non valide pour la section " +
+	"[Interface]\x02Clé non valide pour la section [Peer]\x02L'interface doit" +
+	" avoir une clé privée\x02[aucune spécification]\x02Toutes les pairs doiv" +
+	"ent contenir une clé publique\x02Erreur d'obtention de la configuration" +
+	"\x02Clé non valide pour la section d'interface\x02Version du protocole d" +
+	"oit être 1\x02Clé non valide pour la section d'homologue\x02&À propos Am" +
+	"neziaWG…"
 
-var idIndex = []uint32{ // 304 elements
+var idIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x0000000a, 0x00000047, 0x00000062,
 	0x00000074, 0x000000bf, 0x000000fe, 0x0000012f,
@@ -2059,51 +2332,70 @@ var idIndex = []uint32{ // 304 elements
 	0x000005fb, 0x0000060b, 0x00000613, 0x0000061f,
 	0x0000062b, 0x00000637, 0x00000643, 0x00000650,
 	0x00000666, 0x00000681, 0x000006a1, 0x000006bb,
-	0x000006e1, 0x000006f1, 0x00000702, 0x00000723,
+	0x000006e1, 0x000006f1, 0x00000702, 0x00000718,
 	// Entry A0 - BF
-	0x00000739, 0x00000761, 0x00000793, 0x000007ad,
-	0x000007c5, 0x000007e2, 0x00000828, 0x00000843,
-	0x0000086d, 0x00000892, 0x000008b7, 0x000008c8,
-	0x000008f0, 0x00000914, 0x0000093e, 0x00000955,
-	0x0000097a, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
+	0x00000740, 0x00000772, 0x0000078c, 0x000007a4,
+	0x000007c1, 0x00000807, 0x00000822, 0x0000084c,
+	0x00000871, 0x00000896, 0x000008a7, 0x000008cf,
+	0x000008f3, 0x0000091d, 0x00000934, 0x00000959,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
 	// Entry C0 - DF
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
 	// Entry E0 - FF
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
 	// Entry 100 - 11F
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
 	// Entry 120 - 13F
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-	0x00000990, 0x00000990, 0x00000990, 0x00000990,
-} // Size: 1240 bytes
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	// Entry 140 - 15F
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	// Entry 160 - 17F
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+	0x0000096f, 0x0000096f, 0x0000096f, 0x0000096f,
+} // Size: 1512 bytes
 
-const idData string = "" + // Size: 2448 bytes
+const idData string = "" + // Size: 2415 bytes
 	"\x02Kesalahan\x02(tidak ada argumen): naikkan akses dan instal servis ma" +
 	"najer\x02Penggunaan: %[1]s [\x0a%[2]s]\x02Opsi Command Line\x02Tidak dap" +
 	"at menentukan apakah proses sedang berjalan di bawah WOW64: %[1]v\x02And" +
@@ -2133,19 +2425,19 @@ const idData string = "" + // Size: 2448 bytes
 	"B\x02%.2[1]f KiB\x02%.2[1]f MiB\x02%.2[1]f GiB\x02%.2[1]f TiB\x02%[1]s: " +
 	"%[2]q\x02Alamat IP tidak valid\x02Network prefix tidak valid\x02Port bel" +
 	"um terisi dari endpoint\x02Host endpoint tidak valid\x02Dalam Kurung har" +
-	"us berisi alamat IPv6\x02MTU tidak valid\x02Port tidak valid\x02Persiste" +
-	"nt keepalive tidak valid\x02Kunci tidak sah:%[1]v\x02Kunci harus diterje" +
-	"mahkan tepat 32 byte\x02Nomor harus diantara 0 sampai dengan 2^64-1:%[1]" +
-	"v\x02Dua koma dalam satu baris\x02Nama Tunnel tidak valid\x02Garis harus" +
-	" muncul perbagian\x02Kunci konfigurasi tidak valid, tidak memiliki pemis" +
-	"ah dan sama dengan\x02Kunci harus memiliki value\x02Kunci tidak valid pa" +
-	"da bagian [Interface]\x02Kunci tidak valid pada bagian [Peer]\x02Interfa" +
-	"ce harus memiliki Private Key\x02Tidak Ditetapkan\x02Semua peers harus m" +
-	"emiliki kunci publik\x02Eror ketika mendapatkan konfigurasi\x02Kunci tid" +
-	"ak valid pada bagian [Interface]\x02Versi protokol harus 1\x02Kunci tida" +
-	"k valid pada bagian [Peer]\x02&Tentang AmneziaWG…"
+	"us berisi alamat IPv6\x02MTU tidak valid\x02Port tidak valid\x02Kunci ti" +
+	"dak sah:%[1]v\x02Kunci harus diterjemahkan tepat 32 byte\x02Nomor harus " +
+	"diantara 0 sampai dengan 2^64-1:%[1]v\x02Dua koma dalam satu baris\x02Na" +
+	"ma Tunnel tidak valid\x02Garis harus muncul perbagian\x02Kunci konfigura" +
+	"si tidak valid, tidak memiliki pemisah dan sama dengan\x02Kunci harus me" +
+	"miliki value\x02Kunci tidak valid pada bagian [Interface]\x02Kunci tidak" +
+	" valid pada bagian [Peer]\x02Interface harus memiliki Private Key\x02Tid" +
+	"ak Ditetapkan\x02Semua peers harus memiliki kunci publik\x02Eror ketika " +
+	"mendapatkan konfigurasi\x02Kunci tidak valid pada bagian [Interface]\x02" +
+	"Versi protokol harus 1\x02Kunci tidak valid pada bagian [Peer]\x02&Tenta" +
+	"ng AmneziaWG…"
 
-var itIndex = []uint32{ // 304 elements
+var itIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000007, 0x00000044, 0x0000005d,
 	0x00000075, 0x000000bd, 0x00000101, 0x0000013a,
@@ -2190,51 +2482,70 @@ var itIndex = []uint32{ // 304 elements
 	0x0000113a, 0x00001143, 0x0000114c, 0x00001159,
 	0x00001166, 0x00001173, 0x00001180, 0x0000118d,
 	0x000011a5, 0x000011cf, 0x000011ec, 0x0000120a,
-	0x0000123a, 0x00001249, 0x0000125a, 0x0000127a,
+	0x0000123a, 0x00001249, 0x0000125a, 0x00001273,
 	// Entry A0 - BF
-	0x00001293, 0x000012c5, 0x00001304, 0x0000131c,
-	0x0000133d, 0x0000136a, 0x000013ad, 0x000013cc,
-	0x000013f9, 0x00001421, 0x0000144e, 0x00001460,
-	0x0000148e, 0x000014be, 0x000014f0, 0x00001519,
-	0x0000153f, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
+	0x000012a5, 0x000012e4, 0x000012fc, 0x0000131d,
+	0x0000134a, 0x0000138d, 0x000013ac, 0x000013d9,
+	0x00001401, 0x0000142e, 0x00001440, 0x0000146e,
+	0x0000149e, 0x000014d0, 0x000014f9, 0x0000151f,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
 	// Entry C0 - DF
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
 	// Entry E0 - FF
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
 	// Entry 100 - 11F
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
 	// Entry 120 - 13F
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-	0x0000155d, 0x0000155d, 0x0000155d, 0x0000155d,
-} // Size: 1240 bytes
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	// Entry 140 - 15F
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	// Entry 160 - 17F
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+	0x0000153d, 0x0000153d, 0x0000153d, 0x0000153d,
+} // Size: 1512 bytes
 
-const itData string = "" + // Size: 5469 bytes
+const itData string = "" + // Size: 5437 bytes
 	"\x02Errore\x02(nessun argomento): eleva e installa il servizio di gestio" +
 	"ne\x02Utilizzo: %[1]s [\x0a%[2]s]\x02Opzioni riga di comando\x02Impossib" +
 	"ile determinare se il processo è in esecuzione in WOW64: %[1]v\x02Devi u" +
@@ -2310,21 +2621,20 @@ const itData string = "" + // Size: 5469 bytes
 	"\u00a0GiB\x02%.2[1]f\u00a0TiB\x02%[1]s: %[2]q\x02Indirizzo IP non valido" +
 	"\x02Lunghezza del prefisso di rete non valida\x02Manca la porta dall'end" +
 	"point\x02Host dell'endpoint non valido\x02Le parentesi devono contenere " +
-	"un indirizzo IPv6\x02MTU non valido\x02Porta non valida\x02Keepalive per" +
-	"manente non valido\x02Chiave non valida: %[1]v\x02Le chiavi devono decod" +
-	"ificare esattamente 32 byte\x02Il numero deve essere un numero compreso " +
-	"tra 0 e 2^64-1: %[1]v\x02Due virgole in una riga\x02Il nome del tunnel n" +
-	"on è valido\x02Una riga deve essere presente in una sezione\x02Manca un " +
-	"separatore di uguaglianza per la chiave di configurazione\x02La chiave d" +
-	"eve avere un valore\x02Chiave non valida per la sezione [Interface]\x02C" +
-	"hiave non valida per la sezione [Peer]\x02Un'interfaccia deve avere una " +
-	"chiave privata\x02[non specificato]\x02Tutti i peer devono avere una chi" +
-	"ave pubblica\x02Errore durante il recupero della configurazione\x02Chiav" +
-	"e non valida per la sezione dell'interfaccia\x02La versione del protocol" +
-	"lo deve essere 1\x02Chiave non valida per la sezione peer\x02Inform&azio" +
-	"ni su AmneziaWG…"
+	"un indirizzo IPv6\x02MTU non valido\x02Porta non valida\x02Chiave non va" +
+	"lida: %[1]v\x02Le chiavi devono decodificare esattamente 32 byte\x02Il n" +
+	"umero deve essere un numero compreso tra 0 e 2^64-1: %[1]v\x02Due virgol" +
+	"e in una riga\x02Il nome del tunnel non è valido\x02Una riga deve essere" +
+	" presente in una sezione\x02Manca un separatore di uguaglianza per la ch" +
+	"iave di configurazione\x02La chiave deve avere un valore\x02Chiave non v" +
+	"alida per la sezione [Interface]\x02Chiave non valida per la sezione [Pe" +
+	"er]\x02Un'interfaccia deve avere una chiave privata\x02[non specificato]" +
+	"\x02Tutti i peer devono avere una chiave pubblica\x02Errore durante il r" +
+	"ecupero della configurazione\x02Chiave non valida per la sezione dell'in" +
+	"terfaccia\x02La versione del protocollo deve essere 1\x02Chiave non vali" +
+	"da per la sezione peer\x02Inform&azioni su AmneziaWG…"
 
-var jaIndex = []uint32{ // 304 elements
+var jaIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x0000000a, 0x0000005b, 0x00000075,
 	0x0000009a, 0x000000e6, 0x00000140, 0x0000017e,
@@ -2369,51 +2679,70 @@ var jaIndex = []uint32{ // 304 elements
 	0x000013cb, 0x000013d5, 0x000013dd, 0x000013ea,
 	0x000013f7, 0x00001404, 0x00001411, 0x0000141e,
 	0x00001438, 0x0000146c, 0x0000149a, 0x000014c2,
-	0x000014f3, 0x00001501, 0x0000151a, 0x00001545,
+	0x000014f3, 0x00001501, 0x0000151a, 0x0000152e,
 	// Entry A0 - BF
-	0x00001559, 0x0000158b, 0x000015de, 0x00001602,
-	0x00001621, 0x0000164c, 0x00001683, 0x000016b4,
-	0x000016e9, 0x00001719, 0x00001750, 0x0000175f,
-	0x00001790, 0x000017c4, 0x000017f7, 0x0000183a,
-	0x00001868, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
+	0x00001560, 0x000015b3, 0x000015d7, 0x000015f6,
+	0x00001621, 0x00001658, 0x00001689, 0x000016be,
+	0x000016ee, 0x00001725, 0x00001734, 0x00001765,
+	0x00001799, 0x000017cc, 0x0000180f, 0x0000183d,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
 	// Entry C0 - DF
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
 	// Entry E0 - FF
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
 	// Entry 100 - 11F
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
 	// Entry 120 - 13F
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-	0x00001885, 0x00001885, 0x00001885, 0x00001885,
-} // Size: 1240 bytes
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	// Entry 140 - 15F
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	// Entry 160 - 17F
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+	0x0000185a, 0x0000185a, 0x0000185a, 0x0000185a,
+} // Size: 1512 bytes
 
-const jaData string = "" + // Size: 6277 bytes
+const jaData string = "" + // Size: 6234 bytes
 	"\x02エラー\x02(引数なし): 管理者権限でmanagerサービスをインストールする\x02使い方: %[1]s [\x0a%[2]s]" +
 	"\x02コマンドラインオプション\x02プロセスがWOW64下で動作しているか確認できません: %[1]v\x02このコンピュータではネイティブ" +
 	"版の AmneziaWG を使ってください。\x02現在のプロセスのトークンを開けません: %[1]v\x02AmneziaWG は組み込み" +
@@ -2459,15 +2788,15 @@ const jaData string = "" + // Size: 6277 bytes
 	" 秒\x02%[1]s 前\x02%[1]d B\x02%.2[1]f\u00a0KiB\x02%.2[1]f\u00a0MiB\x02%.2[" +
 	"1]f\u00a0GiB\x02%.2[1]f\u00a0TiB\x02%[1]s: %[2]q\x02無効な IP アドレス\x02無効なネッ" +
 	"トワークプレフィックス長\x02エンドポイントのポート指定なし\x02無効なエンドポイントホスト\x02カッコ内は IPv6 アドレスが入り" +
-	"ます\x02無効な MTU\x02無効なポート番号\x02無効な持続的キープアライブ値\x02不正な鍵: %[1]v\x02鍵は 32 バイ" +
-	"トでなければなりません\x02数値は0から2の64乗-1の範囲内の値でなければなりません: %[1]v\x021行にカンマが2つあります" +
-	"\x02トンネル名が不正です\x02行がセクション内にありません\x02設定項目にイコール(=)セパレータがない\x02キー項目に対応する値があ" +
-	"りません\x02無効な [Interface] セクションのキー項目\x02無効な [Peer] セクションのキー項目\x02インターフェー" +
-	"スには秘密鍵が必須です\x02[指定なし]\x02すべてのピアには公開鍵が必須です\x02設定の読込中にエラーが発生しました\x02無効な " +
-	"Interface セクションのキー項目\x02プロトコルバージョンは 1 でなければなりません\x02無効な Peer セクションのキー項目" +
-	"\x02AmneziaWGについて…(&A)"
+	"ます\x02無効な MTU\x02無効なポート番号\x02不正な鍵: %[1]v\x02鍵は 32 バイトでなければなりません\x02数値は" +
+	"0から2の64乗-1の範囲内の値でなければなりません: %[1]v\x021行にカンマが2つあります\x02トンネル名が不正です\x02行がセク" +
+	"ション内にありません\x02設定項目にイコール(=)セパレータがない\x02キー項目に対応する値がありません\x02無効な [Interfa" +
+	"ce] セクションのキー項目\x02無効な [Peer] セクションのキー項目\x02インターフェースには秘密鍵が必須です\x02[指定なし]" +
+	"\x02すべてのピアには公開鍵が必須です\x02設定の読込中にエラーが発生しました\x02無効な Interface セクションのキー項目" +
+	"\x02プロトコルバージョンは 1 でなければなりません\x02無効な Peer セクションのキー項目\x02AmneziaWGについて…(&A" +
+	")"
 
-var koIndex = []uint32{ // 304 elements
+var koIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000007, 0x0000003e, 0x00000055,
 	0x0000006d, 0x000000b6, 0x00000103, 0x00000137,
@@ -2514,49 +2843,68 @@ var koIndex = []uint32{ // 304 elements
 	0x00001188, 0x000011b0, 0x000011da, 0x000011fe,
 	0x00001237, 0x00001245, 0x00001256, 0x00001275,
 	// Entry A0 - BF
-	0x00001294, 0x000012c8, 0x00001314, 0x0000133e,
-	0x00001363, 0x00001382, 0x000013af, 0x000013d4,
-	0x000013ff, 0x00001425, 0x00001457, 0x0000146d,
-	0x0000149d, 0x000014c9, 0x000014f4, 0x00001521,
-	0x00001543, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
+	0x000012a9, 0x000012f5, 0x0000131f, 0x00001344,
+	0x00001363, 0x00001390, 0x000013b5, 0x000013e0,
+	0x00001406, 0x00001438, 0x0000144e, 0x0000147e,
+	0x000014aa, 0x000014d5, 0x00001502, 0x00001524,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
 	// Entry C0 - DF
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
 	// Entry E0 - FF
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
 	// Entry 100 - 11F
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
 	// Entry 120 - 13F
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-	0x0000155e, 0x0000155e, 0x0000155e, 0x0000155e,
-} // Size: 1240 bytes
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	// Entry 140 - 15F
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	// Entry 160 - 17F
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+	0x0000153f, 0x0000153f, 0x0000153f, 0x0000153f,
+} // Size: 1512 bytes
 
-const koData string = "" + // Size: 5470 bytes
+const koData string = "" + // Size: 5439 bytes
 	"\x02오류\x02(인수 없음): 관리자 서비스 상승 및 설치\x02사용: %[1]s [\x0a%[2]s]\x02커맨드 라인 옵션" +
 	"\x02WOW64에서 프로세스가 실행 중인지 확인할 수 없음: %[1]v\x02이 컴퓨터에서는 기본 버전의 AmneziaWG를 사" +
 	"용해야 합니다.\x02현재 프로세스 토큰을 열 수 없음: %[1]v\x02AmneziaWG는 Builtin %[1]s 그룹의 " +
@@ -2601,14 +2949,14 @@ const koData string = "" + // Size: 5470 bytes
 	"\u00a0바이트\x02%.2[1]f\u00a0KiB\x02%.2[1]f\u00a0MiB\x02%.2[1]f\u00a0GiB" +
 	"\x02%.2[1]f\u00a0TiB\x02%[1]s: %[2]q\x02잘못된 IP 주소\x02잘못된 네트워크 접두사 길이\x02" +
 	"엔드포인트에서 포트가 누락됨\x02잘못된 엔드포인트 호스트\x02대괄호에는 IPv6 주소가 포함되어야 합니다\x02잘못된 MT" +
-	"U\x02잘못된 포트\x02잘못된 영구 연결 유지\x02유효하지 않은 키: %[1]v\x02키는 정확히 32바이트로 디코딩이 필요" +
-	"\x02숫자는 다음 사이의 숫자여야 합니다 0 그리고 2^64-1: %[1]v\x02엔드포인트에서 포트가 누락됨\x02터널 이름이" +
-	" 유효하지 않음\x02행은 섹션에 있어야 함\x02구성 키에 등호 구분 기호가 없음\x02키에는 값이 있어야 합니다\x02[Int" +
-	"erface] 구간에 대한 잘못된 키\x02[Peer] 구간에 대한 잘못된 키\x02인터페이스에는 개인 키가 있어야 함\x02[특" +
-	"정되지 않음]\x02모든 피어에는 공개 키가 있어야 함\x02구성을 가져오는 중 오류가 발생\x02인터페이스 섹션의 키가 잘못" +
-	"됨\x02프로토콜 버전은 1이어야 합니다.\x02피어 섹션의 키가 잘못됨\x02&AmneziaWG에 관하여…"
+	"U\x02잘못된 포트\x02유효하지 않은 키: %[1]v\x02키는 정확히 32바이트로 디코딩이 필요\x02숫자는 다음 사이의 숫" +
+	"자여야 합니다 0 그리고 2^64-1: %[1]v\x02엔드포인트에서 포트가 누락됨\x02터널 이름이 유효하지 않음\x02행은" +
+	" 섹션에 있어야 함\x02구성 키에 등호 구분 기호가 없음\x02키에는 값이 있어야 합니다\x02[Interface] 구간에 대한" +
+	" 잘못된 키\x02[Peer] 구간에 대한 잘못된 키\x02인터페이스에는 개인 키가 있어야 함\x02[특정되지 않음]\x02모든 " +
+	"피어에는 공개 키가 있어야 함\x02구성을 가져오는 중 오류가 발생\x02인터페이스 섹션의 키가 잘못됨\x02프로토콜 버전은 " +
+	"1이어야 합니다.\x02피어 섹션의 키가 잘못됨\x02&AmneziaWG에 관하여…"
 
-var nlIndex = []uint32{ // 304 elements
+var nlIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x0000000c, 0x0000004f, 0x0000006d,
 	0x00000084, 0x000000c7, 0x0000010a, 0x00000139,
@@ -2653,51 +3001,70 @@ var nlIndex = []uint32{ // 304 elements
 	0x0000102e, 0x0000103c, 0x00001045, 0x00001052,
 	0x0000105f, 0x0000106c, 0x00001079, 0x00001086,
 	0x00001098, 0x000010b7, 0x000010d7, 0x000010ee,
-	0x00001115, 0x00001123, 0x00001133, 0x00001153,
+	0x00001115, 0x00001123, 0x00001133, 0x0000114c,
 	// Entry A0 - BF
-	0x0000116c, 0x00001198, 0x000011cd, 0x000011e5,
-	0x000011fc, 0x0000121e, 0x0000125a, 0x00001278,
-	0x000012a4, 0x000012cb, 0x000012f8, 0x0000130a,
-	0x00001335, 0x0000135c, 0x00001386, 0x000013a2,
-	0x000013c7, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
+	0x00001178, 0x000011ad, 0x000011c5, 0x000011dc,
+	0x000011fe, 0x0000123a, 0x00001258, 0x00001284,
+	0x000012ab, 0x000012d8, 0x000012ea, 0x00001315,
+	0x0000133c, 0x00001366, 0x00001382, 0x000013a7,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
 	// Entry C0 - DF
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
 	// Entry E0 - FF
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
 	// Entry 100 - 11F
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
 	// Entry 120 - 13F
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-	0x000013da, 0x000013da, 0x000013da, 0x000013da,
-} // Size: 1240 bytes
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	// Entry 140 - 15F
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	// Entry 160 - 17F
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+	0x000013ba, 0x000013ba, 0x000013ba, 0x000013ba,
+} // Size: 1512 bytes
 
-const nlData string = "" + // Size: 5082 bytes
+const nlData string = "" + // Size: 5050 bytes
 	"\x02Foutmelding\x02(geen argumenten): Verhoog rechten en installeer behe" +
 	"erder-service\x02Gebruikswijze: %[1]s [\x0a%[2]s]\x02Opdracht-prompt Opt" +
 	"ies\x02Kan niet bepalen of het proces wordt uitgevoerd onder WOW64: %[1]" +
@@ -2769,19 +3136,19 @@ const nlData string = "" + // Size: 5082 bytes
 	"iB\x02%.2[1]f\u00a0GiB\x02%.2[1]f\u00a0TiB\x02%[1]s: %[2]q\x02Ongeldig I" +
 	"P-adres\x02Ongeldige netwerkprefix-lengte\x02Ontbrekende poort voor endp" +
 	"oint\x02Ongeldig endpoint host\x02Haakjes moeten een IPv6-adres bevatten" +
-	"\x02Ongeldige MTU\x02Ongeldige poort\x02Ongeldige Persistent Keep-alive" +
-	"\x02Ongeldige sleutel: %[1]v\x02Keys moeten gedecodeerd exact 32 bytes z" +
-	"ijn\x02Number moet een getal zijn tussen 0 en 2^64-1: %[1]v\x02Twee komm" +
-	"a's op een rij\x02Tunnelnaam is ongeldig\x02Lijn moet in een sectie voor" +
-	"komen\x02Configuratiesleutel mist een gelijkheidsteken als seperator\x02" +
-	"Sleutel met een waarde hebben\x02Ongeldige sleutel voor [Interface]-gede" +
-	"elte\x02Ongeldige sleutel voor [Peer]-gedeelte\x02Een interface moet een" +
-	" privé sleutel hebben\x02[Niets opgegeven]\x02Alle peers moeten publieke" +
-	" sleutels hebben\x02Fout bij het lezen van de configuratie\x02Ongeldige " +
-	"sleutel voor interface-gedeelte\x02Protocol-versie moet 1 zijn\x02Ongeld" +
-	"ige sleutel voor peer-gedeelte\x02Over &AmneziaWG…"
+	"\x02Ongeldige MTU\x02Ongeldige poort\x02Ongeldige sleutel: %[1]v\x02Keys" +
+	" moeten gedecodeerd exact 32 bytes zijn\x02Number moet een getal zijn tu" +
+	"ssen 0 en 2^64-1: %[1]v\x02Twee komma's op een rij\x02Tunnelnaam is onge" +
+	"ldig\x02Lijn moet in een sectie voorkomen\x02Configuratiesleutel mist ee" +
+	"n gelijkheidsteken als seperator\x02Sleutel met een waarde hebben\x02Ong" +
+	"eldige sleutel voor [Interface]-gedeelte\x02Ongeldige sleutel voor [Peer" +
+	"]-gedeelte\x02Een interface moet een privé sleutel hebben\x02[Niets opge" +
+	"geven]\x02Alle peers moeten publieke sleutels hebben\x02Fout bij het lez" +
+	"en van de configuratie\x02Ongeldige sleutel voor interface-gedeelte\x02P" +
+	"rotocol-versie moet 1 zijn\x02Ongeldige sleutel voor peer-gedeelte\x02Ov" +
+	"er &AmneziaWG…"
 
-var pa_INIndex = []uint32{ // 304 elements
+var pa_INIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000010, 0x00000010, 0x00000030,
 	0x0000005d, 0x000000ea, 0x0000017f, 0x000001e6,
@@ -2826,51 +3193,70 @@ var pa_INIndex = []uint32{ // 304 elements
 	0x00001dc8, 0x00001de1, 0x00001dea, 0x00001df7,
 	0x00001e04, 0x00001e11, 0x00001e1e, 0x00001e2b,
 	0x00001e54, 0x00001e94, 0x00001edb, 0x00001edb,
-	0x00001edb, 0x00001ef9, 0x00001f20, 0x00001f4f,
+	0x00001edb, 0x00001ef9, 0x00001f20, 0x00001f51,
 	// Entry A0 - BF
-	0x00001f80, 0x00001ffa, 0x00002062, 0x000020a1,
-	0x000020da, 0x00002125, 0x00002125, 0x00002125,
-	0x00002125, 0x00002125, 0x00002125, 0x00002125,
-	0x00002125, 0x00002125, 0x00002125, 0x00002125,
-	0x00002125, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
+	0x00001fcb, 0x00002033, 0x00002072, 0x000020ab,
+	0x000020f6, 0x000020f6, 0x000020f6, 0x000020f6,
+	0x000020f6, 0x000020f6, 0x000020f6, 0x000020f6,
+	0x000020f6, 0x000020f6, 0x000020f6, 0x000020f6,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
 	// Entry C0 - DF
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
 	// Entry E0 - FF
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
 	// Entry 100 - 11F
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
 	// Entry 120 - 13F
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-	0x00002152, 0x00002152, 0x00002152, 0x00002152,
-} // Size: 1240 bytes
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	// Entry 140 - 15F
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	// Entry 160 - 17F
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+	0x00002123, 0x00002123, 0x00002123, 0x00002123,
+} // Size: 1512 bytes
 
-const pa_INData string = "" + // Size: 8530 bytes
+const pa_INData string = "" + // Size: 8483 bytes
 	"\x02ਗ਼ਲਤੀ\x02ਵਰਤੋਂ: %[1]s [\x0a%[2]s]\x02ਕਮਾਂਡ ਲਾਈਨ ਚੋਣਾਂ\x02ਪਤਾ ਲਗਾਉਣ ਲ" +
 	"ਈ ਅਸਮਰੱਥ ਹੈ ਕਿ ਪਰੋਸੈਸ WOW64 ਅਧੀਨ ਚੱਲ ਰਿਹਾ ਹੈ: %[1]v\x02ਤੁਹਾਨੂੰ ਇਸ ਕੰਪਿ" +
 	"ਊਟਰ ਉੱਤੇ AmneziaWG ਦਾ ਮੂਲ ਵਰਜ਼ਨ ਵਰਤਣਾ ਚਾਹੀਦਾ ਹੈ।\x02ਮੌਜੂਦਾ ਪਰੋਸੈਸ ਟੋਕਨ " +
@@ -2931,12 +3317,12 @@ const pa_INData string = "" + // Size: 8530 bytes
 	"2[1]f\u00a0KiB\x02%.2[1]f\u00a0MiB\x02%.2[1]f\u00a0GiB\x02%.2[1]f\u00a0T" +
 	"iB\x02%[1]s: %[2]q\x02ਅਵੈਧ IP ਸਿਰਨਾਵਾਂ\x02ਗਲਤ ਨੈੱਟਵਰਕ ਅਗੇਤਰ ਲੰਬਾਈ\x02ਐਂਡ" +
 	"ਪੁਆਇੰਟ ਤੋਂ ਪੋਰਟ ਗੁੰਮ ਹੈ\x02ਗ਼ੈਰ-ਵਾਜਬ MTU\x02ਗ਼ੈਰ-ਵਾਜਬ ਪੋਰਟ\x02ਗ਼ੈਰ-ਵਾਜ" +
-	"ਬ persistent keepalive\x02ਗ਼ੈਰ-ਵਾਜਬ ਕੁੰਜੀ: %[1]v\x02ਕੁੰਜੀਆਂ ਠੀਕ 32 ਬਾਈ" +
-	"ਟ ਲਈ ਡੀਕੋਡ ਹੋਣੀਆਂ ਚਾਹੀਦੀਆਂ ਹਨ\x02ਨੰਬਰ 0 ਅਤੇ 2^64-1 ਦੇ ਵਿਚਾਲੇ ਹੋਣਾ ਚਾਹੀ" +
-	"ਦਾ ਹੈ: %[1]v\x02ਇੱਕ ਕਤਾਰ ਵਿੱਚ ਦੋ ਕੌਮੇ ਹਨ\x02ਟਨਲ ਦਾ ਨਾਂ ਠੀਕ ਨਹੀਂ ਹੈ\x02" +
-	"ਭਾਗ ਵਿੱਚ ਲਾਈਨ ਹੋਣੀ ਚਾਹੀਦੀ ਹੈ\x02ਵਾਇਰਗਾਰਡ ਬਾਰੇ(&A)…"
+	"ਬ ਕੁੰਜੀ: %[1]v\x02ਕੁੰਜੀਆਂ ਠੀਕ 32 ਬਾਈਟ ਲਈ ਡੀਕੋਡ ਹੋਣੀਆਂ ਚਾਹੀਦੀਆਂ ਹਨ\x02ਨ" +
+	"ੰਬਰ 0 ਅਤੇ 2^64-1 ਦੇ ਵਿਚਾਲੇ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ: %[1]v\x02ਇੱਕ ਕਤਾਰ ਵਿੱਚ ਦੋ ਕ" +
+	"ੌਮੇ ਹਨ\x02ਟਨਲ ਦਾ ਨਾਂ ਠੀਕ ਨਹੀਂ ਹੈ\x02ਭਾਗ ਵਿੱਚ ਲਾਈਨ ਹੋਣੀ ਚਾਹੀਦੀ ਹੈ\x02ਵਾ" +
+	"ਇਰਗਾਰਡ ਬਾਰੇ(&A)…"
 
-var plIndex = []uint32{ // 304 elements
+var plIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000007, 0x0000004f, 0x00000067,
 	0x0000007e, 0x000000cc, 0x00000108, 0x0000013f,
@@ -2981,51 +3367,70 @@ var plIndex = []uint32{ // 304 elements
 	0x0000133e, 0x00001349, 0x00001352, 0x0000135f,
 	0x0000136c, 0x00001379, 0x00001386, 0x00001393,
 	0x000013ab, 0x000013d4, 0x000013f6, 0x00001421,
-	0x00001445, 0x00001458, 0x0000146c, 0x0000149c,
+	0x00001445, 0x00001458, 0x0000146c, 0x00001488,
 	// Entry A0 - BF
-	0x000014b8, 0x000014f3, 0x0000152d, 0x00001544,
-	0x00001565, 0x00001586, 0x000015c2, 0x000015dd,
-	0x00001609, 0x00001630, 0x00001654, 0x00001665,
-	0x00001696, 0x000016bd, 0x000016e7, 0x00001705,
-	0x0000172a, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
+	0x000014c3, 0x000014fd, 0x00001514, 0x00001535,
+	0x00001556, 0x00001592, 0x000015ad, 0x000015d9,
+	0x00001600, 0x00001624, 0x00001635, 0x00001666,
+	0x0000168d, 0x000016b7, 0x000016d5, 0x000016fa,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
 	// Entry C0 - DF
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
 	// Entry E0 - FF
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
 	// Entry 100 - 11F
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
 	// Entry 120 - 13F
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-	0x00001745, 0x00001745, 0x00001745, 0x00001745,
-} // Size: 1240 bytes
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	// Entry 140 - 15F
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	// Entry 160 - 17F
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+	0x00001715, 0x00001715, 0x00001715, 0x00001715,
+} // Size: 1512 bytes
 
-const plData string = "" + // Size: 5957 bytes
+const plData string = "" + // Size: 5909 bytes
 	"\x02Błąd\x02(brak argumentu): Podnieś uprawnienia i zainstaluj usługę me" +
 	"nedżera\x02Użycie: %[1]s [\x0a%[2]s]\x02Opcje wiersza poleceń\x02Nie moż" +
 	"na określić, czy proces jest uruchomiony w środowisku WOW64: %[1]v\x02Na" +
@@ -3109,19 +3514,18 @@ const plData string = "" + // Size: 5957 bytes
 	"P\x02Nieprawidłowa długość prefiksu sieci\x02Brak portu urządzenia końco" +
 	"wego\x02Nieprawidłowy host (urządzenie końcowe)\x02Nawiasy muszą zawiera" +
 	"ć adres IPv6\x02Nieprawidłowe MTU\x02Nieprawidłowy port\x02Nieprawidłow" +
-	"y parametr utrzymania połączenia\x02Nieprawidłowy klucz: %[1]v\x02Klucze" +
-	" muszą zostać zdekodowane do dokładnie 32 bajtów\x02Liczba musi zawierać" +
-	" się w przedziale 0 - 2^64-1: %[1]v\x02Dwa przecinki z rzędu\x02Nazwa tu" +
-	"nelu jest nieprawidłowa\x02Linia musi występować w sekcji\x02Klucz konfi" +
-	"guracyjny nie zawiera separatora równorzędnego\x02Klucz musi mieć wartoś" +
-	"ć\x02Nieprawidłowy klucz dla sekcji [Interface]\x02Nieprawidłowy klucz " +
-	"dla sekcji [Peer]\x02Interfejs musi mieć klucz prywatny\x02[nie określon" +
-	"o]\x02Wszyscy uczestnicy muszą mieć klucze publiczne\x02Błąd podczas pob" +
-	"ierania konfiguracji\x02Nieprawidłowy klucz dla sekcji interface\x02Wers" +
-	"ja protokołu musi być 1\x02Nieprawidłowy klucz dla sekcji peer\x02&Infor" +
-	"macje o AmneziaWG…"
+	"y klucz: %[1]v\x02Klucze muszą zostać zdekodowane do dokładnie 32 bajtów" +
+	"\x02Liczba musi zawierać się w przedziale 0 - 2^64-1: %[1]v\x02Dwa przec" +
+	"inki z rzędu\x02Nazwa tunelu jest nieprawidłowa\x02Linia musi występować" +
+	" w sekcji\x02Klucz konfiguracyjny nie zawiera separatora równorzędnego" +
+	"\x02Klucz musi mieć wartość\x02Nieprawidłowy klucz dla sekcji [Interface" +
+	"]\x02Nieprawidłowy klucz dla sekcji [Peer]\x02Interfejs musi mieć klucz " +
+	"prywatny\x02[nie określono]\x02Wszyscy uczestnicy muszą mieć klucze publ" +
+	"iczne\x02Błąd podczas pobierania konfiguracji\x02Nieprawidłowy klucz dla" +
+	" sekcji interface\x02Wersja protokołu musi być 1\x02Nieprawidłowy klucz " +
+	"dla sekcji peer\x02&Informacje o AmneziaWG…"
 
-var pt_BRIndex = []uint32{ // 304 elements
+var pt_BRIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000005, 0x0000003f, 0x00000053,
 	0x00000070, 0x000000c2, 0x00000102, 0x0000013c,
@@ -3166,51 +3570,70 @@ var pt_BRIndex = []uint32{ // 304 elements
 	0x0000119d, 0x000011aa, 0x000011b2, 0x000011be,
 	0x000011ca, 0x000011d6, 0x000011e2, 0x000011ef,
 	0x00001206, 0x0000122f, 0x00001249, 0x00001268,
-	0x00001294, 0x000012a2, 0x000012b2, 0x000012d2,
+	0x00001294, 0x000012a2, 0x000012b2, 0x000012c9,
 	// Entry A0 - BF
-	0x000012e9, 0x0000131b, 0x00001351, 0x00001369,
-	0x00001388, 0x000013ac, 0x000013e6, 0x00001400,
-	0x0000142b, 0x00001451, 0x0000147a, 0x00001490,
-	0x000014ba, 0x000014db, 0x00001507, 0x00001529,
-	0x0000154f, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
+	0x000012fb, 0x00001331, 0x00001349, 0x00001368,
+	0x0000138c, 0x000013c6, 0x000013e0, 0x0000140b,
+	0x00001431, 0x0000145a, 0x00001470, 0x0000149a,
+	0x000014bb, 0x000014e7, 0x00001509, 0x0000152f,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
 	// Entry C0 - DF
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
 	// Entry E0 - FF
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
 	// Entry 100 - 11F
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
 	// Entry 120 - 13F
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-	0x00001565, 0x00001565, 0x00001565, 0x00001565,
-} // Size: 1240 bytes
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	// Entry 140 - 15F
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	// Entry 160 - 17F
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+	0x00001545, 0x00001545, 0x00001545, 0x00001545,
+} // Size: 1512 bytes
 
-const pt_BRData string = "" + // Size: 5477 bytes
+const pt_BRData string = "" + // Size: 5445 bytes
 	"\x02Erro\x02(sem argumento): elevar e instalar o serviço gerenciador\x02" +
 	"Uso: %[1]s [\x0a%[2]s]\x02Opções de linha de comando\x02Não foi possível" +
 	" determinar se o processo está sendo executado em WOW64: %[1]v\x02Você d" +
@@ -3285,19 +3708,19 @@ const pt_BRData string = "" + // Size: 5477 bytes
 	".2[1]f MiB\x02%.2[1]f GiB\x02%.2[1]f TiB\x02%[1]s: %[2]q\x02Endereço IP " +
 	"inválido\x02Comprimento do prefixo de rede inválido\x02Porta ausente do " +
 	"endpoint\x02Servidor de endpoint inválido\x02Os colchetes devem conter u" +
-	"m endereço IPv6\x02MTU inválido\x02Porta inválida\x02Keepalive persisten" +
-	"te inválido\x02Chave inválida: %[1]v\x02Chaves devem decodificar exatame" +
-	"nte para 32 bytes\x02O número deve ser um número entre 0 e 2^64-1: %[1]v" +
-	"\x02Duas vírgulas seguidas\x02Nome do túnel não é válido\x02A linha deve" +
-	" ocorrer em uma seção\x02Chave de configuração está faltando um separado" +
-	"r igual\x02Chaves devem ter um valor\x02Chave inválida para a seção [Int" +
-	"erface]\x02Chave inválida para a seção [Peer]\x02Uma interface deve ter " +
-	"uma chave privada\x02[nenhum especificado]\x02Todos os pares devem ter c" +
-	"haves públicas\x02Erro ao atualizar configuração\x02Chave inválida para " +
-	"a seção da interface\x02A versão do protocolo deve ser 1\x02Chave inváli" +
-	"da para a seção do par\x02Sobre o &AmneziaWG…"
+	"m endereço IPv6\x02MTU inválido\x02Porta inválida\x02Chave inválida: %[1" +
+	"]v\x02Chaves devem decodificar exatamente para 32 bytes\x02O número deve" +
+	" ser um número entre 0 e 2^64-1: %[1]v\x02Duas vírgulas seguidas\x02Nome" +
+	" do túnel não é válido\x02A linha deve ocorrer em uma seção\x02Chave de " +
+	"configuração está faltando um separador igual\x02Chaves devem ter um val" +
+	"or\x02Chave inválida para a seção [Interface]\x02Chave inválida para a s" +
+	"eção [Peer]\x02Uma interface deve ter uma chave privada\x02[nenhum espec" +
+	"ificado]\x02Todos os pares devem ter chaves públicas\x02Erro ao atualiza" +
+	"r configuração\x02Chave inválida para a seção da interface\x02A versão d" +
+	"o protocolo deve ser 1\x02Chave inválida para a seção do par\x02Sobre o " +
+	"&AmneziaWG…"
 
-var roIndex = []uint32{ // 304 elements
+var roIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000007, 0x0000005d, 0x00000077,
 	0x00000092, 0x000000d1, 0x0000011a, 0x0000014e,
@@ -3342,51 +3765,70 @@ var roIndex = []uint32{ // 304 elements
 	0x000012cc, 0x000012d7, 0x000012e0, 0x000012ed,
 	0x000012fa, 0x00001307, 0x00001314, 0x00001321,
 	0x00001336, 0x00001363, 0x00001388, 0x000013ab,
-	0x000013dc, 0x000013ea, 0x000013f7, 0x0000141a,
+	0x000013dc, 0x000013ea, 0x000013f7, 0x0000140e,
 	// Entry A0 - BF
-	0x00001431, 0x00001476, 0x000014b2, 0x000014d4,
-	0x000014f3, 0x0000151e, 0x00001565, 0x0000158b,
-	0x000015b9, 0x000015e2, 0x00001613, 0x0000162a,
-	0x00001659, 0x0000167d, 0x000016ab, 0x000016d3,
-	0x000016fe, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
+	0x00001453, 0x0000148f, 0x000014b1, 0x000014d0,
+	0x000014fb, 0x00001542, 0x00001568, 0x00001596,
+	0x000015bf, 0x000015f0, 0x00001607, 0x00001636,
+	0x0000165a, 0x00001688, 0x000016b0, 0x000016db,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
 	// Entry C0 - DF
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
 	// Entry E0 - FF
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
 	// Entry 100 - 11F
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
 	// Entry 120 - 13F
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-	0x00001713, 0x00001713, 0x00001713, 0x00001713,
-} // Size: 1240 bytes
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	// Entry 140 - 15F
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	// Entry 160 - 17F
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+	0x000016f0, 0x000016f0, 0x000016f0, 0x000016f0,
+} // Size: 1512 bytes
 
-const roData string = "" + // Size: 5907 bytes
+const roData string = "" + // Size: 5872 bytes
 	"\x02Eroare\x02(fără argument): obținere drept administrativ și instalare" +
 	" serviciu de gestionare\x02Utilizare: %[1]s [\x0a%[2]s]\x02Opțiuni linie" +
 	" de comandă\x02Nu se poate determina dacă procesul rulează sub WOW64: %[" +
@@ -3468,20 +3910,19 @@ const roData string = "" + // Size: 5907 bytes
 	"esă IP invalidă\x02Lungimea prefixului de rețea este invalidă\x02Lipseșt" +
 	"e portul de la punctul final\x02Gazdă invalidă a punctului final\x02Para" +
 	"ntezele trebuie să conțină o adresă IPv6\x02MTU invalidă\x02Port invalid" +
-	"\x02Mesaj keepalive persistent invalid\x02Cheie invalidă: %[1]v\x02Rezul" +
-	"tatul decodificat de chei trebuie să aibă exact 32 de octeți\x02Numărul " +
-	"trebuie să fie cuprins între 0 și 2^64-1: %[1]v\x02Două virgule una după" +
-	" cealaltă\x02Numele tunelului nu este valid\x02Linia trebuie să apară în" +
-	"tr-o secțiune\x02Cheii de configurare îi lipsește un separator de forma " +
-	"semnului egal\x02Cheia trebuie să conțină o valoare\x02Cheie invalidă pe" +
-	"ntru secțiunea [Interface]\x02Cheie invalidă pentru secțiunea [Peer]\x02" +
-	"O interfață trebuie să aibă o cheie privată\x02[niciuna specificată]\x02" +
-	"Toate perechile trebuie să aibă chei publice\x02Eroare la obținerea conf" +
-	"igurației\x02Cheie invalidă pentru secțiunea interfeței\x02Versiunea de " +
-	"protocol trebuie să fie 1\x02Cheie invalidă pentru secțiunea perechii" +
-	"\x02&Despre AmneziaWG…"
+	"\x02Cheie invalidă: %[1]v\x02Rezultatul decodificat de chei trebuie să a" +
+	"ibă exact 32 de octeți\x02Numărul trebuie să fie cuprins între 0 și 2^64" +
+	"-1: %[1]v\x02Două virgule una după cealaltă\x02Numele tunelului nu este " +
+	"valid\x02Linia trebuie să apară într-o secțiune\x02Cheii de configurare " +
+	"îi lipsește un separator de forma semnului egal\x02Cheia trebuie să con" +
+	"țină o valoare\x02Cheie invalidă pentru secțiunea [Interface]\x02Cheie " +
+	"invalidă pentru secțiunea [Peer]\x02O interfață trebuie să aibă o cheie " +
+	"privată\x02[niciuna specificată]\x02Toate perechile trebuie să aibă chei" +
+	" publice\x02Eroare la obținerea configurației\x02Cheie invalidă pentru s" +
+	"ecțiunea interfeței\x02Versiunea de protocol trebuie să fie 1\x02Cheie i" +
+	"nvalidă pentru secțiunea perechii\x02&Despre AmneziaWG…"
 
-var ruIndex = []uint32{ // 304 elements
+var ruIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x0000000d, 0x000000a9, 0x000000d4,
 	0x00000107, 0x00000166, 0x000001c9, 0x00000220,
@@ -3526,51 +3967,70 @@ var ruIndex = []uint32{ // 304 elements
 	0x00001e87, 0x00001e98, 0x00001ea1, 0x00001eb0,
 	0x00001ebf, 0x00001ece, 0x00001edd, 0x00001eea,
 	0x00001f11, 0x00001f4f, 0x00001f79, 0x00001fa7,
-	0x00001fdf, 0x00001ffc, 0x0000201e, 0x00002074,
+	0x00001fdf, 0x00001ffc, 0x0000201e, 0x00002047,
 	// Entry A0 - BF
-	0x0000209d, 0x000020ee, 0x0000212d, 0x00002150,
-	0x0000217f, 0x000021b2, 0x00002207, 0x00002239,
-	0x00002273, 0x000022a8, 0x00002301, 0x00002315,
-	0x0000235b, 0x0000239b, 0x000023de, 0x00002416,
-	0x0000245d, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
+	0x00002098, 0x000020d7, 0x000020fa, 0x00002129,
+	0x0000215c, 0x000021b1, 0x000021e3, 0x0000221d,
+	0x00002252, 0x000022ab, 0x000022bf, 0x00002305,
+	0x00002345, 0x00002388, 0x000023c0, 0x00002407,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
 	// Entry C0 - DF
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
 	// Entry E0 - FF
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
 	// Entry 100 - 11F
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
 	// Entry 120 - 13F
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x0000246e,
-	0x0000246e, 0x0000246e, 0x0000246e, 0x000024e9,
-	0x00002552, 0x00002552, 0x00002552, 0x00002552,
-} // Size: 1240 bytes
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	0x00002418, 0x00002418, 0x00002418, 0x00002418,
+	// Entry 140 - 15F
+	0x00002418, 0x00002454, 0x00002647, 0x00002669,
+	0x000026cd, 0x00002717, 0x00002753, 0x00002778,
+	0x0000277f, 0x0000286a, 0x00002870, 0x000028b7,
+	0x00002900, 0x00002996, 0x000029b5, 0x00002a42,
+	0x00002a6a, 0x00002b16, 0x00002b3a, 0x00002b5e,
+	0x00002bd8, 0x00002bf1, 0x00002c10, 0x00002c1f,
+	0x00002c38, 0x00002c4d, 0x00002c64, 0x00002d3a,
+	0x00002d68, 0x00002d99, 0x00002e26, 0x00002e7a,
+	// Entry 160 - 17F
+	0x00002ecc, 0x00002eff, 0x00002f34, 0x00002fc7,
+	0x00002ff9, 0x00003025, 0x0000305f, 0x00003080,
+	0x0000309a, 0x000030f0, 0x00003141, 0x000031ad,
+	0x0000321b, 0x00003296, 0x000032ff, 0x0000332a,
+	0x0000332a, 0x0000332a, 0x00003368, 0x00003368,
+} // Size: 1512 bytes
 
-const ruData string = "" + // Size: 9554 bytes
+const ruData string = "" + // Size: 13160 bytes
 	"\x02Ошибка\x02(нет аргумента): получить права администратора и установит" +
 	"ь административную службу\x02Использование: %[1]s [\x0a%[2]s]\x02Параме" +
 	"тры командной строки\x02Ошибка определения или процесс работает как WOW" +
@@ -3652,20 +4112,52 @@ const ruData string = "" + // Size: 9554 bytes
 	"%.2[1]f МиБ\x02%.2[1]f ГиБ\x02%.2[1]f ТиБ\x02%[1]s: %[2]q\x02Недопустимы" +
 	"й IP-адрес\x02Недопустимая длина префикса сети\x02Порт сервера не указа" +
 	"н\x02Неверный IP-адрес сервера\x02В скобках должен быть адрес IPv6\x02Н" +
-	"едопустимый MTU\x02Недопустимый порт\x02Недопустимое значение поддержан" +
-	"ия соединения\x02Недопустимый ключ: %[1]v\x02Ключи должны декодироватьс" +
-	"я ровно в 32 байта\x02Число должно быть между 0 и 2^64-1: %[1]v\x02Две " +
-	"запятые подряд\x02Неправильное имя туннеля\x02Строка должна быть в секц" +
-	"ии\x02В ключе конфигурации отсутствует разделитель\x02Ключ должен иметь" +
-	" значение\x02Неверный ключ для секции [Interface]\x02Неверный ключ для с" +
-	"екции [Peer]\x02Для интерфейса должен быть задан приватный ключ\x02[не " +
-	"указан]\x02Все пиры должны иметь публичные ключи\x02Ошибка при получени" +
-	"и конфигурации\x02Неверный ключ для секции интерфейса\x02Версия протоко" +
-	"ла должна быть 1\x02Недействительный ключ для секции пира\x02&О Amnezia" +
-	"WG…\x02Убедитесь, что вы получили файл конфигурации в надёжном источнике" +
-	".\x02Официальные сервисы Amnezia доступны только на сайте amnezia.org."
+	"едопустимый MTU\x02Недопустимый порт\x02Недопустимый ключ: %[1]v\x02Клю" +
+	"чи должны декодироваться ровно в 32 байта\x02Число должно быть между 0 " +
+	"и 2^64-1: %[1]v\x02Две запятые подряд\x02Неправильное имя туннеля\x02Ст" +
+	"рока должна быть в секции\x02В ключе конфигурации отсутствует разделите" +
+	"ль\x02Ключ должен иметь значение\x02Неверный ключ для секции [Interface" +
+	"]\x02Неверный ключ для секции [Peer]\x02Для интерфейса должен быть задан" +
+	" приватный ключ\x02[не указан]\x02Все пиры должны иметь публичные ключи" +
+	"\x02Ошибка при получении конфигурации\x02Неверный ключ для секции интерф" +
+	"ейса\x02Версия протокола должна быть 1\x02Недействительный ключ для сек" +
+	"ции пира\x02&О AmneziaWG…\x02&Российские сети напрямую (geo-split)\x02Д" +
+	"обавляет GeoSplit = ru в интерфейс: префиксы российских сетей маршрутиз" +
+	"ируются мимо туннеля и пропускаются через kill-switch, всё остальное ид" +
+	"ёт через туннель. Требует включённого kill-switch. Порог размера блока," +
+	" обновление списка и исключения настраиваются в параметрах гео-роутинга." +
+	"\x02Гео-роутинг (geo-split)\x02&Обновлять список при запуске туннеля, ес" +
+	"ли он устарел\x02Считать список устаревшим через (часов):\x02Напрямую т" +
+	"олько блоки не меньше:\x02/24 (все блоки списка)\x02/%[1]d\x02Блоки мен" +
+	"ьше порога идут через туннель. Чем выше порог, тем меньше маршрутов, но" +
+	" больше российских адресов окажется за туннелем.\x02IPv6:\x02Российские " +
+	"сети IPv6 напрямую, по списку\x02Весь IPv6 через туннель (без маршрутов" +
+	" IPv6)\x02&Пропускать приватные сети через kill-switch (локальная сеть, " +
+	"другие VPN-адаптеры и их DNS)\x02Всегда напрямую:\x02Префиксы через зап" +
+	"ятую, которые идут напрямую независимо от списка и порога.\x02Всегда че" +
+	"рез туннель:\x02Префиксы через запятую, которые исключаются из прямого " +
+	"набора, например видеокэш провайдера.\x02Источник списка IPv4:\x02Источ" +
+	"ник списка IPv6:\x02URL https или путь к локальному файлу. %[1]s в URL " +
+	"заменяется на код страны.\x02По &умолчанию\x02Обновить &сейчас\x02никог" +
+	"да\x02%[1]d мин. назад\x02%[1]d ч. назад\x02%[1]d дн. назад\x02Гео-роут" +
+	"инг пока не включён ни в одном туннеле. Включите его в редакторе туннел" +
+	"я флажком «Российские сети напрямую».\x02Список %[1]s: обновляется…\x02" +
+	"Список %[1]s: недоступен (%[2]s)\x02Список %[1]s: встроенный снимок, %[" +
+	"2]d префиксов IPv4 и %[3]d IPv6 (ни разу не скачивался)\x02Список %[1]s:" +
+	" %[2]d префиксов IPv4 и %[3]d IPv6, скачан %[4]s\x02Последняя попытка об" +
+	"новления не удалась: %[1]s\x02Некорректные настройки: %[1]s\x02Предпрос" +
+	"мотр недоступен: %[1]s\x02Прямых маршрутов: %[1]d IPv4 и %[2]d IPv6. Че" +
+	"рез туннель: %[3]d мелких блоков IPv4 (%[4]d адресов).\x02Не удалось об" +
+	"новить список\x02Некорректные настройки\x02Не удалось сохранить настрой" +
+	"ки\x02Гео-роутинг: выкл.\x02&Гео-роутинг…\x02Гео-роутинг: %[1]s напряму" +
+	"ю, список обновляется…\x02Гео-роутинг: %[1]s напрямую, список недоступе" +
+	"н\x02Гео-роутинг: %[1]s напрямую, маршрутов: %[2]d, встроенный список" +
+	"\x02Гео-роутинг: %[1]s напрямую, маршрутов: %[2]d, список обновлён %[3]s" +
+	"\x02Убедитесь, что вы получили файл конфигурации в надёжном источнике." +
+	"\x02Официальные сервисы Amnezia доступны только на сайте amnezia.org." +
+	"\x02Настройки гео-роутинга\x02Некорректный код страны для geo-split"
 
-var si_LKIndex = []uint32{ // 304 elements
+var si_LKIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000013, 0x000000a9, 0x000000cc,
 	0x000000fc, 0x00000197, 0x00000223, 0x00000293,
@@ -3710,51 +4202,70 @@ var si_LKIndex = []uint32{ // 304 elements
 	0x0000233b, 0x0000234f, 0x0000235b, 0x0000236f,
 	0x00002383, 0x00002397, 0x000023ab, 0x000023b8,
 	0x000023e8, 0x0000242c, 0x0000248f, 0x000024db,
-	0x0000253a, 0x0000255b, 0x00002582, 0x000025c5,
+	0x0000253a, 0x0000255b, 0x00002582, 0x000025b3,
 	// Entry A0 - BF
-	0x000025f6, 0x0000265f, 0x000026b9, 0x000026fb,
-	0x00002726, 0x0000276a, 0x000027ec, 0x0000282c,
-	0x0000287c, 0x000028c7, 0x0000292d, 0x00002966,
-	0x000029e3, 0x00002a2f, 0x00002a96, 0x00002adf,
-	0x00002b3d, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
+	0x0000261c, 0x00002676, 0x000026b8, 0x000026e3,
+	0x00002727, 0x000027a9, 0x000027e9, 0x00002839,
+	0x00002884, 0x000028ea, 0x00002923, 0x000029a0,
+	0x000029ec, 0x00002a53, 0x00002a9c, 0x00002afa,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
 	// Entry C0 - DF
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
 	// Entry E0 - FF
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
 	// Entry 100 - 11F
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
 	// Entry 120 - 13F
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-	0x00002b64, 0x00002b64, 0x00002b64, 0x00002b64,
-} // Size: 1240 bytes
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	// Entry 140 - 15F
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	// Entry 160 - 17F
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+	0x00002b21, 0x00002b21, 0x00002b21, 0x00002b21,
+} // Size: 1512 bytes
 
-const si_LKData string = "" + // Size: 11108 bytes
+const si_LKData string = "" + // Size: 11041 bytes
 	"\x02දෝෂයකි\x02(තර්කයක් නැත): කළමනාකරු සේවාව ඉහළ නැංවීම සහ ස්ථාපනය කිරීම" +
 	"\x02භාවිතය: %[1]s [\x0a%[2]s]\x02විධාන රේඛා විකල්ප\x02ක්\u200dරියාවලිය W" +
 	"OW64: %[1]vයටතේ ක්\u200dරියාත්මක වේද යන්න තීරණය කළ නොහැක\x02ඔබ මෙම පරිගණ" +
@@ -3827,18 +4338,17 @@ const si_LKData string = "" + // Size: 11108 bytes
 	"ගු නොවේ\x02වලංගු නොවන ජාල උපසර්ග දිග\x02අන්ත ලක්ෂ්\u200dයයෙන් වරාය අස්" +
 	"ථානගත වී ඇත\x02අවලංගු අන්ත ලක්ෂ්\u200dය ධාරකයකි\x02වරහන් වල IPv6 ලිපින" +
 	"යක් අඩංගු විය යුතුය\x02වලංගු නොවන MTU\x02තොට වලංගු නොවේ\x02වලංගු නොවන " +
-	"නොනැසී පැවතීම\x02වලංගු නොවන යතුර: %[1]v\x02යතුරු හරියටම බයිට් 32කට වික" +
-	"ේතනය කළ යුතුය\x02අංකය 0 සහ 2^64-1: %[1]vඅතර අංකයක් විය යුතුය\x02පේළියක" +
-	"ට අල්පවිරාම දෙකක්\x02උමං නම වලංගු නැත\x02රේඛාව කොටසක ඇති විය යුතුය\x02" +
-	"වින්\u200dයාස යතුර සමාන බෙදුම්කරුවෙකු අස්ථානගත වී ඇත\x02යතුරට අගයක් ති" +
-	"බිය යුතුය\x02[Interface] කොටස සඳහා වලංගු නොවන යතුර\x02[Peer] කොටස සඳහා" +
-	" වලංගු නොවන යතුර\x02අතුරුමුහුතකට පුද්. යතුරක් තිබිය යුතුය\x02[කිසිවක් සඳ" +
-	"හන් කර නැත]\x02සියලුම සම වයසේ මිතුරන්ට පොදු යතුරු තිබිය යුතුය\x02වින්" +
-	"\u200dයාසය ලබා ගැනීමේ දෝෂයකි\x02අතුරු මුහුණත කොටස සඳහා වලංගු නොවන යතුර" +
-	"\x02කෙටුම්පතෙහි අනු. 1 විය යුතුය\x02සම වයසේ කොටස සඳහා වලංගු නොවන යතුරක්" +
-	"\x02&වයර්ගාඩ් ගැන…"
+	"යතුර: %[1]v\x02යතුරු හරියටම බයිට් 32කට විකේතනය කළ යුතුය\x02අංකය 0 සහ 2" +
+	"^64-1: %[1]vඅතර අංකයක් විය යුතුය\x02පේළියකට අල්පවිරාම දෙකක්\x02උමං නම වල" +
+	"ංගු නැත\x02රේඛාව කොටසක ඇති විය යුතුය\x02වින්\u200dයාස යතුර සමාන බෙදුම්" +
+	"කරුවෙකු අස්ථානගත වී ඇත\x02යතුරට අගයක් තිබිය යුතුය\x02[Interface] කොටස " +
+	"සඳහා වලංගු නොවන යතුර\x02[Peer] කොටස සඳහා වලංගු නොවන යතුර\x02අතුරුමුහුත" +
+	"කට පුද්. යතුරක් තිබිය යුතුය\x02[කිසිවක් සඳහන් කර නැත]\x02සියලුම සම වයස" +
+	"ේ මිතුරන්ට පොදු යතුරු තිබිය යුතුය\x02වින්\u200dයාසය ලබා ගැනීමේ දෝෂයකි" +
+	"\x02අතුරු මුහුණත කොටස සඳහා වලංගු නොවන යතුර\x02කෙටුම්පතෙහි අනු. 1 විය යුත" +
+	"ුය\x02සම වයසේ කොටස සඳහා වලංගු නොවන යතුරක්\x02&වයර්ගාඩ් ගැන…"
 
-var skIndex = []uint32{ // 304 elements
+var skIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000006, 0x0000005e, 0x00000078,
 	0x00000097, 0x000000d1, 0x0000011e, 0x00000156,
@@ -3883,51 +4393,70 @@ var skIndex = []uint32{ // 304 elements
 	0x000013ea, 0x000013f5, 0x000013fe, 0x0000140b,
 	0x00001418, 0x00001425, 0x00001432, 0x0000143f,
 	0x00001453, 0x00001479, 0x0000149e, 0x000014c2,
-	0x000014eb, 0x000014f9, 0x00001508, 0x0000152a,
+	0x000014eb, 0x000014f9, 0x00001508, 0x00001521,
 	// Entry A0 - BF
-	0x00001543, 0x00001578, 0x000015ab, 0x000015c1,
-	0x000015de, 0x000015fd, 0x0000163f, 0x00001660,
-	0x00001685, 0x000016a5, 0x000016d8, 0x000016ec,
-	0x00001721, 0x00001745, 0x00001768, 0x00001786,
-	0x000017a4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
+	0x00001556, 0x00001589, 0x0000159f, 0x000015bc,
+	0x000015db, 0x0000161d, 0x0000163e, 0x00001663,
+	0x00001683, 0x000016b6, 0x000016ca, 0x000016ff,
+	0x00001723, 0x00001746, 0x00001764, 0x00001782,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
 	// Entry C0 - DF
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
 	// Entry E0 - FF
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
 	// Entry 100 - 11F
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
 	// Entry 120 - 13F
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-	0x000017b4, 0x000017b4, 0x000017b4, 0x000017b4,
-} // Size: 1240 bytes
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	// Entry 140 - 15F
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	// Entry 160 - 17F
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+	0x00001792, 0x00001792, 0x00001792, 0x00001792,
+} // Size: 1512 bytes
 
-const skData string = "" + // Size: 6068 bytes
+const skData string = "" + // Size: 6034 bytes
 	"\x02Chyba\x02(bez argumentu): získať administrátorské práva a nainštalov" +
 	"ať službu manažéra\x02Použitie: %[1]s [\x0a%[2]s]\x02Možnosti príkazovéh" +
 	"o riadku\x02Nepodarilo sa zistiť, či proces beží pod WOW64: %[1]v\x02V t" +
@@ -4011,18 +4540,17 @@ const skData string = "" + // Size: 6068 bytes
 	" %[2]q\x02Neplatná adresa IP\x02Neplatná dĺžka sieťového prefixu\x02Konc" +
 	"ovému bodu chýba číslo portu\x02Neplatný hostiteľ koncového bodu\x02Medz" +
 	"i zátvorkami musí byť IPv6 adresa\x02Neplatné MTU\x02Neplatný port\x02Ne" +
-	"platný perzistentný keepalive\x02Neplatný kľúč: %[1]v\x02Dekódované kľúč" +
-	"e musia mať veľkosť 32 bajtov\x02Číslo musí mať hodnotu medzi 0 a 2^64-1" +
-	": %[1]v\x02Dve čiarky v poradí\x02Názov tunela nie je platný\x02Sekcia m" +
-	"usí obsahovať čiaru\x02Konfiguračný kľúč neobsahuje separátor (znamienko" +
-	" rovnosti)\x02Kľúč musí obsahovať hodnotu\x02Neplatný kľúč sekcie [Inter" +
-	"face]\x02Neplatný kľúč sekcie [Peer]\x02Rozhranie musí mať priradený súk" +
-	"romný kľúč\x02[nešpecifikované]\x02Všetci peeri musia mať priradený vere" +
-	"jný kľúč\x02Chyba pri získavaní konfigurácie\x02Neplatný kľúč sekcie roz" +
-	"hrania\x02Verzia protokolu musí byť 1\x02Neplatný kľúč peer sekcie\x02&O" +
-	" AmneziaWG…"
+	"platný kľúč: %[1]v\x02Dekódované kľúče musia mať veľkosť 32 bajtov\x02Čí" +
+	"slo musí mať hodnotu medzi 0 a 2^64-1: %[1]v\x02Dve čiarky v poradí\x02N" +
+	"ázov tunela nie je platný\x02Sekcia musí obsahovať čiaru\x02Konfiguračn" +
+	"ý kľúč neobsahuje separátor (znamienko rovnosti)\x02Kľúč musí obsahovať" +
+	" hodnotu\x02Neplatný kľúč sekcie [Interface]\x02Neplatný kľúč sekcie [Pe" +
+	"er]\x02Rozhranie musí mať priradený súkromný kľúč\x02[nešpecifikované]" +
+	"\x02Všetci peeri musia mať priradený verejný kľúč\x02Chyba pri získavaní" +
+	" konfigurácie\x02Neplatný kľúč sekcie rozhrania\x02Verzia protokolu musí" +
+	" byť 1\x02Neplatný kľúč peer sekcie\x02&O AmneziaWG…"
 
-var slIndex = []uint32{ // 304 elements
+var slIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000007, 0x00000058, 0x00000070,
 	0x00000089, 0x000000c1, 0x00000111, 0x00000148,
@@ -4067,51 +4595,70 @@ var slIndex = []uint32{ // 304 elements
 	0x0000125b, 0x00001267, 0x00001270, 0x0000127d,
 	0x0000128a, 0x00001297, 0x000012a4, 0x000012b1,
 	0x000012c4, 0x000012e8, 0x0000130a, 0x00001333,
-	0x00001359, 0x00001366, 0x00001375, 0x00001399,
+	0x00001359, 0x00001366, 0x00001375, 0x0000138c,
 	// Entry A0 - BF
-	0x000013b0, 0x000013e1, 0x00001415, 0x0000142a,
-	0x00001441, 0x0000145c, 0x0000148b, 0x000014a6,
-	0x000014cb, 0x000014eb, 0x0000150d, 0x0000151b,
-	0x00001542, 0x00001562, 0x00001584, 0x000015a2,
-	0x000015c4, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
+	0x000013bd, 0x000013f1, 0x00001406, 0x0000141d,
+	0x00001438, 0x00001467, 0x00001482, 0x000014a7,
+	0x000014c7, 0x000014e9, 0x000014f7, 0x0000151e,
+	0x0000153e, 0x00001560, 0x0000157e, 0x000015a0,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
 	// Entry C0 - DF
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
 	// Entry E0 - FF
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
 	// Entry 100 - 11F
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
 	// Entry 120 - 13F
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-	0x000015d7, 0x000015d7, 0x000015d7, 0x000015d7,
-} // Size: 1240 bytes
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	// Entry 140 - 15F
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	// Entry 160 - 17F
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+	0x000015b3, 0x000015b3, 0x000015b3, 0x000015b3,
+} // Size: 1512 bytes
 
-const slData string = "" + // Size: 5591 bytes
+const slData string = "" + // Size: 5555 bytes
 	"\x02Napaka\x02(brez argumenta): povzdigni na skrbniške pravice in namest" +
 	"i skrbniško storitev\x02Uporaba: %[1]s [\x0a%[2]s]\x02Možnosti ukazne vr" +
 	"stice\x02Napaka pri določanju ali proces teče kot WOW64: %[1]v\x02Na tem" +
@@ -4193,18 +4740,18 @@ const slData string = "" + // Size: 5591 bytes
 	"B\x02%.2[1]f\u00a0GiB\x02%.2[1]f\u00a0TiB\x02%[1]s: %[2]q\x02Napačen nas" +
 	"lov IP\x02Napačna dolžina predpone omrežja\x02Pri končni točki manjkajo " +
 	"vrata\x02Pri končni točki je gostitelj napačen\x02Oklepaji morajo vsebov" +
-	"ati naslov IPv6\x02Napačen MTU\x02Napačna vrata\x02Napačno trajno ohranj" +
-	"anje povezave\x02Napačen ključ: %[1]v\x02Dekodirani ključi morajo biti n" +
-	"atanko 32 bajtov\x02Številka mora biti število med 0 in 2^64-1: %[1]v" +
-	"\x02Dve zaporedni vejici\x02Ime tunela ni veljavno\x02Vrstica mora biti " +
-	"v odseku\x02Ključu v konfiguraciji manjka ločilo enačaj\x02Ključ mora im" +
-	"eti vrednost\x02Napačen ključ za odsek [Interface]\x02Napačen ključ za o" +
-	"dsek [Peer]\x02Vmesnik mora imeti zasebni ključ\x02[ni navedeno]\x02Vsi " +
-	"vrstniki morajo imeti javni ključ\x02Napaka pri branju konfiguracije\x02" +
-	"Napačen ključ za odsek vmesnika\x02Verzija protokola mora biti 1\x02Napa" +
-	"čen ključ za odsek vrstnika\x02O &AmneziaWGu\u00a0…"
+	"ati naslov IPv6\x02Napačen MTU\x02Napačna vrata\x02Napačen ključ: %[1]v" +
+	"\x02Dekodirani ključi morajo biti natanko 32 bajtov\x02Številka mora bit" +
+	"i število med 0 in 2^64-1: %[1]v\x02Dve zaporedni vejici\x02Ime tunela n" +
+	"i veljavno\x02Vrstica mora biti v odseku\x02Ključu v konfiguraciji manjk" +
+	"a ločilo enačaj\x02Ključ mora imeti vrednost\x02Napačen ključ za odsek [" +
+	"Interface]\x02Napačen ključ za odsek [Peer]\x02Vmesnik mora imeti zasebn" +
+	"i ključ\x02[ni navedeno]\x02Vsi vrstniki morajo imeti javni ključ\x02Nap" +
+	"aka pri branju konfiguracije\x02Napačen ključ za odsek vmesnika\x02Verzi" +
+	"ja protokola mora biti 1\x02Napačen ključ za odsek vrstnika\x02O &Amnezi" +
+	"aWGu\u00a0…"
 
-var sv_SEIndex = []uint32{ // 304 elements
+var sv_SEIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000004, 0x0000003c, 0x00000058,
 	0x0000006f, 0x000000af, 0x000000f7, 0x0000012f,
@@ -4249,51 +4796,70 @@ var sv_SEIndex = []uint32{ // 304 elements
 	0x0000104c, 0x00001058, 0x00001061, 0x0000106e,
 	0x0000107b, 0x00001088, 0x00001095, 0x000010a2,
 	0x000010b4, 0x000010d3, 0x000010ef, 0x00001107,
-	0x00001133, 0x0000113f, 0x0000114c, 0x00001169,
+	0x00001133, 0x0000113f, 0x0000114c, 0x00001162,
 	// Entry A0 - BF
-	0x0000117f, 0x000011a8, 0x000011de, 0x000011f5,
-	0x0000120c, 0x00001232, 0x00001266, 0x00001282,
-	0x000012ac, 0x000012d1, 0x00001304, 0x00001314,
-	0x0000133c, 0x0000135f, 0x00001387, 0x000013a6,
-	0x000013c7, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
+	0x0000118b, 0x000011c1, 0x000011d8, 0x000011ef,
+	0x00001215, 0x00001249, 0x00001265, 0x0000128f,
+	0x000012b4, 0x000012e7, 0x000012f7, 0x0000131f,
+	0x00001342, 0x0000136a, 0x00001389, 0x000013aa,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
 	// Entry C0 - DF
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
 	// Entry E0 - FF
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
 	// Entry 100 - 11F
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
 	// Entry 120 - 13F
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-	0x000013d8, 0x000013d8, 0x000013d8, 0x000013d8,
-} // Size: 1240 bytes
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	// Entry 140 - 15F
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	// Entry 160 - 17F
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+	0x000013bb, 0x000013bb, 0x000013bb, 0x000013bb,
+} // Size: 1512 bytes
 
-const sv_SEData string = "" + // Size: 5080 bytes
+const sv_SEData string = "" + // Size: 5051 bytes
 	"\x02Fel\x02(inget argument): höj och installera hanterartjänsten\x02Anvä" +
 	"ndning: %[1]s [\x0a%[2]s]\x02Kommandoradsalternativ\x02Det går inte att " +
 	"avgöra om processen körs under WOW64: %[1]v\x02Du måste använda den inby" +
@@ -4365,18 +4931,17 @@ const sv_SEData string = "" + // Size: 5080 bytes
 	"\x02%[1]s: %[2]q\x02Ogiltig IP-adress\x02Ogiltigt nätverksprefixlängd" +
 	"\x02Saknad port från slutpunkt\x02Ogiltig slutpunktsvärd\x02Parenteser m" +
 	"åste innehålla en IPv6-adress\x02Ogiltig MTU\x02Ogiltig port\x02Ogiltig" +
-	" beständig keepalive\x02Ogiltig nyckel: %[1]v\x02Nycklar måste avkoda ti" +
-	"ll exakt 32 byte\x02Numret måste vara ett tal mellan 0 och 2^64-1: %[1]v" +
-	"\x02Två kommatecken i rad\x02Tunnelnamn är ogiltig\x02Linje måste föreko" +
-	"mma i ett avsnitt\x02Konfigurationsnyckel saknar en likvärdig separator" +
-	"\x02Nyckel måste ha ett värde\x02Ogiltig nyckel för sektionen [Interface" +
-	"]\x02Ogiltig nyckel för sektionen [Peer]\x02Ett gränssnitt måste innehål" +
-	"la en privat nyckel\x02[ingen angiven]\x02Alla peers måste ha offentliga" +
-	" nycklar\x02Fel vid hämtning av konfiguration\x02Ogiltig nyckel för grän" +
-	"ssnittsavsnitt\x02Protokollversion måste vara 1\x02Ogiltig nyckel för pe" +
-	"er-avsnitt\x02Om &AmneziaWG…"
+	" nyckel: %[1]v\x02Nycklar måste avkoda till exakt 32 byte\x02Numret måst" +
+	"e vara ett tal mellan 0 och 2^64-1: %[1]v\x02Två kommatecken i rad\x02Tu" +
+	"nnelnamn är ogiltig\x02Linje måste förekomma i ett avsnitt\x02Konfigurat" +
+	"ionsnyckel saknar en likvärdig separator\x02Nyckel måste ha ett värde" +
+	"\x02Ogiltig nyckel för sektionen [Interface]\x02Ogiltig nyckel för sekti" +
+	"onen [Peer]\x02Ett gränssnitt måste innehålla en privat nyckel\x02[ingen" +
+	" angiven]\x02Alla peers måste ha offentliga nycklar\x02Fel vid hämtning " +
+	"av konfiguration\x02Ogiltig nyckel för gränssnittsavsnitt\x02Protokollve" +
+	"rsion måste vara 1\x02Ogiltig nyckel för peer-avsnitt\x02Om &AmneziaWG…"
 
-var trIndex = []uint32{ // 304 elements
+var trIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000005, 0x00000053, 0x0000006d,
 	0x00000089, 0x000000cd, 0x00000112, 0x0000013d,
@@ -4421,51 +4986,70 @@ var trIndex = []uint32{ // 304 elements
 	0x00001109, 0x00001115, 0x0000111e, 0x0000112b,
 	0x00001138, 0x00001145, 0x00001152, 0x0000115f,
 	0x00001173, 0x00001192, 0x000011a8, 0x000011bc,
-	0x000011ea, 0x000011f8, 0x00001207, 0x00001224,
+	0x000011ea, 0x000011f8, 0x00001207, 0x00001220,
 	// Entry A0 - BF
-	0x0000123d, 0x00001273, 0x000012a3, 0x000012b8,
-	0x000012d4, 0x000012fb, 0x0000132e, 0x00001350,
-	0x0000137e, 0x000013a7, 0x000013cf, 0x000013de,
-	0x0000140b, 0x00001433, 0x0000145b, 0x0000147c,
-	0x0000149f, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
+	0x00001256, 0x00001286, 0x0000129b, 0x000012b7,
+	0x000012de, 0x00001311, 0x00001333, 0x00001361,
+	0x0000138a, 0x000013b2, 0x000013c1, 0x000013ee,
+	0x00001416, 0x0000143e, 0x0000145f, 0x00001482,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
 	// Entry C0 - DF
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
 	// Entry E0 - FF
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
 	// Entry 100 - 11F
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
 	// Entry 120 - 13F
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-	0x000014b7, 0x000014b7, 0x000014b7, 0x000014b7,
-} // Size: 1240 bytes
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	// Entry 140 - 15F
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	// Entry 160 - 17F
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+	0x0000149a, 0x0000149a, 0x0000149a, 0x0000149a,
+} // Size: 1512 bytes
 
-const trData string = "" + // Size: 5303 bytes
+const trData string = "" + // Size: 5274 bytes
 	"\x02Hata\x02(parametre belirtilmediyse): gerekli izinleri al ve yönetim " +
 	"hizmetini yükle\x02Kullanım: %[1]s [\x0a%[2]s]\x02Komut Satırı Seçenekle" +
 	"ri\x02İşlemin WOW64 altında çalıştığından emin olunamadı: %[1]v\x02Bu bi" +
@@ -4536,18 +5120,18 @@ const trData string = "" + // Size: 5303 bytes
 	"\x02%.2[1]f\u00a0GiB\x02%.2[1]f\u00a0TiB\x02%[1]s: %[2]q\x02Geçersiz IP " +
 	"adresi\x02Geçersiz ağ öneki uzunluğu\x02Uç nokta portu eksik\x02Geçersiz" +
 	" uç nokta\x02Köşeli parantezler IPv6 adresi içermelidir\x02Geçersiz MTU" +
-	"\x02Geçersiz port\x02Geçersiz sürekli keepalive\x02Geçersiz anahtar: %[1" +
-	"]v\x02Anahtarlar çözüldüğünde tam 32 bayt olmalıdır\x02Sayı 0 ile 2^64-1" +
-	" arasında olmalıdır: %[1]v\x02Yan yana iki virgül\x02Tünel adı geçerli d" +
-	"eğil\x02Satır bir bölüm içinde olmalıdır\x02Yapılandırma anahtarında eşi" +
-	"ttir ayracı eksik\x02Anahtar bir değere sahip olmalı\x02[Interface] bölü" +
-	"mü için geçersiz anahtar\x02[Peer] bölümü için geçersiz anahtar\x02Arabi" +
-	"rimde gizli anahtar bulunmalıdır\x02[belirtilmedi]\x02Tüm eşlerin ortak " +
-	"anahtarları olmalıdır\x02Yapılandırma alınırken hata oluştu\x02Arabirim " +
-	"bölümünde geçersiz anahtar\x02Protokol sürümü 1 olmalıdır\x02Eş bölümünd" +
-	"e geçersiz anahtar\x02&AmneziaWG hakkında…"
+	"\x02Geçersiz port\x02Geçersiz anahtar: %[1]v\x02Anahtarlar çözüldüğünde " +
+	"tam 32 bayt olmalıdır\x02Sayı 0 ile 2^64-1 arasında olmalıdır: %[1]v\x02" +
+	"Yan yana iki virgül\x02Tünel adı geçerli değil\x02Satır bir bölüm içinde" +
+	" olmalıdır\x02Yapılandırma anahtarında eşittir ayracı eksik\x02Anahtar b" +
+	"ir değere sahip olmalı\x02[Interface] bölümü için geçersiz anahtar\x02[P" +
+	"eer] bölümü için geçersiz anahtar\x02Arabirimde gizli anahtar bulunmalıd" +
+	"ır\x02[belirtilmedi]\x02Tüm eşlerin ortak anahtarları olmalıdır\x02Yapı" +
+	"landırma alınırken hata oluştu\x02Arabirim bölümünde geçersiz anahtar" +
+	"\x02Protokol sürümü 1 olmalıdır\x02Eş bölümünde geçersiz anahtar\x02&Amn" +
+	"eziaWG hakkında…"
 
-var ukIndex = []uint32{ // 304 elements
+var ukIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x0000000f, 0x0000008e, 0x000000b7,
 	0x000000ea, 0x00000144, 0x000001c2, 0x0000021b,
@@ -4592,51 +5176,70 @@ var ukIndex = []uint32{ // 304 elements
 	0x00001d6b, 0x00001d7a, 0x00001d83, 0x00001d90,
 	0x00001d9d, 0x00001daa, 0x00001db6, 0x00001dc3,
 	0x00001de4, 0x00001e20, 0x00001e5b, 0x00001e93,
-	0x00001ece, 0x00001ee5, 0x00001f01, 0x00001f31,
+	0x00001ece, 0x00001ee5, 0x00001f01, 0x00001f24,
 	// Entry A0 - BF
-	0x00001f54, 0x00001f96, 0x00001fe2, 0x00002001,
-	0x0000202e, 0x00002074, 0x000020cf, 0x00002101,
-	0x00002139, 0x0000216c, 0x000021b3, 0x000021d8,
-	0x00002224, 0x00002266, 0x000022ad, 0x000022e7,
-	0x0000231a, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
+	0x00001f66, 0x00001fb2, 0x00001fd1, 0x00001ffe,
+	0x00002044, 0x0000209f, 0x000020d1, 0x00002109,
+	0x0000213c, 0x00002183, 0x000021a8, 0x000021f4,
+	0x00002236, 0x0000227d, 0x000022b7, 0x000022ea,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
 	// Entry C0 - DF
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
 	// Entry E0 - FF
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
 	// Entry 100 - 11F
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
 	// Entry 120 - 13F
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-	0x0000232f, 0x0000232f, 0x0000232f, 0x0000232f,
-} // Size: 1240 bytes
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	// Entry 140 - 15F
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	// Entry 160 - 17F
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+	0x000022ff, 0x000022ff, 0x000022ff, 0x000022ff,
+} // Size: 1512 bytes
 
-const ukData string = "" + // Size: 9007 bytes
+const ukData string = "" + // Size: 8959 bytes
 	"\x02Помилка\x02(немає аргумента): отримати права аднімістратора і встано" +
 	"вити службу\x02Використання: %[1]s [\x0a%[2]s]\x02Параметри командного " +
 	"рядка\x02Неможливо визначити, чи працює процес під WOW64: %[1]v\x02Ви п" +
@@ -4717,18 +5320,17 @@ const ukData string = "" + // Size: 9007 bytes
 	"TiB\x02%[1]s: %[2]q\x02Недійсна IP-адреса\x02Невірна довжина префіксу ме" +
 	"режі\x02Відсутній порт з кінцевої точки\x02Недійсний хост кінцевої точк" +
 	"и\x02Дужки повинні містити адресу IPv6\x02Недійсний MTU\x02Недійсний по" +
-	"рт\x02Некоректне значення keepalive\x02Недійсний ключ: %[1]v\x02Ключ по" +
-	"винен декодуватись до 32 байт\x02Номер повинен бути числом від 0 до 2^6" +
-	"4-1: %[1]v\x02Дві коми поспіль\x02Назва тунелю некоректна\x02Рядок повин" +
-	"ен бути вказаним у розділі\x02Ключ конфігурації відсутній роздільник рі" +
-	"вності\x02Ключ повинен мати значення\x02Хибний ключ для [Interface] роз" +
-	"ділу\x02Хибний ключ для [Peer] розділу\x02Інтерфейс повинен мати особис" +
-	"тий ключ\x02[жодного не вказано]\x02Всі учасники повинні мати відкриті " +
-	"ключі\x02Помилка при отриманні конфігурації\x02Недійсний ключ для розді" +
-	"лу інтерфейсу\x02Версія протоколу повинна бути 1\x02Хибний ключ для [Pe" +
-	"er] розділу\x02Про &AmneziaWG…"
+	"рт\x02Недійсний ключ: %[1]v\x02Ключ повинен декодуватись до 32 байт\x02" +
+	"Номер повинен бути числом від 0 до 2^64-1: %[1]v\x02Дві коми поспіль" +
+	"\x02Назва тунелю некоректна\x02Рядок повинен бути вказаним у розділі\x02" +
+	"Ключ конфігурації відсутній роздільник рівності\x02Ключ повинен мати зн" +
+	"ачення\x02Хибний ключ для [Interface] розділу\x02Хибний ключ для [Peer]" +
+	" розділу\x02Інтерфейс повинен мати особистий ключ\x02[жодного не вказано" +
+	"]\x02Всі учасники повинні мати відкриті ключі\x02Помилка при отриманні к" +
+	"онфігурації\x02Недійсний ключ для розділу інтерфейсу\x02Версія протокол" +
+	"у повинна бути 1\x02Хибний ключ для [Peer] розділу\x02Про &AmneziaWG…"
 
-var viIndex = []uint32{ // 304 elements
+var viIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000006, 0x00000006, 0x00000022,
 	0x0000003b, 0x0000003b, 0x0000003b, 0x0000003b,
@@ -4773,12 +5375,12 @@ var viIndex = []uint32{ // 304 elements
 	0x0000029f, 0x000002ae, 0x000002b6, 0x000002c2,
 	0x000002ce, 0x000002da, 0x000002e6, 0x000002e6,
 	0x00000308, 0x00000308, 0x00000308, 0x00000308,
-	0x00000308, 0x00000320, 0x00000340, 0x00000340,
+	0x00000308, 0x00000320, 0x00000340, 0x0000035f,
 	// Entry A0 - BF
-	0x0000035f, 0x0000035f, 0x0000035f, 0x0000035f,
+	0x0000035f, 0x0000035f, 0x0000035f, 0x0000037a,
 	0x0000037a, 0x0000037a, 0x0000037a, 0x0000037a,
-	0x0000037a, 0x0000037a, 0x0000037a, 0x0000038f,
-	0x0000038f, 0x000003aa, 0x000003aa, 0x000003aa,
+	0x0000037a, 0x0000037a, 0x0000038f, 0x0000038f,
+	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
 	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
 	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
 	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
@@ -4815,7 +5417,26 @@ var viIndex = []uint32{ // 304 elements
 	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
 	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
 	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
-} // Size: 1240 bytes
+	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
+	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
+	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
+	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
+	// Entry 140 - 15F
+	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
+	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
+	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
+	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
+	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
+	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
+	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
+	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
+	// Entry 160 - 17F
+	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
+	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
+	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
+	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
+	0x000003aa, 0x000003aa, 0x000003aa, 0x000003aa,
+} // Size: 1512 bytes
 
 const viData string = "" + // Size: 938 bytes
 	"\x02Lỗi\x02Sử dụng: %[1]s [\x0a%[2]s]\x02Tùy chọn dòng lệnh\x02,\x02," +
@@ -4834,7 +5455,7 @@ const viData string = "" + // Size: 938 bytes
 	"ệ: %[1]v\x02Tên VPN không hợp lệ\x02Ko có Chỉ định\x02Lỗi khi lưu cấu " +
 	"hình"
 
-var zh_CNIndex = []uint32{ // 304 elements
+var zh_CNIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000007, 0x00000030, 0x00000047,
 	0x00000057, 0x0000008b, 0x000000c9, 0x000000ef,
@@ -4879,51 +5500,70 @@ var zh_CNIndex = []uint32{ // 304 elements
 	0x00000d21, 0x00000d2b, 0x00000d33, 0x00000d40,
 	0x00000d4d, 0x00000d5a, 0x00000d67, 0x00000d74,
 	0x00000d83, 0x00000d9c, 0x00000dbe, 0x00000de5,
-	0x00000e0d, 0x00000e18, 0x00000e25, 0x00000e3e,
+	0x00000e0d, 0x00000e18, 0x00000e25, 0x00000e3d,
 	// Entry A0 - BF
-	0x00000e56, 0x00000e80, 0x00000eae, 0x00000ec4,
-	0x00000ed7, 0x00000ef3, 0x00000f18, 0x00000f2b,
-	0x00000f50, 0x00000f70, 0x00000f8c, 0x00000f98,
-	0x00000fba, 0x00000fd0, 0x00000fe9, 0x00001001,
-	0x0000101a, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
+	0x00000e67, 0x00000e95, 0x00000eab, 0x00000ebe,
+	0x00000eda, 0x00000eff, 0x00000f12, 0x00000f37,
+	0x00000f57, 0x00000f73, 0x00000f7f, 0x00000fa1,
+	0x00000fb7, 0x00000fd0, 0x00000fe8, 0x00001001,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
 	// Entry C0 - DF
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
 	// Entry E0 - FF
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
 	// Entry 100 - 11F
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
 	// Entry 120 - 13F
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-	0x00001033, 0x00001033, 0x00001033, 0x00001033,
-} // Size: 1240 bytes
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	// Entry 140 - 15F
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	// Entry 160 - 17F
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+	0x0000101a, 0x0000101a, 0x0000101a, 0x0000101a,
+} // Size: 1512 bytes
 
-const zh_CNData string = "" + // Size: 4147 bytes
+const zh_CNData string = "" + // Size: 4122 bytes
 	"\x02错误\x02(无参数): 提升并安装管理服务\x02用法: %[1]s [\x0a%[2]s]\x02命令行选项\x02无法确定该进程是" +
 	"否在WOW64下运行: %[1]v\x02您必须在此计算机上使用原生版本的 AmneziaWG。\x02无法打开当前进程令牌: %[1]v" +
 	"\x02AmneziaWG 可能只能被内建的 %[1]s 小组中的成员使用。\x02AmneziaWG 正在运行，但用户界面只能从内建的 %[1" +
@@ -4960,13 +5600,13 @@ const zh_CNData string = "" + // Size: 4147 bytes
 	"%[1]d 分钟\x14\x01\x81\x01\x00\x00\x0a\x02%[1]d 秒\x02%[1]s 前\x02%[1]d B" +
 	"\x02%.2[1]f\u00a0KiB\x02%.2[1]f\u00a0MiB\x02%.2[1]f\u00a0GiB\x02%.2[1]f" +
 	"\u00a0TiB\x02%[1]s: %[2]q\x02IP地址无效\x02网络前缀长度无效\x02对端 (endpoint) 中缺少端口" +
-	"\x02对端主机名 (endpoint host) 无效\x02方括号中应包含一个 IPv6 地址\x02MTU 无效\x02端口无效\x02连" +
-	"接保活间隔无效\x02无效的密钥：%[1]v\x02解码后的密钥长度必须为32字节\x02数值必须介于 0 至 2^64-1 之间: %[1" +
-	"]v\x02存在多余的逗号\x02隧道名称无效\x02行必须出现在段落中\x02配置项必须要有一个等于号\x02必须有一个值\x02[Inter" +
-	"face] 段落中的该键无效\x02[Peer] 段落中的该键无效\x02接口必须有一个私钥\x02[未指定]\x02每个节点都必须指定公钥" +
-	"\x02获取配置时出错\x02接口段落的键无效\x02协议版本必须为 1\x02节点段落的键无效\x02关于 AmneziaWG… (&A)"
+	"\x02对端主机名 (endpoint host) 无效\x02方括号中应包含一个 IPv6 地址\x02MTU 无效\x02端口无效\x02无" +
+	"效的密钥：%[1]v\x02解码后的密钥长度必须为32字节\x02数值必须介于 0 至 2^64-1 之间: %[1]v\x02存在多余的逗" +
+	"号\x02隧道名称无效\x02行必须出现在段落中\x02配置项必须要有一个等于号\x02必须有一个值\x02[Interface] 段落中的" +
+	"该键无效\x02[Peer] 段落中的该键无效\x02接口必须有一个私钥\x02[未指定]\x02每个节点都必须指定公钥\x02获取配置时出" +
+	"错\x02接口段落的键无效\x02协议版本必须为 1\x02节点段落的键无效\x02关于 AmneziaWG… (&A)"
 
-var zh_TWIndex = []uint32{ // 304 elements
+var zh_TWIndex = []uint32{ // 372 elements
 	// Entry 0 - 1F
 	0x00000000, 0x00000007, 0x00000037, 0x00000056,
 	0x00000066, 0x000000a4, 0x000000df, 0x00000110,
@@ -5011,51 +5651,70 @@ var zh_TWIndex = []uint32{ // 304 elements
 	0x00000db9, 0x00000dc3, 0x00000dcc, 0x00000dd9,
 	0x00000de6, 0x00000df3, 0x00000e00, 0x00000e0f,
 	0x00000e23, 0x00000e45, 0x00000e64, 0x00000e7e,
-	0x00000ea6, 0x00000eb4, 0x00000ec4, 0x00000eea,
+	0x00000ea6, 0x00000eb4, 0x00000ec4, 0x00000edd,
 	// Entry A0 - BF
-	0x00000f03, 0x00000f22, 0x00000f4b, 0x00000f64,
-	0x00000f77, 0x00000f93, 0x00000fbb, 0x00000fd1,
-	0x00000ff0, 0x0000100a, 0x00001030, 0x0000103c,
-	0x0000105e, 0x0000107a, 0x00001097, 0x000010af,
-	0x000010c7, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
+	0x00000efc, 0x00000f25, 0x00000f3e, 0x00000f51,
+	0x00000f6d, 0x00000f95, 0x00000fab, 0x00000fca,
+	0x00000fe4, 0x0000100a, 0x00001016, 0x00001038,
+	0x00001054, 0x00001071, 0x00001089, 0x000010a1,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
 	// Entry C0 - DF
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
 	// Entry E0 - FF
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
 	// Entry 100 - 11F
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
 	// Entry 120 - 13F
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-	0x000010dd, 0x000010dd, 0x000010dd, 0x000010dd,
-} // Size: 1240 bytes
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	// Entry 140 - 15F
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	// Entry 160 - 17F
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+	0x000010b7, 0x000010b7, 0x000010b7, 0x000010b7,
+} // Size: 1512 bytes
 
-const zh_TWData string = "" + // Size: 4317 bytes
+const zh_TWData string = "" + // Size: 4279 bytes
 	"\x02錯誤\x02(無參數)：提升權限並安裝管理服務\x02使用方法： %[1]s [\x0a%[2]s]\x02命令列選項\x02無法確定該" +
 	"處理程序是否在 WOW64 下執行： %[1]v\x02您必須在此電腦上執行原生版本的 AmneziaWG。\x02無法開啓目前處理程序的權" +
 	"杖： %[1]v\x02AmneziaWG 可能只能被內建的「%[1]s」群組成員使用。\x02AmneziaWG 正在執行，但 UI 只能" +
@@ -5094,10 +5753,10 @@ const zh_TWData string = "" + // Size: 4317 bytes
 	"\x02%[1]d\u00a0B\x02%.2[1]f\u00a0KiB\x02%.2[1]f\u00a0MiB\x02%.2[1]f" +
 	"\u00a0GiB\x02%.2[1]f\u00a0TiB\x02%[1]s： %[2]q\x02無效的 IP 位址\x02無效的網路位址首碼長" +
 	"度\x02Endpoint 中沒有指定埠號\x02無效的 Endpoint 位址\x02括號中必須包含一個 IPv6 位址\x02無效的 M" +
-	"TU\x02無效的埠號\x02無效的 Persistent Keepalive 設定\x02無效的金鑰： %[1]v\x02金鑰必須剛好長 32" +
-	" bytes\x02數值必須介於 0 到 2^64-1： %[1]v\x02一行中有兩個逗號\x02隧道名稱無效\x02行必須出現在段落中" +
-	"\x02設定的項目必須要有一個等號\x02必須要有一個值\x02[Interface] 中有無效選項\x02[Peer] 中有無效選項\x02I" +
-	"nterface 中必須要有一把私鑰\x02[未指定]\x02每個 Peer 都必須要有公鑰\x02讀取設定時發生錯誤\x02Interface" +
-	" 中的金鑰無效\x02協定版本必須為 1\x02Peer 中的金鑰無效\x02關於 AmneziaWG (&A)"
+	"TU\x02無效的埠號\x02無效的金鑰： %[1]v\x02金鑰必須剛好長 32 bytes\x02數值必須介於 0 到 2^64-1： %[" +
+	"1]v\x02一行中有兩個逗號\x02隧道名稱無效\x02行必須出現在段落中\x02設定的項目必須要有一個等號\x02必須要有一個值\x02[I" +
+	"nterface] 中有無效選項\x02[Peer] 中有無效選項\x02Interface 中必須要有一把私鑰\x02[未指定]\x02每個 " +
+	"Peer 都必須要有公鑰\x02讀取設定時發生錯誤\x02Interface 中的金鑰無效\x02協定版本必須為 1\x02Peer 中的金鑰無" +
+	"效\x02關於 AmneziaWG (&A)"
 
-	// Total table size 201043 bytes (196KiB); checksum: 99D565D6
+	// Total table size 213888 bytes (208KiB); checksum: 6E2B667A

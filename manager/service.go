@@ -260,6 +260,7 @@ func (service *managerService) Execute(args []string, r <-chan svc.ChangeRequest
 	}
 
 	go checkForUpdates()
+	go geoBackgroundRefresh()
 
 	var sessionsPointer *windows.WTS_SESSION_INFO
 	var count uint32

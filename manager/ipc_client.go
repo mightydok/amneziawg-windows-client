@@ -37,6 +37,7 @@ const (
 	ManagerStoppingNotificationType
 	UpdateFoundNotificationType
 	UpdateProgressNotificationType
+	GeoChangeNotificationType
 )
 
 type MethodType int
@@ -55,6 +56,10 @@ const (
 	QuitMethodType
 	UpdateStateMethodType
 	UpdateMethodType
+	GeoStatusMethodType
+	GeoSetSettingsMethodType
+	GeoRefreshMethodType
+	GeoPreviewMethodType
 )
 
 var (
@@ -182,6 +187,10 @@ func InitializeIPCClient(reader, writer, events *os.File) {
 				}
 				for cb := range updateProgressCallbacks {
 					cb.cb(dp)
+				}
+			case GeoChangeNotificationType:
+				for cb := range geoChangeCallbacks {
+					cb.cb()
 				}
 			}
 		}

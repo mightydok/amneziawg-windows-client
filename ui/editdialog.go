@@ -17,6 +17,7 @@ import (
 	"github.com/amnezia-vpn/amneziawg-windows-client/manager"
 	"github.com/amnezia-vpn/amneziawg-windows-client/ui/syntax"
 	"github.com/amnezia-vpn/amneziawg-windows/v3/conf"
+	"github.com/amnezia-vpn/amneziawg-windows/v3/geolist"
 )
 
 type EditDialog struct {
@@ -25,10 +26,12 @@ type EditDialog struct {
 	pubkeyEdit                      *walk.LineEdit
 	syntaxEdit                      *syntax.SyntaxEdit
 	blockUntunneledTrafficCB        *walk.CheckBox
+	geoSplitCB                      *walk.CheckBox
 	saveButton                      *walk.PushButton
 	config                          conf.Config
 	lastPrivateKey                  string
 	blockUntunneledTraficCheckGuard bool
+	geoSplitCheckGuard              bool
 }
 
 func runEditDialog(owner walk.Form, tunnel *manager.Tunnel) *conf.Config {
@@ -133,6 +136,14 @@ func newEditDialog(owner walk.Form, tunnel *manager.Tunnel) (*EditDialog, error)
 	dlg.blockUntunneledTrafficCB.SetToolTipText(l18n.Sprintf("When a configuration has exactly one peer, and that peer has an allowed IPs containing at least one of 0.0.0.0/0 or ::/0, and the interface does not have table off, then the tunnel service engages a firewall ruleset to block all traffic that is neither to nor from the tunnel interface or is to the wrong DNS server, with special exceptions for DHCP and NDP."))
 	dlg.blockUntunneledTrafficCB.SetVisible(false)
 	dlg.blockUntunneledTrafficCB.CheckedChanged().Attach(dlg.onBlockUntunneledTrafficCBCheckedChanged)
+
+	if dlg.geoSplitCB, err = walk.NewCheckBox(buttonsContainer); err != nil {
+		return nil, err
+	}
+	dlg.geoSplitCB.SetText(l18n.Sprintf("&Russian networks directly (geo-split)"))
+	dlg.geoSplitCB.SetToolTipText(l18n.Sprintf("Adds GeoSplit = ru to the interface: Russian network prefixes are routed outside the tunnel and permitted through the kill-switch, everything else goes through the tunnel. Requires the kill-switch. The block size threshold, list updates and exceptions are configured in the geo-split routing settings."))
+	dlg.geoSplitCB.SetVisible(false)
+	dlg.geoSplitCB.CheckedChanged().Attach(dlg.onGeoSplitCBCheckedChanged)
 
 	walk.NewHSpacer(buttonsContainer)
 
@@ -290,14 +301,51 @@ func (dlg *EditDialog) onBlockUntunneledTrafficStateChanged(state int) {
 	switch syntax.BlockState(state) {
 	case syntax.InevaluableBlockingUntunneledTraffic:
 		dlg.blockUntunneledTrafficCB.SetVisible(false)
+		dlg.geoSplitCB.SetVisible(false)
 	case syntax.BlockingUntunneledTraffic:
 		dlg.blockUntunneledTrafficCB.SetVisible(true)
 		dlg.blockUntunneledTrafficCB.SetChecked(true)
+		dlg.geoSplitCB.SetVisible(true)
+		dlg.geoSplitCB.SetEnabled(true)
 	case syntax.NotBlockingUntunneledTraffic:
 		dlg.blockUntunneledTrafficCB.SetVisible(true)
 		dlg.blockUntunneledTrafficCB.SetChecked(false)
+		// Geo-split exceptions only make sense together with the kill-switch.
+		dlg.geoSplitCB.SetVisible(true)
+		dlg.geoSplitCB.SetEnabled(false)
 	}
 	dlg.blockUntunneledTraficCheckGuard = false
+	dlg.refreshGeoSplitCB()
+}
+
+// refreshGeoSplitCB mirrors the GeoSplit key of the edited text into the checkbox.
+func (dlg *EditDialog) refreshGeoSplitCB() {
+	cfg, err := conf.FromWgQuick(dlg.syntaxEdit.Text(), "temporary")
+	if err != nil {
+		return
+	}
+	dlg.geoSplitCheckGuard = true
+	dlg.geoSplitCB.SetChecked(cfg.Interface.GeoSplit != "")
+	dlg.geoSplitCheckGuard = false
+}
+
+func (dlg *EditDialog) onGeoSplitCBCheckedChanged() {
+	if dlg.geoSplitCheckGuard {
+		return
+	}
+	cfg, err := conf.FromWgQuick(dlg.syntaxEdit.Text(), "temporary")
+	if err != nil {
+		text := dlg.syntaxEdit.Text()
+		dlg.syntaxEdit.SetText("")
+		dlg.syntaxEdit.SetText(text)
+		return
+	}
+	if dlg.geoSplitCB.Checked() {
+		cfg.Interface.GeoSplit = geolist.DefaultCountry
+	} else {
+		cfg.Interface.GeoSplit = ""
+	}
+	dlg.syntaxEdit.SetText(cfg.ToWgQuick())
 }
 
 func (dlg *EditDialog) onSyntaxEditPrivateKeyChanged(privateKey string) {

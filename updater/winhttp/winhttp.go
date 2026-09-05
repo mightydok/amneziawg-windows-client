@@ -194,6 +194,14 @@ func (response *Response) Length() (length uint64, err error) {
 	return
 }
 
+// StatusCode returns the HTTP status code of the response.
+func (response *Response) StatusCode() (code uint32, err error) {
+	defer convertError(&err)
+	codeLen := uint32(unsafe.Sizeof(code))
+	err = winHttpQueryHeaders(response.handle, _WINHTTP_QUERY_STATUS_CODE|_WINHTTP_QUERY_FLAG_NUMBER, nil, unsafe.Pointer(&code), &codeLen, nil)
+	return
+}
+
 func (response *Response) Read(p []byte) (n int, err error) {
 	defer convertError(&err)
 	if len(p) == 0 {

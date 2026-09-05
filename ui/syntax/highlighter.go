@@ -312,6 +312,22 @@ func (s stringSpan) isValidPrePostUpDown() bool {
 	return s.len != 0
 }
 
+// A geo-split value is "off" or a two-letter country code.
+func (s stringSpan) isValidGeoSplit() bool {
+	if s.isSame("off") {
+		return true
+	}
+	if s.len != 2 {
+		return false
+	}
+	for i := 0; i < s.len; i++ {
+		if !isAlphabet(*s.at(i)) {
+			return false
+		}
+	}
+	return true
+}
+
 func (s stringSpan) isValidScope() bool {
 	if s.len > 64 || s.len == 0 {
 		return false
@@ -456,6 +472,7 @@ const (
 	fieldMaxHandshakeAttempts
 	fieldRandomTrailers
 	fieldDisableCookies
+	fieldGeoSplit
 	fieldPeerSection
 	fieldPublicKey
 	fieldPresharedKey
@@ -557,6 +574,8 @@ func (s stringSpan) field() field {
 		return fieldRandomTrailers
 	case s.isCaselessSame("DisableCookies"):
 		return fieldDisableCookies
+	case s.isCaselessSame("GeoSplit"):
+		return fieldGeoSplit
 	}
 	return fieldInvalid
 }
@@ -727,6 +746,8 @@ func (hsa *highlightSpanArray) highlightValue(parent, s stringSpan, section fiel
 		hsa.append(parent.s, s, validateHighlight(s.isValidOnOff(), highlightRandomTrailers))
 	case fieldDisableCookies:
 		hsa.append(parent.s, s, validateHighlight(s.isValidOnOff(), highlightDisableCookies))
+	case fieldGeoSplit:
+		hsa.append(parent.s, s, validateHighlight(s.isValidGeoSplit(), highlightTable))
 	default:
 		hsa.append(parent.s, s, highlightError)
 	}
