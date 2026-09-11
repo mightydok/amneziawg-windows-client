@@ -21,10 +21,10 @@ require (
 )
 
 replace (
-	github.com/lxn/walk => golang.zx2c4.com/wireguard/windows v0.0.0-20210121140954-e7fc19d483bd
-	github.com/lxn/win => golang.zx2c4.com/wireguard/windows v0.0.0-20210224134948-620c54ef6199
 	// Geo-split routing lives in the library fork, pinned to a commit of its
 	// feat/geo-split-routing branch. For local development you can point this at
 	// a sibling checkout instead: => ../awg-lib
-	github.com/amnezia-vpn/amneziawg-windows/v3 => github.com/mightydok/amneziawg-windows/v3 v3.0.0-20260905101825-1d6db9595484
+	github.com/amnezia-vpn/amneziawg-windows/v3 => github.com/mightydok/amneziawg-windows/v3 v3.0.0-20260911193159-c1545fd6c911
+	github.com/lxn/walk => golang.zx2c4.com/wireguard/windows v0.0.0-20210121140954-e7fc19d483bd
+	github.com/lxn/win => golang.zx2c4.com/wireguard/windows v0.0.0-20210224134948-620c54ef6199
 )
