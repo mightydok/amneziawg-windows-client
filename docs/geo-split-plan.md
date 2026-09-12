@@ -4,6 +4,8 @@
 
 ## Статус (2026-09-05)
 
+Обновление 2026-09-12: пакет `geolist` вынесен из библиотеки в отдельный модуль `github.com/mightydok/awg-geolist`, общий для Windows, Android и iPhone. Каталог кэша задаётся `geolist.SetDir()`, на Windows его выставляет `conf.GeoListDirectory()` (менеджер при старте службы, туннель перед загрузкой списка). Поведение клиента не менялось.
+
 Фазы 0–5 реализованы и закоммичены в обеих ветках, кроме прогона на живой системе:
 
 - библиотека: `conf` (ключ `GeoSplit`), `geolist` (список, политика, кэш, снапшот), `tunnel/geosplit.go` (маршруты и переустановка на роуминге), `tunnel/firewall/exceptions.go` (WFP-permit по префиксам и приватным сетям); `go test ./geolist ./conf` проходит (провалы `TestFromWgQuick` и `TestStorage` есть и в upstream);
