@@ -23,7 +23,7 @@ import (
 	"github.com/amnezia-vpn/amneziawg-windows-client/updater/winhttp"
 	"github.com/amnezia-vpn/amneziawg-windows-client/version"
 	"github.com/amnezia-vpn/amneziawg-windows/v3/conf"
-	"github.com/amnezia-vpn/amneziawg-windows/v3/geolist"
+	"github.com/mightydok/awg-geolist"
 )
 
 // GeoStatus is what the UI shows about geo-split routing.

@@ -56,6 +56,10 @@ func (service *managerService) Execute(args []string, r <-chan svc.ChangeRequest
 
 	services.PrintStarting()
 
+	if _, geoErr := conf.GeoListDirectory(); geoErr != nil {
+		log.Printf("Geo-split cache directory unavailable: %v", geoErr)
+	}
+
 	path, err := os.Executable()
 	if err != nil {
 		serviceError = services.ErrorDetermineExecutablePath

@@ -6,7 +6,7 @@
 package manager
 
 import (
-	"github.com/amnezia-vpn/amneziawg-windows/v3/geolist"
+	"github.com/mightydok/awg-geolist"
 )
 
 type GeoChangeCallback struct {

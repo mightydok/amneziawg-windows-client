@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/amnezia-vpn/amneziawg-windows/v3/geolist"
+	"github.com/mightydok/awg-geolist"
 )
 
 // TestGeoFetchDefaultSource downloads the default IPv4 list through WinHTTP and runs

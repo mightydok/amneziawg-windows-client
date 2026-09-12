@@ -21,8 +21,8 @@ import (
 
 	"github.com/amnezia-vpn/amneziawg-windows-client/updater"
 	"github.com/amnezia-vpn/amneziawg-windows/v3/conf"
-	"github.com/amnezia-vpn/amneziawg-windows/v3/geolist"
 	"github.com/amnezia-vpn/amneziawg-windows/v3/services"
+	"github.com/mightydok/awg-geolist"
 )
 
 var (

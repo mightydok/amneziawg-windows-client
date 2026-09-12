@@ -13,7 +13,7 @@ import (
 	"github.com/amnezia-vpn/amneziawg-windows-client/l18n"
 	"github.com/amnezia-vpn/amneziawg-windows-client/manager"
 	"github.com/amnezia-vpn/amneziawg-windows/v3/conf"
-	"github.com/amnezia-vpn/amneziawg-windows/v3/geolist"
+	"github.com/mightydok/awg-geolist"
 
 	"github.com/lxn/walk"
 )
