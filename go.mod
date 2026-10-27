@@ -26,7 +26,7 @@ replace (
 	// feat/geo-split-routing branch (go mod edit -replace ...@<sha>); the geolist
 	// module is required directly. For local development point both at sibling
 	// checkouts instead: => ../awg-lib and => ../awg-geolist
-	github.com/amnezia-vpn/amneziawg-windows/v3 => github.com/mightydok/amneziawg-windows/v3 v3.0.0-20260912163739-6a0bb4ab33ea
+	github.com/amnezia-vpn/amneziawg-windows/v3 => github.com/mightydok/amneziawg-windows/v3 v3.0.0-20261027101549-606c4e5a4da5
 	github.com/lxn/walk => golang.zx2c4.com/wireguard/windows v0.0.0-20210121140954-e7fc19d483bd
 	github.com/lxn/win => golang.zx2c4.com/wireguard/windows v0.0.0-20210224134948-620c54ef6199
 )

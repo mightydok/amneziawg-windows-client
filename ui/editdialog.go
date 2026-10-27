@@ -7,6 +7,7 @@ package ui
 
 import (
 	"net"
+	"net/netip"
 	"strings"
 
 	"github.com/lxn/walk"
@@ -27,11 +28,14 @@ type EditDialog struct {
 	syntaxEdit                      *syntax.SyntaxEdit
 	blockUntunneledTrafficCB        *walk.CheckBox
 	geoSplitCB                      *walk.CheckBox
+	excludeRoutesEdit               *walk.LineEdit
+	splitDNSEdit                    *walk.LineEdit
 	saveButton                      *walk.PushButton
 	config                          conf.Config
 	lastPrivateKey                  string
 	blockUntunneledTraficCheckGuard bool
 	geoSplitCheckGuard              bool
+	splitTunnelGuard                bool
 }
 
 func runEditDialog(owner walk.Form, tunnel *manager.Tunnel) *conf.Config {
@@ -155,6 +159,38 @@ func newEditDialog(owner walk.Form, tunnel *manager.Tunnel) (*EditDialog, error)
 	dlg.geoSplitCB.SetToolTipText(l18n.Sprintf("Adds GeoSplit = ru to the interface: Russian network prefixes are routed outside the tunnel and permitted through the kill-switch, everything else goes through the tunnel. Requires the kill-switch. The block size threshold, list updates and exceptions are configured in the geo-split routing settings."))
 	dlg.geoSplitCB.SetVisible(false)
 	dlg.geoSplitCB.CheckedChanged().Attach(dlg.onGeoSplitCBCheckedChanged)
+
+	addField := func(label string) (*walk.LineEdit, error) {
+		row, err := walk.NewComposite(optionsContainer)
+		if err != nil {
+			return nil, err
+		}
+		row.SetLayout(walk.NewHBoxLayout())
+		row.Layout().SetMargins(walk.Margins{})
+		row.Layout().SetSpacing(6)
+		lbl, err := walk.NewLabel(row)
+		if err != nil {
+			return nil, err
+		}
+		lbl.SetText(label)
+		edit, err := walk.NewLineEdit(row)
+		if err != nil {
+			return nil, err
+		}
+		return edit, nil
+	}
+
+	if dlg.excludeRoutesEdit, err = addField(l18n.Sprintf("Excluded routes:")); err != nil {
+		return nil, err
+	}
+	dlg.excludeRoutesEdit.SetToolTipText(l18n.Sprintf("Comma separated subnets or hosts routed outside the tunnel and permitted through the kill-switch, for reaching corporate or LAN networks while the VPN is up. Adds the ExcludeRoutes key."))
+	dlg.excludeRoutesEdit.EditingFinished().Attach(dlg.onExcludeRoutesEditingFinished)
+
+	if dlg.splitDNSEdit, err = addField(l18n.Sprintf("Split DNS:")); err != nil {
+		return nil, err
+	}
+	dlg.splitDNSEdit.SetToolTipText(l18n.Sprintf("Resolve specific domains on specific DNS servers while the tunnel is up: \"domain > server[, server]\", several rules separated by \";\". For internal corporate domains. Adds the SplitDNS key."))
+	dlg.splitDNSEdit.EditingFinished().Attach(dlg.onSplitDNSEditingFinished)
 
 	walk.NewHSpacer(buttonsContainer)
 
@@ -374,6 +410,77 @@ func (dlg *EditDialog) onSyntaxEditPrivateKeyChanged(privateKey string) {
 
 func (dlg *EditDialog) onSyntaxEditTextChanged() {
 	dlg.saveButton.SetEnabled(dlg.syntaxEdit.HaveErrors())
+	dlg.refreshSplitTunnelFields()
+}
+
+// refreshSplitTunnelFields mirrors the ExcludeRoutes and SplitDNS keys of the edited text
+// into their fields. SetText does not raise EditingFinished, so this does not loop back.
+func (dlg *EditDialog) refreshSplitTunnelFields() {
+	if dlg.excludeRoutesEdit == nil || dlg.splitDNSEdit == nil {
+		return
+	}
+	cfg, err := conf.FromWgQuick(dlg.syntaxEdit.Text(), "temporary")
+	if err != nil {
+		return
+	}
+	dlg.splitTunnelGuard = true
+	dlg.excludeRoutesEdit.SetText(formatExcludeRoutes(cfg.Interface.ExcludeRoutes))
+	dlg.splitDNSEdit.SetText(formatSplitDNS(cfg.Interface.SplitDNS))
+	dlg.splitTunnelGuard = false
+}
+
+func (dlg *EditDialog) onExcludeRoutesEditingFinished() {
+	if dlg.splitTunnelGuard {
+		return
+	}
+	cfg, err := conf.FromWgQuick(dlg.syntaxEdit.Text(), "temporary")
+	if err != nil {
+		return
+	}
+	prefixes, err := conf.ParseExcludeRoutes(dlg.excludeRoutesEdit.Text())
+	if err != nil {
+		dlg.refreshSplitTunnelFields()
+		return
+	}
+	cfg.Interface.ExcludeRoutes = prefixes
+	dlg.syntaxEdit.SetText(cfg.ToWgQuick())
+}
+
+func (dlg *EditDialog) onSplitDNSEditingFinished() {
+	if dlg.splitTunnelGuard {
+		return
+	}
+	cfg, err := conf.FromWgQuick(dlg.syntaxEdit.Text(), "temporary")
+	if err != nil {
+		return
+	}
+	rules, err := conf.ParseSplitDNS(dlg.splitDNSEdit.Text())
+	if err != nil {
+		dlg.refreshSplitTunnelFields()
+		return
+	}
+	cfg.Interface.SplitDNS = rules
+	dlg.syntaxEdit.SetText(cfg.ToWgQuick())
+}
+
+func formatExcludeRoutes(prefixes []netip.Prefix) string {
+	strs := make([]string, len(prefixes))
+	for i, p := range prefixes {
+		strs[i] = p.String()
+	}
+	return strings.Join(strs, ", ")
+}
+
+func formatSplitDNS(rules []conf.SplitDNSRule) string {
+	parts := make([]string, len(rules))
+	for i, rule := range rules {
+		servers := make([]string, len(rule.Servers))
+		for j, s := range rule.Servers {
+			servers[j] = s.String()
+		}
+		parts[i] = rule.Domain + " > " + strings.Join(servers, ", ")
+	}
+	return strings.Join(parts, " ; ")
 }
 
 func (dlg *EditDialog) onSaveButtonClicked() {

@@ -1914,9 +1914,9 @@
             ]
         },
         {
-            "id": "\u0026Russian networks directly (geo-split)",
-            "message": "\u0026Russian networks directly (geo-split)",
-            "translation": "\u0026Российские сети напрямую (geo-split)"
+            "id": "&Russian networks directly (geo-split)",
+            "message": "&Russian networks directly (geo-split)",
+            "translation": "&Российские сети напрямую (geo-split)"
         },
         {
             "id": "Adds GeoSplit = ru to the interface: Russian network prefixes are routed outside the tunnel and permitted through the kill-switch, everything else goes through the tunnel. Requires the kill-switch. The block size threshold, list updates and exceptions are configured in the geo-split routing settings.",
@@ -1929,9 +1929,9 @@
             "translation": "Гео-роутинг (geo-split)"
         },
         {
-            "id": "\u0026Update the list when a tunnel starts, if it is stale",
-            "message": "\u0026Update the list when a tunnel starts, if it is stale",
-            "translation": "\u0026Обновлять список при запуске туннеля, если он устарел"
+            "id": "&Update the list when a tunnel starts, if it is stale",
+            "message": "&Update the list when a tunnel starts, if it is stale",
+            "translation": "&Обновлять список при запуске туннеля, если он устарел"
         },
         {
             "id": "Consider the list stale after (hours):",
@@ -1984,9 +1984,9 @@
             "translation": "Весь IPv6 через туннель (без маршрутов IPv6)"
         },
         {
-            "id": "\u0026Permit private networks through the kill-switch (LAN, other VPN adapters and their DNS)",
-            "message": "\u0026Permit private networks through the kill-switch (LAN, other VPN adapters and their DNS)",
-            "translation": "\u0026Пропускать приватные сети через kill-switch (локальная сеть, другие VPN-адаптеры и их DNS)"
+            "id": "&Permit private networks through the kill-switch (LAN, other VPN adapters and their DNS)",
+            "message": "&Permit private networks through the kill-switch (LAN, other VPN adapters and their DNS)",
+            "translation": "&Пропускать приватные сети через kill-switch (локальная сеть, другие VPN-адаптеры и их DNS)"
         },
         {
             "id": "Always directly:",
@@ -2034,14 +2034,14 @@
             ]
         },
         {
-            "id": "\u0026Defaults",
-            "message": "\u0026Defaults",
-            "translation": "По \u0026умолчанию"
+            "id": "&Defaults",
+            "message": "&Defaults",
+            "translation": "По &умолчанию"
         },
         {
-            "id": "Update \u0026now",
-            "message": "Update \u0026now",
-            "translation": "Обновить \u0026сейчас"
+            "id": "Update &now",
+            "message": "Update &now",
+            "translation": "Обновить &сейчас"
         },
         {
             "id": "never",
@@ -2311,9 +2311,9 @@
             "translation": "Гео-роутинг: выкл."
         },
         {
-            "id": "\u0026Geo-split routing…",
-            "message": "\u0026Geo-split routing…",
-            "translation": "\u0026Гео-роутинг…"
+            "id": "&Geo-split routing…",
+            "message": "&Geo-split routing…",
+            "translation": "&Гео-роутинг…"
         },
         {
             "id": "Geo-split: {Country} directly, updating the list…",
@@ -2418,6 +2418,51 @@
             "id": "Comma separated words; outbound traffic on any adapter whose name or description contains one of them passes the kill-switch, so routes pushed by other VPN clients keep working.",
             "message": "Comma separated words; outbound traffic on any adapter whose name or description contains one of them passes the kill-switch, so routes pushed by other VPN clients keep working.",
             "translation": "Слова через запятую; исходящий трафик с адаптера, в имени или описании которого есть одно из них, проходит kill-switch, поэтому маршруты, которые пушат другие VPN-клиенты, продолжают работать."
+        },
+        {
+            "id": "Excluded routes:",
+            "message": "Excluded routes:",
+            "translation": "Исключённые маршруты:"
+        },
+        {
+            "id": "Comma separated subnets or hosts routed outside the tunnel and permitted through the kill-switch, for reaching corporate or LAN networks while the VPN is up. Adds the ExcludeRoutes key.",
+            "message": "Comma separated subnets or hosts routed outside the tunnel and permitted through the kill-switch, for reaching corporate or LAN networks while the VPN is up. Adds the ExcludeRoutes key.",
+            "translation": "Подсети или хосты через запятую, идущие мимо туннеля и пропускаемые сквозь kill-switch, для доступа к корпоративным или локальным сетям при поднятом VPN. Добавляет ключ ExcludeRoutes."
+        },
+        {
+            "id": "Split DNS:",
+            "message": "Split DNS:",
+            "translation": "Раздельный DNS:"
+        },
+        {
+            "id": "Resolve specific domains on specific DNS servers while the tunnel is up: \"domain > server[, server]\", several rules separated by \";\". For internal corporate domains. Adds the SplitDNS key.",
+            "message": "Resolve specific domains on specific DNS servers while the tunnel is up: \"domain > server[, server]\", several rules separated by \";\". For internal corporate domains. Adds the SplitDNS key.",
+            "translation": "Резолвить указанные домены на указанных DNS-серверах при поднятом туннеле: «домен > сервер[, сервер]», несколько правил через «;». Для внутренних корпоративных доменов. Добавляет ключ SplitDNS."
+        },
+        {
+            "id": "Invalid excluded route",
+            "message": "Invalid excluded route",
+            "translation": "Недопустимый исключённый маршрут"
+        },
+        {
+            "id": "Split DNS rule must be \"domain > server[, server]\"",
+            "message": "Split DNS rule must be \"domain > server[, server]\"",
+            "translation": "Правило Split DNS должно быть вида «домен > сервер[, сервер]»"
+        },
+        {
+            "id": "Split DNS rule has no domain",
+            "message": "Split DNS rule has no domain",
+            "translation": "В правиле Split DNS нет домена"
+        },
+        {
+            "id": "Invalid split DNS server address",
+            "message": "Invalid split DNS server address",
+            "translation": "Недопустимый адрес DNS-сервера в Split DNS"
+        },
+        {
+            "id": "Split DNS rule has no server",
+            "message": "Split DNS rule has no server",
+            "translation": "В правиле Split DNS нет сервера"
         }
     ]
 }
