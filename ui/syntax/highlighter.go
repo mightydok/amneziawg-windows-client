@@ -473,6 +473,8 @@ const (
 	fieldRandomTrailers
 	fieldDisableCookies
 	fieldGeoSplit
+	fieldExcludeRoutes
+	fieldSplitDNS
 	fieldPeerSection
 	fieldPublicKey
 	fieldPresharedKey
@@ -576,6 +578,10 @@ func (s stringSpan) field() field {
 		return fieldDisableCookies
 	case s.isCaselessSame("GeoSplit"):
 		return fieldGeoSplit
+	case s.isCaselessSame("ExcludeRoutes"):
+		return fieldExcludeRoutes
+	case s.isCaselessSame("SplitDNS"):
+		return fieldSplitDNS
 	}
 	return fieldInvalid
 }
@@ -748,6 +754,21 @@ func (hsa *highlightSpanArray) highlightValue(parent, s stringSpan, section fiel
 		hsa.append(parent.s, s, validateHighlight(s.isValidOnOff(), highlightDisableCookies))
 	case fieldGeoSplit:
 		hsa.append(parent.s, s, validateHighlight(s.isValidGeoSplit(), highlightTable))
+	case fieldExcludeRoutes:
+		hsa.highlightMultivalue(parent, s, fieldAllowedIPs)
+	case fieldSplitDNS:
+		// domain > server[, server]
+		gt := 0
+		for gt < s.len && *s.at(gt) != '>' {
+			gt++
+		}
+		if gt == s.len {
+			hsa.append(parent.s, s, highlightError)
+			break
+		}
+		hsa.append(parent.s, stringSpan{s.s, gt}, highlightHost)
+		hsa.append(parent.s, stringSpan{s.at(gt), 1}, highlightDelimiter)
+		hsa.highlightMultivalue(parent, stringSpan{s.at(gt + 1), s.len - gt - 1}, fieldDNS)
 	default:
 		hsa.append(parent.s, s, highlightError)
 	}
